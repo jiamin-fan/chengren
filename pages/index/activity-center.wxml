@@ -1,0 +1,75 @@
+<!--pages/index/activity-center.wxml-->
+<view class="center_box1">
+  <view class="box1_img"><image src="../../images/coupon-img.png"></image></view>
+</view>
+<!-- 已登录 -->
+<view class="center_box2" wx:if="{{ isLogin }}">
+  <view class="box2_coupon" wx:for="{{list}}">
+    <view class="coupon_left">
+      <view class="left_1" wx:if="{{item.coupon_type.value == 10}}">
+        <text class="left_1_second">{{item.reduce_price}}</text>
+        <text class="left_1_first">元</text>
+      </view>
+      <view class="left_1" wx:else>
+        <text class="left_1_first"></text>
+        <text class="left_1_second">{{item.discount}}</text>
+        <text class="left_1_first">折</text>
+      </view>
+      <text class="left_1_text">满{{item.min_price}}元可用</text>
+    </view>
+    <view class="coupon_right">
+      <view class="right_1">
+        <view class="right_1_first">{{item.name}}</view>
+        <view class="right_1_second" wx:if="{{item.expire_type == 10}}">领取后{{item.expire_day}}天内可用</view>
+        <view class="right_1_second" wx:else>{{item.start_time.text}}-{{item.end_time.text}}</view>
+      </view>
+      <!-- <view class="right_2">
+        <button class="before-button">领取</button>
+        <button class="after-button">已领取</button>
+      </view> -->
+      
+      <view class="right_2">
+        <button class="before-button" bindtap="getCoupon" data-id="{{ item.coupon_id }}" wx:if="{{!item.is_receive}}">领取</button>
+        <button class="after-button" wx:else>已领取</button>
+      </view>
+
+    </view>
+  </view>
+</view>
+<!-- 未登录 -->
+<view class="center_box2" wx:else>
+  <view class="box2_coupon" wx:for="{{list}}">
+    <view class="coupon_left">
+      <view class="left_1" wx:if="{{item.coupon_type.value == 10}}">
+        <text class="left_1_second">{{item.reduce_price}}</text>
+        <text class="left_1_first">元</text>
+      </view>
+      <view class="left_1" wx:else>
+        <text class="left_1_first"></text>
+        <text class="left_1_second">{{item.discount}}</text>
+        <text class="left_1_first">折</text>
+      </view>
+      <text class="left_1_text">满{{item.min_price}}元可用</text>
+    </view>
+    <view class="coupon_right">
+      <view class="right_1">
+        <view class="right_1_first">{{item.name}}</view>
+        <view class="right_1_second" wx:if="{{item.expire_type == 10}}">领取后{{item.expire_day}}天内可用</view>
+        <view class="right_1_second" wx:else>{{item.start_time.text}}-{{item.end_time.text}}</view>
+      </view>
+      <view class="right_2">
+        <button catchtap="onLogin" data-id="{{ item.coupon_id }}">领取</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+  <!-- 右下角悬浮按钮 -->
+  <view class="button-box">
+    <view class="button-1">
+      <view class="btn-img"><image bindtap="addIndex" src="../../images/icon/index.png"/></view>
+    </view>
+    <view class="button-1" style="margin-top: 40rpx;">
+      <view class="btn-img"><image bindtap="addLike" src="../../images/icon/car.png"/></view>
+    </view>
+  </view>

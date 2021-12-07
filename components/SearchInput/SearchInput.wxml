@@ -1,0 +1,5 @@
+<view class="search_input" bindtap="search">
+    <view class="search">
+      <image src="../../images/icon/search.png" style="width:30rpx;height:30rpx;margin:0 10rpx;"></image>搜索商品
+    </view>
+</view>

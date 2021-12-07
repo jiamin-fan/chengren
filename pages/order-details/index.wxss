@@ -1,0 +1,374 @@
+page{
+  background-color: #f0f0f0;
+}
+/* page{
+  background: #f0f0f0;
+  position: absolute;
+  font-size: 36rpx;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow-y: hidden;
+  }
+  scroll-view {
+  height: 100%;
+  } */
+.view1{
+  width: 100%;
+  height: 180rpx;
+  background-color: #ffffff;
+  padding:0 40rpx;
+  color: #ef7567;
+  display: flex;
+  flex-direction: column;
+}
+.view-text1{
+  margin-top: 40rpx;
+  font-size: 34rpx;
+}
+.view-text2{
+  margin-top: 20rpx;
+  font-size: 24rpx;
+}
+.view1-img{
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #cccccc;
+  margin-top: 24rpx;
+  display:flex;
+  right: 80rpx;
+}
+.view1-img image{
+  width: 100%;
+  height: 100%;
+}
+.view2{
+  width: 90%;
+  /* height: 260rpx; */
+  margin: 20rpx auto;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  padding: 0 16rpx;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30rpx;
+}
+.view2-text1{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  /* background-color: #ececbb; */
+  margin-top: 20rpx;
+}
+.view2-text1-1{
+  width: 120rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #ef7567;
+  background-color: #f8eede;
+}
+.view2-text1-2{
+  width: 450rpx;
+  font-size: 26rpx;
+  margin-left: 20rpx;
+  color: #333333;
+}
+.view2-img{
+  width: 50rpx;
+  height: 50rx;
+  background-color: #bbbb31;
+  position: absolute;
+  right: 30rpx;
+  /* display: flex; */
+}
+.view2-img image{
+  width: 100%;
+  height: 100%;
+}
+.view2-text2{
+  color: #9c9c9c;
+  font-size: 22rpx;
+  margin-top: 10rpx;
+}
+.view2-text3{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* height: 80rpx; */
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+.view2-text3-1{
+  width: 134rpx;
+}
+.view2-text3-2{
+  padding-right: 30rpx;
+  width: 500rpx;
+}
+.view2-text4{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40rpx;
+  margin-top: 4rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+.view2-text4-1{
+  width: 134rpx;
+}
+.view2-text4-2{
+  padding-right: 30rpx;
+}
+.view3{
+  width: 90%;
+  /* height: 400rpx; */
+  margin: 20rpx auto;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  padding: 0 16rpx;
+  display: flex;
+  flex-direction: column;
+  color: #333333;
+  padding-bottom: 10rpx;
+}
+.view3-text1{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 130rpx;
+  margin-top: 20rpx;
+}
+.view3-text1-1{
+  width: 130rpx;
+  height: 130rpx;
+  background-color: #cecece;
+}
+.view3-text1-1 image{
+  width: 100%;
+  height: 100%;
+}
+.view3-text1-2{
+  width: 390rpx;
+  padding-left: 10rpx;
+}
+.view3-text1-3{
+  width: 150rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-left: 10rpx;
+}
+.view3-text2{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-top: 10rpx;
+  /* background-color: #cecece; */
+}
+.view3-text2-1{
+  width: 200rpx;
+}
+.view3-text2-2{
+  width: 300rpx;
+  text-align: right;
+  margin-left: 160rpx;
+  font-size: 30rpx;
+  color: #000000;
+}
+.view3-text5{
+  display: flex;
+  flex-direction: row;
+  width: 96%;
+  height:74rpx;
+  line-height: 74rpx;
+  margin: 10rpx auto;
+  background-color: #f0f0f0;
+  border-radius: 10rpx;
+  padding: 0 10rpx;
+  font-size: 26rpx;
+}
+.view3-text5-2{
+  width: 300rpx;
+  text-align: right;
+  margin-left: 210rpx;
+}
+.view4{
+  width: 90%;
+  height: 246rpx;
+  margin: 20rpx auto;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  padding: 0 16rpx;
+  display: flex;
+  flex-direction: column;
+  color: #7e7e7e;
+  margin-bottom: 160rpx;
+}
+.view4-text1{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-top: 16rpx;
+  font-weight: bold;
+}
+.view4-text2{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #949494;
+}
+.view5{
+  width: 100%;
+  height: 110rpx;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  position:fixed; bottom:0;
+}
+.view5-btn1{
+  width: 180rpx;
+  height: 64rpx;
+  border:1rpx solid #7c7c7c;
+  border-radius: 50rpx;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  position: absolute;
+  right: 240rpx;
+  margin-top: 20rpx;
+  color: #7c7c7c;
+}
+.view5-btn2{
+  width: 180rpx;
+  height: 64rpx;
+  /* border:1rpx solid #ef7567;
+  color: #ef7567; */
+  background-color: #ef7567;
+  color: #ffffff;
+  border-radius: 50rpx;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  position: absolute;
+  right: 40rpx;
+  margin-top: 20rpx;
+}
+
+
+/*使屏幕变暗 */
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+ }
+ /*对话框 */
+ .commodity_attr_box {
+  height: 850rpx;
+  width: 680rpx;
+  margin: 200rpx auto;
+  margin-left: 40rpx;
+  overflow: hidden;
+  /* position: absolute; */
+  /* 遮住按钮 */
+  bottom: 0rpx;
+  position:fixed;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+  border-radius: 20rpx;
+ }
+.wuliu{
+  width: 96%;
+  height: 360px;
+  margin: 40rpx auto;
+  background-color: #ffffff;
+}
+.wuliu-new{
+  width: 100%;
+  height: 100rpx;
+  /* background-color: #00ff00; */
+  margin-top: 4rpx;
+  display: flex;
+  flex-direction: row;
+  font-size: 26rpx;
+  color:#555555
+}
+.new-time{
+  width: 110rpx;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #cdcecd; */
+  padding-top: 10rpx;
+  text-align: center;
+}
+.new-icon{
+  width: 100rpx;
+  height: 100rpx;
+  /* background-color: #fad88e; */
+}
+.new-icon image{
+  width: 100%;
+  height: 100%;
+}
+.new-position{
+  width: 440rpx;
+  padding-top: 10rpx;
+}
+
+ /* 已付款的view2_2样式 */
+.view2_2{
+  width: 90%;
+  height: 80rpx;
+  margin: 20rpx auto;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  padding: 0 16rpx;
+  display: flex;
+  flex-direction: row;
+}
+.view2_2-1{
+  width: 100rpx;
+  line-height: 80rpx;
+  color: #000000;
+}
+.view2_2-2{
+  width: 420rpx;
+  line-height: 80rpx;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space:nowrap; 
+  /* background-color: #355348; */
+}
+.view2_2-3{
+  width: 120rpx;
+  height: 50rpx;
+  font-size: 24rpx;
+  line-height: 46rpx;
+  border-radius: 30rpx;
+  border:1rpx solid #aaaaaa;
+  color: #464646;
+  margin-top: 16rpx;
+  margin-left: 32rpx;
+}
+
+
+

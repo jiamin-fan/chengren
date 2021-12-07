@@ -1,0 +1,8 @@
+<view class="page-section">
+  <view class="name_title">姓名</view>
+  <view class="name_input">
+    <!-- <input class="input" auto-focus placeholder="请输入用户名"></input> -->
+    <input class="input" auto-focus value="{{nickName}}"></input>
+  </view>
+</view>
+<button>保存</button>

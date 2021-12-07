@@ -1,0 +1,56 @@
+<!--index.wxml-->
+<view class="page">
+  <SearchInput></SearchInput>
+  <view class='swiper'>
+    <!-- <swiper indicator-dots="ture" indicator-active-color='#fff' autoplay='ture' interval='5000' duration='500' style="height:420rpx">
+    <block  wx:for="{{banner}}" wx:key='index'>
+      <swiper-item>
+        <image src="../../images/lun1.jpg" id="{{item.url}}" bindtap='imgtogood'/>
+      </swiper-item>
+    </block>
+    </swiper> -->
+    <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="banner_id">
+        <swiper-item catchtap="{{item.classify_id?'onSwiperTap':''}}">
+          <image src="{{item.banner_img}}" id="{{item.classify_id}}" data-src="{{item.banner_img}}" ></image>
+        </swiper-item>
+      </block>
+    </swiper>
+</view>
+  <!--轮播图片尺寸345px * 210px 图片建议不放白色的图片-->
+
+<view class="big_box1">
+  <navigator url="/pages/activity/index?classify_id={{item.classify_id}}" class="small_b1" wx:for="{{classify}}"><p>{{item.classify_title}}</p></navigator>
+</view>
+
+<!-- 商品展示 -->
+<view class="big_box2" bindtap="activityCenter">
+  <image src="../../images/index-banner.png"></image>
+</view>
+
+<view wx:for="{{category}}" wx:key="category_id">
+<!-- 广告图 -->
+<view class="big_box3">
+  <image src="{{item.image_long}}"/>
+</view>
+<!-- 商品列表 -->
+<view class="big_box4" wx:for="{{item.goods}}" wx:key="goods_id">
+  <view bindtap='changeGoods' class="box4_left" data-id="{{item.goods_id}}">
+    <image src="{{item.goods_images[0]}}"/>
+  </view>
+  <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="box4_right1">
+    <p>{{item.goods_name}}</p>
+  </view>
+  <view bindtap='changeGoods' class="box4_right2" data-id="{{item.goods_id}}">
+    <p>￥{{item.goods_price}}</p>
+  </view>
+  <view class="box4_right3" id="{{item.goods_id}}"  bindtap="{{btnClicked?'addCar':''}}">
+    <image src="../../images/icon/oncar.png"/>
+  </view>
+</view>
+
+</view>
+
+
+</view>
+

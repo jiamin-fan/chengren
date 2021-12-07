@@ -1,0 +1,33 @@
+.search_input{
+  width:750rpx;
+  padding-top: 0rpx;
+  /* background-color:#ffffff; */
+}
+.search
+{
+  display: flex;
+  width: 650rpx;
+  height:60rpx;
+  top: 0;
+  align-items: center;
+  justify-content: left;
+  margin:30rpx 50rpx;
+  padding-left:20rpx;
+  background-color: #f0f1f2;
+  /*background-color:#f0f1f2；*/
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #939393;
+}
+.search:focus
+{
+  background-color: #ff0;
+}
+/* .search image
+{
+  margin:0 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+} */
+

@@ -1,0 +1,10 @@
+/* pages/my/integral.wxss */
+.img{
+  width: 100%;
+  height: 1200rpx;
+}
+.img image{
+  width: 100%;
+  height: 100%;
+
+}

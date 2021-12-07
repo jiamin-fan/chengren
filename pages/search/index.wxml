@@ -1,0 +1,61 @@
+<view>
+<!-- 搜索头部 -->
+  <view class="search_input">
+    <!-- 搜索框 -->
+    <view class="search" >
+      <image src="../../images/icon/search.png"/>
+      <input type="text" placeholder="搜索商品" bindconfirm="search"/>
+    </view> 
+    <!-- 排序 -->
+    <view class="sort" wx:if="{{isSearch}}">
+      <view class="sales {{change1}}" bindtap="saleSort">按销量排序</view>
+      <view class="price {{change2}}" bindtap="priceSort">
+        <text>按价格排序</text>
+        <view class="price-icon">
+          <view class="up" wx:if="{{isUp}}"><image src="../../images/icon/up1.png"></image></view>
+          <view class="up" wx:else><image src="../../images/icon/up2.png"></image></view>
+          <view class="down" wx:if="{{isDown}}"><image src="../../images/icon/down1.png"></image></view>
+          <view class="down" wx:else><image src="../../images/icon/down2.png"></image></view>
+        </view>
+      </view>
+     
+    </view>
+    
+  </view>
+
+<!-- 搜索主体内容 -->
+<view class="search_main" wx:if="{{isHave}}">
+    <view class="main-list" wx:for="{{result}}" wx:key="goods_id">
+      <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="mains-1">
+        <image src="{{item.goods_images[0]}}"></image>
+      </view>
+      <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="mains-2">{{item.goods_name}}</view>
+        <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="mains-3">已销{{item.goods_initial+item.goods_actual}}件</view>
+      <view class="mains-4">
+        <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="mains-4-txt">￥{{item.goods_price}}</view>
+        <view class="mains-4-img" bindtap="{{btnClicked?'addCar':''}}" id="{{item.goods_id}}">
+          <image src="../../images/icon/oncar.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="none-search" >
+      <view class="title-box">
+          <image src="../../images/icon/search.png"></image>
+              抱歉，没有找到相关商品~
+      </view>
+    </view>
+  </view>
+    
+</view>
+
+    <!-- 右下悬浮按钮 -->
+    <view class="button-box">
+    <view class="button-1">
+      <view class="btn-img"><image bindtap="addIndex" src="../../images/icon/index.png"/></view>
+    </view>
+    <view class="button-1" style="margin-top: 40rpx;">
+      <view class="btn-img"><image bindtap="addLike" src="../../images/icon/car.png"/></view>
+    </view>
+  </view>

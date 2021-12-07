@@ -1,0 +1,28 @@
+<view class='page'>
+  <view class="search_main">
+    <view class="main-list" wx:for="{{goods_list}}" wx:key='goods_id'>
+      <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="mains-1">
+        <image src="{{item.goods_images[0]}}"></image>
+      </view>
+      <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="mains-2">{{item.goods_name}}</view>
+      <view class="mains-4">
+        <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="mains-4-txt">￥{{item.goods_price}}</view>
+        <view class="mains-4-img" bindtap="{{btnClicked?'addCar':''}}" id="{{item.goods_id}}">
+          <image src="../../images/icon/oncar.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 右下角悬浮按钮 -->
+  
+  <view class="button-box">
+    <view class="button-1">
+      <view class="btn-img"><image bindtap="addIndex" src="../../images/icon/index.png"/></view>
+    </view>
+    <view class="button-1" style="margin-top: 40rpx;">
+      <view class="btn-img"><image bindtap="addLike" src="../../images/icon/car.png"/></view>
+    </view>
+  </view>
+
+</view>

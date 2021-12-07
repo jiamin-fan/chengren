@@ -1,0 +1,28 @@
+<!-- <view class="page-section">
+  <view class="name_title">手机号</view>
+  <view class="name_input">
+    <input class="input" auto-focus value="{{phoneNumber}}"></input>
+  </view>
+  <view class="name_right">发送验证码</view>
+</view>
+<view class="page-section">
+  <view class="name_title">验证码</view>
+  <view class="name_input">
+    <input class="input" auto-focus placeholder="请输入验证码"></input>
+  </view>
+</view>
+<button>保存</button> -->
+
+
+<form bindsubmit="saveData" >
+  <view class="page-section">
+    <view class="name_title">手机号</view>
+    <view class="name_input">
+      <input class="input" name="phoneNumber" placeholder="请输入收货人联系电话" type="number" value="{{phoneNumber}}"></input>
+    </view>
+    <!-- <view class="name_right">
+      <button class="main_right" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="padding: 0 2rpx;float: left;border-radius: 15rpx;margin: 0;width: 75%;height: 60rpx;font-size: 25rpx;">获取手机号</button>
+    </view> -->
+  </view>
+  <button formType="submit" disabled="{{disabled}}">保存</button>
+</form>

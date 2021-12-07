@@ -1,0 +1,4 @@
+<!--pages/my/integral.wxml-->
+<view class="img">
+<image src="../../images/integral.png"></image>
+</view>

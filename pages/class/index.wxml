@@ -1,0 +1,24 @@
+<!--主盒子-->
+<view class="container">
+  <!--左侧栏-->
+  <view class="nav_left">
+      <block wx:for="{{type}}">
+        <view class='nav_left_items {{item.id == id ? "active" : ""}}' bindtap='tab'  data-current="{{item.id}}" wx:if="{{item.id}}">{{item.name}}</view>
+      </block>
+  </view>
+  <!--右侧栏-->
+  <view class="nav_right">
+    <!--如果有数据，才遍历项-->
+    <block wx:for="{{child_type}}">
+      <view wx:if="{{item.pid == id}}">
+        <view class="nav_right_items" bindtap='nav'  data-current="{{item.id}}">
+            <image src="https://xapp.xundv.cn/uploads/{{item.picture}}"/>
+            <text>{{item.name}}</text>
+        </view>
+      </view>
+    </block>
+    <!--图片1比1-->
+    <!--如果无数据，则显示数据-->
+    <!--<view class="nodata_text">该分类暂无数据</view>-->
+  </view>
+</view>

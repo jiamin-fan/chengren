@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商品分类",
+  "usingComponents": {
+    "SearchInput":"../../components/SearchInput/SearchInput"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#e6e6e6"
+}

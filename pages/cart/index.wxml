@@ -1,0 +1,92 @@
+<scroll-view scroll-x="false">
+
+
+<view class="content">
+  <!-- 有东西 -->
+  <!-- <view class="cart" wx:for="{{cart}}" wx:key="item"> -->
+  <view style="overflow: hidden;" wx:if="{{isBlank}}">
+    <view class="cart {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{carts}}" wx:key="item" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+      <view class="item show">
+        <image class="choose" src="../../images/icon/after-answer.png" wx:if="{{item.selected}}" bindtap="onSelectCard" data-id="{{item.goods_id}}" data-index="{{index}}"></image>
+        <image class="choose" src="../../images/icon/check.png" wx:else bindtap="onSelectCard" data-id="{{item.goods_id}}" data-index="{{index}}"></image>
+        <view class="card" data-id="{{item.goods_id}}">
+          <!-- <image class="cover" src="{{item.goods_images}}"></image> -->
+          <image class="cover" src="{{item.goods_images[0]}}" catchtap="switchToDetail"  data-id="{{item.goods_id}}"></image>
+          <view class="info">
+            <view class="title" catchtap="switchToDetail"  data-id="{{item.goods_id}}">{{item.goods_name}}</view>
+            <view class="sub-info">
+              <view class="price">￥{{item.goods_price}}</view>
+              <view class="selector">
+                <view  bindtap="bindMinus" class="changenum {{item.minusStatuses}}"data-index="{{index}}" data-id="{{item.goods_id}}"><text> - </text></view>
+                <!-- <input class="num" value="{{item.total}}"/> -->
+                <input class="num" type="number" data-id="{{item.goods_id}}" value="{{item.goods_number}}" bindchange="bindManual" data-index="{{index}}"/>
+                <view class="changenum normal" bindtap="bindPlus" data-id="{{item.goods_id}}" data-index="{{index}}"><text > + </text></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="del" catchtap="del" data-id="{{item.goods_id}}" data-index="{{index}}">删除</view>
+    </view>
+  </view>
+  <!--空购物车-->
+  <view wx:else>
+    <view class="car" >
+      <view class="title-box">
+          <image src="../../images/icon/car.png"></image>
+              您的购物车空空的，一件商品都没有
+      </view>
+      <!-- <button class="to-index-btn" bindtap='togoods'>
+            去首页逛逛
+      </button> -->
+    </view>
+  </view>
+
+  <!-- <view class="block"></view> -->
+  <view class="menu" wx:if="{{isBlank}}">
+    <view class="summary">
+      <image class="choose" src="../../images/icon/after-answer.png" wx:if="{{selectAll}}" bindtap="onSelectAll"></image>
+      <image class="choose" src="../../images/icon/before-answer.png" wx:else bindtap="onSelectAll"></image>
+      <text style="margin-left: 20rpx;font-size:28rpx;" bindtap="onSelectAll">全选</text>
+      <view class="price" style="position: absolute;right: 20rpx;" bindtap="showModal">
+        <text style="color:#000;font-size:24rpx;font-weight:normal;">合计：</text>
+      <text>{{discount}}</text>
+        <view wx:if="{{isDiscount}}">
+          <text style="display:flex;font-size:20rpx;font-weight:normal;margin-top:10rpx;">已优惠 ￥{{reduce_price}} 优惠明细  </text>
+        </view>
+        
+      </view>
+    </view>
+    <view class="pay" bindtap="goOrder">下单({{sum}})</view>
+  </view>
+</view>
+<!--屏幕背景变暗的背景 -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+ <!--弹出框 -->
+ <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="cart-top">优惠明细</view>
+  <view class="cart-center">
+    <view class="center-1">
+      <view class="center-left">商品总价</view>
+      <view class="center-right"><text>￥{{count}}</text></view>
+    </view>
+    <view class="center-1">
+      <view class="center-left">优惠券</view>
+      <view class="center-right"><text style="color: #f37769;">-￥{{reduce_price}}</text></view>
+    </view>
+    <view class="center-1" style="margin-top:50rpx;">
+      <view class="center-left" style="font-weight:bold;">共优惠</view>
+      <view class="center-right"><text style="color: #f37769;">-￥{{reduce_price}}</text></view>
+    </view>
+    <view class="center-1" style="margin-top:0;">
+      <view class="center-left">
+        <text style="font-weight:bold;">合计</text>
+        <text style="color:#555555;font-size:22rpx;">（合计金额不含运费）</text>
+      </view>
+      <view class="center-right"><text>￥{{discount}}</text></view>
+    </view>
+  </view>
+ </view>
+</scroll-view>
+
+

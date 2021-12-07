@@ -1,0 +1,260 @@
+@import "../notice/index.wxss";/*公告样式*/
+.page{
+  width: 750rpx;
+  height:auto;
+  font-size: 26rpx;
+  color:#333;
+  padding-bottom: 160rpx;
+}
+.swiper{
+  width: 750rpx;
+  /* height: 353rpx; */
+  /*background-color: #fff;*/
+  /* background-color: #272727; */
+}
+.swiper image{
+  width:100%;
+  height:100%;
+}
+/*轮播图*/
+.search
+{
+  position: absolute;
+  display: flex;
+  width: 650rpx;
+  height:60rpx;
+  top: 0;
+  align-items: center;
+  justify-content: left;
+  margin:30rpx 50rpx;
+  padding-left:20rpx;
+  background-color: rgba(255,255,255,0.8);
+  /*background-color:#f0f1f2；*/
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #939393;
+}
+.search:focus
+{
+  background-color: #ff0;
+}
+.search image
+{
+  margin:0 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+/*搜索框*/
+.icon{
+  width:710rpx;padding:22rpx 20rpx 0rpx 20rpx;
+  margin: 40rpx 0;
+  background-color: #fff;
+}
+.icon .icon_box{
+  display: inline-block;
+  vertical-align: middle;
+  width:122rpx;
+  height:150rpx;
+  margin:0 10rpx;
+}
+.icon .icon_box image{
+  width: 102rpx;
+  height: 102rpx;
+  margin:0 10rpx;
+  border-radius: 102rpx;
+  background-color: rgb(187, 184, 183);
+}
+.icon .icon_box text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11rpx 0;
+}
+/*小图标分类*/
+
+
+.tit
+{
+  display: flex;
+  flex-direction: row;
+  width: 750rpx;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  height: 40rpx;
+  background-color: #fff;
+  padding:20rpx 0;
+  margin:  40rpx 0 0 0;
+}
+.tit view:first-child,.tit view:last-child
+{
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 24rpx;
+  background-color: red;
+}
+.tit view
+{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 20rpx;
+  background-color: #0ff;
+  margin:0 5rpx;
+}
+.tit text{
+  width:150rpx;
+  text-align: center
+}
+/*标题*/
+.gd_boxs{
+  width:650rpx;
+  padding:0rpx 50rpx 0rpx 50rpx;
+  height:auto;
+  background-color: #fff;
+}
+.goods{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  box-sizing:content-box;
+  width:650rpx;
+  height:auto;
+  background-color: #fff
+}
+.goods .gd_box{
+  display:flex;
+  flex-direction:column;
+  width:300rpx;
+  height:420rpx;
+  background-color:#f9f9f9;
+  overflow:hidden;
+  margin-bottom:24rpx;
+}
+.gd_box image{
+  width:300rpx;
+  height:300rpx;
+}
+.gd_box text{
+  width: 300rpx;
+  font-size: 28rpx;
+  text-overflow:ellipsis;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  /* height:80rpx; */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.gd_box text:last-child {
+    height:40rpx;
+    color:rgb(253, 82, 2);
+}
+/*商品*/
+
+.big_box1{
+  width:100%;
+  height:80rpx;
+  background-color:#fff;
+  display: flex;
+  position:relative;
+  flex-direction: row;
+  padding-top: 20rpx;
+}
+.small_b1{
+  display:flex;
+  width:24%;
+  height:50rpx;
+  /* background-color:#fff; */
+  border-radius: 50rpx;
+  margin-left: 7%;
+  font-size: 30rpx;
+  border: 2rpx solid #ffd8ad;
+  color:#ffffff;
+  background: -webkit-linear-gradient(left,#ffb763,#ff6629);
+  font-weight: bold;
+  line-height: 50rpx;
+}
+.small_b1 p{
+  width: 100%;
+  text-align: center;
+}
+.big_box2{
+  width:100%;
+  height:360rpx;
+  /* background-color:#c9ec9b; */
+  position:relative;
+}
+.big_box2 image{
+  width: 100%;
+  height: 100%;
+}
+
+.big_box3{
+  width:100%;
+  height:140rpx;
+  background-color:#fff;
+  margin-top:30rpx;
+}
+.big_box3 image{
+  width: 100%;
+  height: 100%;
+  /* background-color: #ffff00; */
+}
+
+.big_box4{
+  width:90%;
+  left:5%;
+  height:250rpx;
+  background-color:#ffffff;
+  border-radius: 1rpx solid #c4c4c4;
+  margin-top:30rpx;
+  position:relative;
+}
+.box4_left{
+  width: 250rpx;
+  height: 100%;
+  background-color: #fff;
+  position:absolute;
+}
+.box4_left image{
+  width: 250rpx;
+  height: 100%;
+  background-color: #c9c9c9;
+  position:absolute;
+}
+.box4_right1 p{
+  position:absolute;
+  left:40%;
+  width:60%;
+  height:40%;
+  background-color:#ffffff;
+  flex-direction:row;
+  padding-top:20rpx;
+  display:flex;
+  font-size:30rpx;
+}
+.box4_right2 p{
+  position:absolute;
+  left:40%;
+  top: 65%;
+  width:60%;
+  height:20%;
+  line-height: 80rpx;
+  /* background-color:#555; */
+  display:flex;
+  font-size:30rpx;
+  font-weight:bold;
+  color:#f47767;
+}
+.box4_right3{
+  position:absolute;
+  right:0;
+  top:60%;
+  width:100rpx;
+  height:100rpx;
+}
+.box4_right3 image{
+  width:100rpx;
+  height:100rpx;
+}

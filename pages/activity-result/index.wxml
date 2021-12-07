@@ -1,0 +1,40 @@
+<view>
+<!-- 搜索框 -->
+  <view class="search_input">
+    <view class="search">
+      <image src="../../images/icon/search.png"/>
+      <input type="text" placeholder="搜索商品"/>
+    </view>
+  </view>
+
+  <view class="search_main">
+    <view class="main-list" wx:for="{{goods}}">
+      <navigator url="/pages/good/index" class="mains-1">
+        <image src="{{item.goodimg}}"></image>
+      </navigator>
+      <navigator url="/pages/good/index" class="mains-2">{{item.goodname}}</navigator>
+        <navigator url="/pages/good/index" class="mains-3">已销{{item.sales}}件</navigator>
+      <view class="mains-4">
+        <navigator url="/pages/good/index" class="mains-4-txt">￥{{item.price}}</navigator>
+        <view class="mains-4-img" bindtap="addCar">
+          <image src="../../images/icon/oncar.png"></image>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 右下悬浮按钮 -->
+    <view class="button-box">
+      <view class="button-1">
+        <button class="kf_button" bindtap="addIndex">
+          <image src="../../images/icon/onindex.png"/>
+        </button> 
+      </view>
+      <view class="button-2">
+        <button class="kf_button" bindtap="addLike">
+          <image src="../../images/icon/oncar1.png"/>
+        </button> 
+      </view>
+    </view>
+
+  </view>
+</view>

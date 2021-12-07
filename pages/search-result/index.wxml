@@ -1,0 +1,34 @@
+<form bindsubmit="searchBox">
+  <view class="input">
+    <view class='input-box'>
+      <image src='../../images/icon/search.png' /> 
+      <input placeholder="输入商品名称" maxlength="6" class='size' value='{{search_result}}' name="search_result"/>
+    </view>
+    <button form-type='submit'> 搜索 </button>
+  </view>
+</form>
+<!--搜索-->
+<view class='sort'>
+    <view bindtap='original'>综合</view>
+    <view bindtap='sales'>销量</view>
+    <view bindtap='bytime'>新品</view>
+    <view bindtap='byprice'>价格</view>
+</view>
+<!--销量-->
+<view class='content'>
+   <view>{{search_result}}</view>
+</view>
+<!--面包碎-->
+  <view class='gd_boxs'>
+    <view class="goods">
+      <block wx:for="{{goods}}" wx:key="index">
+        <view class='gd_box' bindtap='togoods' id="{{item.id}}">
+            <image src="https://xapp.xundv.cn/uploads/{{item.slide[0]}}"/>
+            <text>{{item.name}}</text>
+            <text class='x' style=' height:45rpx;'>销量：{{item.old_sold}}</text>
+            <text>￥{{item.price}}</text>   
+        </view>
+      </block>
+    </view>
+  </view>
+  <!--商品图片150px*150px-->

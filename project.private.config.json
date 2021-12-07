@@ -1,0 +1,156 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "我的优惠券",
+          "pathName": "pages/card-package/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品分类",
+          "pathName": "pages/all-goods/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人信息",
+          "pathName": "pages/add-adr/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品详情",
+          "pathName": "pages/good/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "姓名",
+          "pathName": "pages/name/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "7天鲜活",
+          "pathName": "pages/activity/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "收货地址",
+          "pathName": "pages/address/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索",
+          "pathName": "pages/search/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "购物车",
+          "pathName": "pages/cart/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的订单",
+          "pathName": "pages/order-list/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "确认订单",
+          "pathName": "pages/order/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "手机号",
+          "pathName": "pages/user-phone/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "适用商品",
+          "pathName": "pages/activity-result/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品评价",
+          "pathName": "pages/evaluation/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "订单详情",
+          "pathName": "pages/order-details/index",
+          "query": "order_id=2",
+          "scene": null
+        },
+        {
+          "name": "pages/my/index",
+          "pathName": "pages/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "添加评价",
+          "pathName": "pages/evaluation/add",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "酷夏惊喜活动中心",
+          "pathName": "pages/index/activity-center",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "demo",
+          "pathName": "pages/demo/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/guide1/index",
+          "pathName": "pages/guide1/index",
+          "query": "link=http%3A%2F%2Ftool.chinaz.com%2Ftools%2Furlencode.aspx",
+          "scene": null
+        },
+        {
+          "name": "pages/html1/index",
+          "pathName": "pages/html1/index",
+          "query": "link=http%3A%2F%2Ftool.chinaz.com%2Ftools%2Furlencode.aspx",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

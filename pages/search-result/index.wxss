@@ -1,0 +1,40 @@
+@import "../search/index.wxss";/*主页样式*/
+.sort
+{
+  width: 750rpx;
+  height:90rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+  background-color: #fff;
+}
+.sort view
+{
+  width: 187.5rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content
+{
+  width: 670rpx;
+  height: auto;
+  padding: 0 40rpx 20rpx 40rpx;
+  background-color: #fff;
+}
+.content view
+{
+  display: inline-block;
+  padding:4px;
+  width:auto;
+  background-color:#000;
+  color: #fff;
+  margin:5px 5px 0 0;
+  border-radius: 10px;
+}
+.x
+{
+  font-size: 22rpx;
+  color: #777;
+}

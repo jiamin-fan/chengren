@@ -1,0 +1,129 @@
+.page {
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  }
+/* 选项卡 */
+.productNav{
+  display: flex;
+  flex-direction: row;
+  font-family: "Microsoft YaHei"
+}
+.left{
+  width: 25.3%;
+  font-size: 24rpx;
+  background-color: #f4f4f4;
+  /* padding-left: 20rpx; */
+}
+.left view{
+  text-align: center;
+  height: 95rpx;
+  line-height: 95rpx;
+}
+.selected{
+  background-color: #fff;
+  font-weight: bold;
+  color: #f47767;
+}
+.normal{
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #f2f2f2;
+}
+.right{
+  width:74%;
+  margin: 0;
+}
+swiper{
+  /* height: 1050rpx; */
+  /* height: 89%; */
+  height: calc(100vh - 50px);
+}
+.swiper-item{
+  width: 540rpx;
+  /* height: 1000rpx; */
+  padding: 0 0 0rpx 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.scroll{ 
+  height: 100%;
+  /* margin-bottom: 200rpx; */
+}
+
+.delimiter{
+  display:flex;
+  height:80rpx;
+  line-height:80rpx;
+  font-size:24rpx;
+}
+.banner1{
+  width:100%;
+  height:150rpx;
+}
+.big_box4{
+  position:relative;
+  width:100%;
+  height:180rpx;
+  margin-top:16rpx;
+}
+.left_img{
+  position:absolute;
+  width:180rpx;
+  height:180rpx;
+}
+.box4_right1{
+  position:absolute;
+  top:0;
+  margin-left:190rpx;
+  font-size:24rpx;
+}
+.box4_right2{
+  position:absolute;
+  top:140rpx;
+  margin-left:190rpx;
+  color:#f47767;
+  font-size:24rpx;
+}
+.box4_right3{
+  position:absolute;
+  width:80rpx;
+  height:80rpx;
+  top:100rpx;
+  right:0;
+}
+.box4_right3 image{
+  width:100%;
+  height:100%;
+}
+/* 悬浮按钮 */
+.button-box{
+  width: 100rpx;
+  height: 200rpx;
+  right: 30rpx;
+  bottom: 170rpx;
+  position: fixed;
+  z-index:999;
+}
+.button-1{
+  width: 70rpx;
+  height: 70rpx;
+  background-color: #fff;
+  border-radius: 50rpx;
+  box-shadow: 0 0 10rpx #d3d3d3;
+}
+.btn-img{
+  width: 50rpx;
+  height: 50rpx;
+  padding-top: 10rpx;
+  padding-left: 10rpx;
+  background-color: #ffffff;
+  border-radius: 40rpx;
+}
+.btn-img image{
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 随意指定一个height值即可 */    
+.swiper-slide{height:1px} 
+.swiper-slide-active { height:auto}
+

@@ -1,0 +1,130 @@
+<view class="page">
+ 
+ 
+ <!--顶部导航栏-->
+  
+ <view class="swiper-tab">
+  
+ <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">未使用({{unusered.length}})</view>
+  
+ <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已使用({{usered.length}})</view>
+  
+ <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已过期({{expired.length}})</view>
+  
+ </view>
+  
+  
+ <!--内容主体-->
+
+ <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange" style="height:{{aheight}}rpx">
+  
+  <!-- 未使用 -->
+  <swiper-item>
+    <block wx:if="{{false}}">
+      <view class="tab2_box" >
+        <view class="box_image">
+        <image src="../../images/icon/index.png"/>
+        </view>
+        <text>暂时没有可用的优惠券</text>
+      </view>
+    </block>
+    <block wx:true>
+      <view class="tab1_box" wx:for="{{unusered}}">
+        <view class="box_up">
+          <view class="up_1">
+            <!-- <image src="{{item.cardimg}}"/> -->
+            <view class="up_1_view" wx:if="{{item.coupon_type == 10}}">
+              <text class="up_1_view_first">￥</text>
+              <text class="up_1_view_second">{{item.reduce_price}}</text>
+            </view>
+            <view class="up_1_view" wx:else>
+              <text class="up_1_view_first"></text>
+              <text class="up_1_view_second">{{item.discount}}</text>
+              <text class="up_1_view_first">折</text>
+            </view>
+            <text class="up_1_text">满{{item.min_price}}可用</text>
+          </view>
+          <view class="up_2">{{item.name}}</view>
+          <view class="up_3" wx:if="{{item.expire_type == 10}}">领取后{{item.expire_day}}天内可用</view>
+          <view class="up_3" wx:else>{{item.create_time}}-{{item.end_time}}</view>
+        </view>
+      </view>
+    </block>
+  </swiper-item>
+    
+  <!-- 已使用 -->
+  <swiper-item>
+    <block wx:if="{{false}}">
+      <view class="tab2_box" >
+        <view class="box_image">
+        <image src="../../images/icon/index.png"/>
+        </view>
+        <text>没有已使用的优惠券</text>
+      </view>
+    </block>
+    <block wx:true>
+      <view class="tab1_box" wx:for="{{usered}}">
+        <view class="box_up">
+          <view class="up_1">
+            <view class="up_1_view" wx:if="{{item.coupon_type == 10}}">
+              <text class="up_1_view_first">￥</text>
+              <text class="up_1_view_second">{{item.reduce_price}}</text>
+            </view>
+            <view class="up_1_view" wx:else>
+              <text class="up_1_view_first"></text>
+              <text class="up_1_view_second">{{item.discount}}</text>
+              <text class="up_1_view_first">折</text>
+            </view>
+            <text class="up_1_text">满{{item.min_price}}可用</text>
+          </view>
+          <view class="up_2">{{item.name}}</view>
+          <view class="up_3" wx:if="{{item.expire_type == 10}}">领取后{{item.expire_day}}天内可用</view>
+          <view class="up_3" wx:else>{{item.create_time}}-{{item.end_time}}</view>
+          <view class="be-use">
+            <image src="../../images/icon/be-use.png"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </swiper-item>
+    
+  <!-- 已过期 -->
+  <swiper-item>
+    <block wx:if="{{false}}">
+      <view class="tab2_box">
+        <view class="box_image">
+        <image src="../../images/icon/index.png"/>
+        </view>
+        <text>没有已过期的优惠券</text>
+      </view>
+    </block>
+    <block wx:true>
+      <view class="tab1_box" wx:for="{{expired}}">
+        <view class="box_up">
+          <view class="up_1">
+            <view class="up_1_view" wx:if="{{item.coupon_type == 10}}">
+              <text class="up_1_view_first">￥</text>
+              <text class="up_1_view_second">{{item.reduce_price}}</text>
+            </view>
+            <view class="up_1_view" wx:else>
+              <text class="up_1_view_first"></text>
+              <text class="up_1_view_second">{{item.discount}}</text>
+              <text class="up_1_view_first">折</text>
+            </view>
+            <text class="up_1_text">满{{item.min_price}}可用</text>
+          </view>
+          <view class="up_2">{{item.name}}</view>
+          <view class="up_3" wx:if="{{item.expire_type == 10}}">领取后{{item.expire_day}}天内可用</view>
+          <view class="up_3" wx:else>{{item.create_time}}-{{item.end_time}}</view>
+          <view class="be-use">
+            <image src="../../images/icon/be-expried.png"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </swiper-item>
+  
+ </swiper>
+  
+ </view>
+ 

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "SearchInput":"../../components/SearchInput/SearchInput",
+    "RightButton":"../../components/RightButton/RightButton"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#e6e6e6"
+}

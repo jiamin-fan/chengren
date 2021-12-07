@@ -1,0 +1,14 @@
+<!-- <cover-view class="container">
+  <cover-view class="item" bindtap='switchTab' wx:for="{{list}}" wx:key="{{index}}" data-index="{{index}}" data-url="{{item.pagePath}}">
+    <cover-image class="icon" src='{{index==curIndex?item.selectedIconPath:item.iconPath}}'></cover-image>
+    <cover-view class="text" class="{{index==curIndex?'textStyle':''}}">{{item.text}}</cover-view>
+  </cover-view>
+</cover-view> -->
+
+<cover-view class="container">
+  <cover-view class="item" catchtap='switchTab' wx:for="{{list}}" wx:key="{{index}}" data-index="{{index}}" data-url="{{item.pagePath}}">
+    <cover-image class="icon" src='{{index==curIndex?item.selectedIconPath:item.iconPath}}'></cover-image>
+    <cover-view class="text {{index==curIndex?'textStyle':''}}">{{item.text}}</cover-view>
+  </cover-view>
+</cover-view>
+

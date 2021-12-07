@@ -1,0 +1,83 @@
+<view class="page">
+ 
+ 
+ <!--顶部导航栏-->
+  
+ <view class="swiper-tab">
+  
+ <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">待评价</view>
+  
+ <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已评价</view>
+  
+  
+ </view>
+  
+  
+ <!--内容主体-->
+  
+ <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange" style="height:{{aheight}}rpx">
+
+  <!-- 待评价 -->
+ <swiper-item>
+    <!-- <block wx:if="{{false}}">
+      <view class="tab2_box">
+        <view class="box_image">
+         <image src="../../images/icon/index.png"/>
+        </view>
+        <text>暂无待评价的商品哦</text>
+      </view>
+    </block> -->
+    <block>
+      <view class="dai">
+        <view class="good-order" style="margin-bottom:0;" wx:for="{{res}}">
+          <image src="{{item.goods_image}}"></image>
+          <text class='order-tit'>{{item.goods_name}}</text>
+          <view class='good-pr'>
+            <text style="color:#f37769;">￥{{item.goods_price}}</text>
+            <text style="color:#777777;">x{{item.total_num}}</text>
+          </view>
+          <view class="float-box">
+            <text class="kuan">实付款：￥{{item.total_pay_price}}</text>
+            <button bindtap="addEvaluation" data-id="{{item.order_id}}">立即评价</button>
+          </view>
+        </view>
+      </view>
+    </block>
+ </swiper-item>
+
+  <!-- 已评价 -->
+ <swiper-item>
+    <!-- <block>
+      <view class="tab2_box">
+        <view class="box_image">
+        <image src="../../images/icon/index.png"/>
+        </view>
+        <text>暂无已评价商品哦，</text>
+        <text>快去评价吧~</text>
+      </view>
+    </block> -->
+    <block>
+      <view class="dai">
+        <view class="good-order2" style="margin-bottom:0;" wx:for="{{res}}">
+          <view class="add-title">
+            <image src="{{item.goods_image}}"/>
+            <text class='order-title'>{{item.goods_name}}</text>
+            <view class='good-pr'>
+              <text style="color:#f37769;">￥{{item.goods_price}}</text>
+              <text style="color:#777777;">x{{item.total_num}}</text>
+            </view>
+          </view>
+          <view class="add-content">
+            <view class="add-content-text">实付款：￥{{item.total_pay_price}}</view>
+            <!-- <button style="color:#777777;border:1rpx solid #777777;">查看评价</button> -->
+            <view class="add-content-view">评价：{{item.content}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  
+ </swiper-item>
+  
+ </swiper>
+ </view>
+ 

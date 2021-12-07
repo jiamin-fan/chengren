@@ -1,0 +1,73 @@
+<form bindsubmit="form">
+  <view class="mains_big">
+    <view class="mains_small_1">
+      <view class="main_left">头像</view>
+      <view class="main_right_1"><open-data type="userAvatarUrl" class="image"></open-data></view>
+    </view>
+    <view class="mains_small">
+      <view class="main_left">姓名</view>
+      <view class="main_top"></view>
+      <view class="main_right">
+        <!-- <open-data type="userNickName" class="name" style="display:block;" bindtap='changeName'></open-data> -->
+        <open-data type="userNickName" class="name" style="display:block;"></open-data>
+      </view>
+      <!-- <view class="main_right2">＞</view> -->
+    </view>
+
+
+    <view class="mains_small">
+      <view class="main_left">手机号</view>
+      <view class="main_top"></view>
+
+      <view wx:if="{{phoneNumber == 0}}">
+        <button class="main_right" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="margin-top:20rpx;background-color:transparent;padding: 0;">获取手机号码</button>
+      </view>
+      <view wx:else>
+        <navigator url="/pages/user-phone/index?phone={{phoneNumber}}" class="main_right">
+          <view open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">{{phoneNumber}}</view>
+        </navigator>
+      </view>
+      <view class="main_right2">＞</view>
+    </view>
+
+
+    <view class="mains_small">
+      <view class="main_left">性别</view>
+      <view class="main_top"></view>
+      <picker class="main_right" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          {{array[index]}}
+        </view>
+      </picker>
+      <view class="main_right2">＞</view>
+      <!-- <view class="main_right">
+        <view class="picker">
+          {{array[index]}}
+        </view>
+      </view> -->
+    </view>
+
+    <view class="mains_small">
+      <view class="main_left">生日</view>
+      <view class="main_top"></view>
+      <picker class="main_right" mode="date" value="{{date}}" start=   "1990-09-01" end="2021-05-01" bindchange=   "bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+      <view class="main_right2">＞</view>
+    </view>
+
+    <view class="mains_small">
+      <view class="main_left">地区</view>
+      <view class="main_top"></view>
+      <picker class="main_right" mode="region" bindchange="bindRegionChange"    value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+          {{region[0]}},{{region[1]}},{{region[2]}}
+        </view>
+      </picker>
+      <view class="main_right2">＞</view>
+    </view>
+
+  </view>
+</form>

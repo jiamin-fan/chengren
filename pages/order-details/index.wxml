@@ -1,0 +1,134 @@
+<view class="page" data-id="{{order_info.order_id}}">
+  <view class="view1" wx:if="{{order_info.status == 10}}">
+    <view class="view-text1">待付款</view>
+    <view class="view-text2">30分钟内未付款，订单将自动关闭</view>
+    <view class="view1-img"><image src=""></image></view>
+  </view>
+  <view class="view1" wx:elif="{{order_info.status == 20}}">
+    <view class="view-text1">已付款</view>
+    <view class="view-text2">等待商家发货</view>
+    <view class="view1-img"><image src=""></image></view>
+  </view>
+  <view class="view1" wx:elif="{{order_info.status == 30}}">
+    <view class="view-text1">待收货</view>
+    <view class="view-text2">商家已发货，请留意物流信息</view>
+    <view class="view1-img"><image src=""></image></view>
+  </view>
+  <view class="view1" wx:else>
+    <view class="view-text1">已收货</view>
+    <view class="view-text2">确认商品无误，可以前往评价哦~</view>
+    <view class="view1-img"><image src=""></image></view>
+  </view>
+
+<!-- 收货人的信息 -->
+  <view class="view2">
+    <view class="view2-text1">
+      <view class="view2-text1-1">收货地址</view>
+      <view class="view2-text1-2">{{address.name}}　{{address.phone}}</view>
+    </view>
+    <view class="view2-text3">
+      <view class="view2-text3-1">详细地址：</view>
+      <view class="view2-text3-2">{{address.detail}}</view>
+    </view>
+  </view>
+
+<!-- 已付款 显示 -->
+    <!-- 若无：在订单信息加：物流订单编号快递公司 -->
+  <!-- <view class="view2_2">
+    <view class="view2_2-1">运输中</view>
+    <view class="view2_2-2">广州转运中心公司 已发出，下一站 广东省广州市天河区车陂</view>
+    <button class="view2_2-3" bindtap="showModal">查看</button>
+  </view> -->
+<!--屏幕背景变暗的背景 -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+ <!--物流信息弹出框 -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="wuliu" style="overflow: scroll;height:90%;-webkit-overflow-scrolling:auto;">
+    <!-- 更新的物流情况 -->
+    <view class="wuliu-new" wx:for="{{15}}">
+      <view class="new-time">
+        <view style="font-size:28rpx;">07:55</view>
+        <view style="font-size:22rpx;">7月3日</view>
+      </view>
+      <view class="new-icon"><image src="../../images/icon/wuliu1.png"></image></view>
+      <view class="new-position">广州转运中心公司 已发出，下一站 广东省广州市天河区车陂</view>
+    </view>
+  </view>
+</view>
+
+<!-- 购买信息： -->
+  <view class="view3" data-id="{{order_info.order_id}}">
+    <view class="view3-text1" wx:for="{{goods_info}}">
+      <view class="view3-text1-1"><image src="{{item.goods_image}}"></image></view>
+      <view class="view3-text1-2">{{item.goods_name}}</view>
+      <view class="view3-text1-3">
+        <text style="font-size:30rpx;color:#000;">￥{{item.goods_price}}</text>
+        <text style="font-size:24rpx;color:#777777;margin-top:6rpx;">x{{item.total_num}}</text>
+      </view>
+    </view>
+    <view class="view3-text2">
+      <view class="view3-text2-1">商品金额：</view>
+      <view class="view3-text2-2"><text>￥{{order_info.total_price}}</text></view>
+    </view>
+    <view class="view3-text2">
+      <view class="view3-text2-1">优惠券：</view>
+      <view class="view3-text2-2"><text >-￥{{order_info.coupon_money}}</text></view>
+    </view>
+    <view class="view3-text2">
+      <view class="view3-text2-1">应付金额：</view>
+      <view class="view3-text2-2" style="color:#ef7567;"><text>￥{{order_info.pay_price}}</text></view>
+    </view>
+    <view class="view3-text5">
+      <view>微信支付：</view>
+      <view class="view3-text5-2"><text>￥{{order_info.pay_price}}</text></view>
+    </view>
+  </view>
+  <view class="view4" data-id="{{order_info.order_id}}">
+    <view class="view4-text1">订单信息</view>
+    <view class="view4-text2">
+      <view>订单编号：</view>
+      <view>{{order_info.order_no}}</view>
+    </view>
+    <view class="view4-text2">
+      <view>下单时间：</view>
+      <view>
+        <text>{{order_info.create_time}}</text>
+        <!-- <text style="margin-left:10rpx;">{{ordertime}}</text> -->
+      </view>
+    </view>
+    <view class="view4-text2">
+      <view>物流公司：</view>
+      <view>{{order_info.express_company}}</view>
+    </view>
+    <view class="view4-text2">
+      <view>物流编号：</view>
+      <view>{{order_info.express_no}}</view>
+    </view>
+  </view>
+
+  <!-- 待付款状态显示： -->
+  <view class="view5" data-id="{{order_info.order_id}}" wx:if="{{order_info.status == 10}}">
+    <button class="view5-btn1">取消订单</button>
+    <button class="view5-btn2" bindtap="jumpOrder">立即付款</button>
+  </view>
+  
+  <!-- 已付款状态显示： -->
+  <view class="view5" data-id="{{order_info.order_id}}" wx:elif="{{order_info.status == 20}}">
+    <button class="view5-btn1">申请退款</button>
+    <button class="view5-btn2" bindtap="changeStatus">确认收货</button>
+  </view>
+
+  <!-- 待收货状态显示： -->
+    <view class="view5" data-id="{{order_info.order_id}}" wx:elif="{{order_info.status == 30}}">
+      <button class="view5-btn1">申请退款</button>
+      <button class="view5-btn2" data-id="{{order_info.order_id}}" bindtap="changeStatus">确认收货</button>
+    </view>
+
+  <!-- 已收货状态显示： -->
+  <view class="view5" data-id="{{order_info.order_id}}" wx:else>
+    <button class="view5-btn1">申请售后</button>
+    <button class="view5-btn2" data-id="{{order_info.order_id}}" bindtap="jumpEvaluation">前往评价</button>
+  </view>
+</view>
+
+

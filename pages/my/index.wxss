@@ -1,0 +1,260 @@
+page{
+  padding-bottom: 200rpx;
+}
+.user-info
+{
+  width: 700rpx;
+  height: 250rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: #FFffff;
+  font-size: 32rpx;
+  color: #000000;
+  font-weight: bold;
+  margin: 0 auto;
+  border-radius: 0 0 20rpx 20rpx;
+}
+.my-button1{
+  background-color: #ff692a;
+  color: #ffffff;
+  font-size: 30rpx;
+  margin-top: 50rpx;
+}
+.user-info .user-img
+{
+  width: 150rpx;
+  height: 150rpx;
+  /*margin: 0 40rpx;*/
+  margin-left: 272rpx;
+  top: 30%;
+  border-radius: 150rpx;
+  border: 2rpx solid #fff;
+  background-color: #fff;
+}
+.user-info{
+  display:flex;
+  flex-direction:column;
+  padding-top:30rpx;
+}
+.user-img .image
+{
+  width:100%;
+  height:100%;
+  display:block;
+  border-radius:50%;
+  overflow:hidden;
+}
+.name
+{
+  text-align:center;
+  background-color:#fff;
+  margin-top:30rpx;
+  color:#6f6f6f;
+}
+/*头像名字*/
+.order
+{
+  background-color: #f9f9f9;
+  width: 750rpx;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.order .my-order{
+  position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 620rpx;
+    height: 160rpx;
+    padding: 40rpx 40rpx 20rpx 40rpx;
+    background-color: #ffffff;
+    margin: 20rpx auto;
+    border-radius: 20rpx;
+}
+.order .my-order text:first-child
+{
+  font-size: 32rpx;
+  font-weight:bold;
+}
+.more{
+  display: flex;
+  flex-direction: row;
+  /*align-items: center;*/
+}
+.more .more-icon
+{
+   background: url('https://shop-applet-icon.oss-cn-shenzhen.aliyuncs.com/more.png') no-repeat center;
+  display: inline-block;
+  background-size:30rpx 30rpx;
+  width: 30rpx;
+  height: 32rpx;
+}
+.more text
+{
+  color: #777;
+}
+.all-order{
+  position:absolute;
+  top:100rpx;
+  width:80%;
+  height:20%;
+  border-radius: 10rpx;
+  background-color: #f1f2f3;
+  padding:20rpx;
+  text-align:center;
+  font-size: 30rpx;
+  color: #777;
+}
+.all-order2{
+  position:absolute;
+  top:100rpx;
+  width:84%;
+  border-radius: 10rpx;
+  background-color: #f1f2f3;
+  padding:20rpx;
+  font-size: 26rpx;
+  /* color: #777; */
+  display: flex;
+  flex-direction: column;
+}
+.order2_1{
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  text-align:center;
+}
+.order2_2{
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  text-align:center;
+  margin-top: 30rpx;
+}
+.order2_1_1{
+  width: 200rpx;
+  height: 60rpx;
+  text-align:left;
+  line-height: 56rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+  color:#333333;
+}
+.order2_1_2{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  position: relative;
+  font-size: 30rpx;
+  color:#333333;
+}
+.order2_1_2 button{
+  font-size: 26rpx;
+  line-height: 60rpx;
+  width: 180rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  background-color: #f47767;
+  color: #ffffff;
+  display: flex;
+  position: absolute;
+  right: 0;
+  padding-left: 40rpx;
+}
+.order2_2_1{
+  width: 90rpx;
+  height: 90rpx;
+}
+.order2_2_1 image{
+  width: 100%;
+  height: 100%;
+}
+.order2_2_2{
+  width: 320rpx;
+  height: 90rpx;
+  text-align:left;
+  margin-left: 20rpx;
+  color: #333333;
+}
+.order2_2_3{
+  width: 170rpx;
+  height: 90rpx;
+  text-align:right;
+}
+.order2_2_3_1{
+  font-size: 30rpx;
+  color: #f47767;
+  font-weight: bold;
+}
+.order2_2_3_2{
+  font-size: 22rpx;
+  color: #777;
+  margin-top: 10rpx;
+}
+.order2_3{
+  height: 50rpx;
+  line-height: 60rpx;
+  margin-top: 10rpx;
+  color: #777;
+  font-size: 26rpx;
+}
+.order2_4{
+  height: 50rpx;
+  line-height: 40rpx;
+  margin-top: 10rpx;
+  color: #777;
+  font-size: 26rpx;
+  width:100%;
+  overflow: hidden;  /*超出部分隐藏*/
+  white-space: nowrap;  /*禁止换行*/
+  text-overflow: ellipsis;
+}
+/*我的订单+查看全部*/
+
+.my-title{
+  padding:20rpx;
+  font-size: 32rpx;
+  font-weight:bold;
+  color: #000;
+}
+.logistics
+{
+  width: 750rpx;
+  height: 130rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: #f9f9f9;
+  margin-top:100rpx;
+  margin-bottom:20rpx;
+}
+.log-box
+{
+  width: 33%;
+  height:130rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10rpx 0;
+}
+.log-box image
+{
+  width:50rpx;
+  height:50rpx;
+}
+.log-box text
+{
+  padding: 15rpx 0;
+  font-size:24rpx;
+  font-weight:bold;
+}
+/*订单状态*/
+.logistics {
+  width: 750rpx;
+  height: 130rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: #f9f9f9;
+  margin-top: 0rpx;
+  margin-bottom: 20rpx;
+}

@@ -1,0 +1,77 @@
+<view wx:if="{{ goods_list.length }}">
+<form bindsubmit="pay">
+<!-- 地址 -->
+  <view class='list' bindtap='address'>
+    <view class='list-left'>
+      <view class="left-top">
+        <text class="top-left">收货地址</text>
+        <text class="top-name">{{user_address.name}}</text>
+        <text class="top-phone">{{user_address.phone}}</text>
+      </view>
+      <text class="list1-home">{{user_address.detail}}</text>
+    </view>
+    <image src='../../images/icon/more.png'/>
+  </view>
+
+  <view >
+    <!--商品详情-->
+    <view class="good-order" wx:for="{{goodsInfos}}" wx:key="goods_id" style="margin-bottom:0;">
+      <image src="{{item.goods_images[0]}}"/>
+      <text class='order-tit'>{{item.goods_name}}</text>
+      <view class='good-pr'>
+        <text style="font-weight:bold;color:#f37769;">￥{{item.goods_price}}</text>
+        <text style="color:#777777;" wx:if="{{type==0}}">x {{item.cart_number}}</text>
+        <text style="color:#777777;" wx:else>x {{goods_num}}</text>
+      </view>
+    </view>
+    <!-- 购买数量 -->
+    <view wx:if="{{isShow}}" class="good-order2">
+      <view>购买数量：</view>
+      <view class="selector">
+        <text class="{{minusStatus}}" bindtap="bindMinus" data-index="{{index}}"> - </text>
+        <!-- <input class="num" value="{{item.total}}"/> -->
+        <input class="num" type="number" value="{{goods_num}}" bindchange="bindManual" data-index="{{index}}"/>
+        <text class="normal" bindtap="bindPlus" data-index="{{index}}"> + </text>
+      </view>
+    </view>
+    <!-- 配送方式 -->
+    <view class="good-order3">
+      <view>配送方式：</view> 
+      <text style="color:#777777;">同城快送</text>
+      <text style="margin-left:370rpx;">包邮</text>
+    </view>
+    <!--备注-->
+    <view class='remark'>
+      <text style="width: 200rpx;">订单备注：</text>
+      <input name="remark" type="text" class="liuyan" placeholder="选填，可填写特殊需求等" value="{{remark}}"/>
+    </view>
+    <view class='list2'>
+      <text style="margin-left:350rpx;font-size:24rpcolor:#777777">共 {{goods_num}} 件</text>
+      <text style="margin-left:20rpx;">小计：</text>
+      <text style="color:#f37769;font-weight:bold;">￥{{sum}}</text>
+    </view>
+  </view>
+  
+
+  <view class='price'>
+    <view class='pr-list' bindtap="showDetail">
+      <text>优惠券：</text>
+      <view wx:if="{{isDiscount}}" style="color: #f92d15;">- ￥{{u_coupons[0].reduce_price}}</view>
+      <view wx:else><text>无可用</text> </view>
+    </view>
+  </view>
+  <view style="width:100%;height:200rpx;"></view>
+
+  <view class='bt-fix'>
+    <!-- <button open-type="contact" class='icon'>
+        <image src="../../images/icon/custom.png"/>
+        <text>联系客服</text>
+    </button> -->
+    <view class="bt-text">
+      <text style="color:#777777;">合计：</text>
+      <text style="color:#f47568;font-weight:bold;">￥{{total_sum}}</text>
+    </view>
+    <button class='btn'  form-type='submit'>提交订单</button>
+  </view>
+</form>
+</view>

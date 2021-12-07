@@ -1,0 +1,7 @@
+.container {display: flex;flex-direction: column}
+.notice{width: 750rpx;height: 90rpx;display: flex;flex-direction: row;align-items: center;}
+.notice image{  width: 60rpx;height: 60rpx;margin-left: 20rpx;}
+.scrolltxt{width:630rpx;padding:0 20rpx;}
+
+.marquee_box {position:relative;color:#fff;height:90rpx;display:block;overflow:hidden;} 
+.marquee_text {white-space: nowrap;position:absolute;top:0;font-size:32rpx;height:90rpx;line-height:90rpx;}

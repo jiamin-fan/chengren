@@ -1,0 +1,5 @@
+<view  wx:if="{{hasimageUrl}}">
+  <view class="img">
+    <image class="image_frame" src="{{imageUrl}}" data-src="{{imageUrl}}" bindtap="previewImage" mode="widthFix" show-menu-by-longpress="true"></image>
+  </view>
+</view>
