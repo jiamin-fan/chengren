@@ -44,7 +44,7 @@
     <button class="savepic" bindtap="getPhotosAlbumAuth">保存图片</button>
   </view>
 </view>
-<view class="second_box" class="second0_box">
+<!-- <view class="second_box" class="second0_box">
         <view class="good_box2" >
           <p class="box2_left">包装类型</p>
           <p class="box2_right">{{goods.goods_pack}}</p>
@@ -85,7 +85,23 @@
           <p class="box2_left">保质期</p>
           <p class="box2_right">{{goods.goods_shelf_life}}</p>
         </view>
+    </view> -->
+
+    <!-- 新增两行： -->
+    <view class="twoli">
+      <view class="roll_1" style="border-bottom: 1px solid rgb(228, 228, 228);">
+        <span>服务 </span>
+        <a href="#">门店自提 | 同城快送</a>
+      </view>
+       
+      <view class="roll_1">
+        <span>门店 </span>
+        <a href="#">广州白云区金沙洲店</a>
+      </view>
     </view>
+    <!-- 商品套餐： -->
+    <!-- <view></view> -->
+
 
   <view class="swiper-tab">
   <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">商品详情</view>
@@ -116,7 +132,7 @@
   <swiper-item>
     <scroll-view scroll-y="true" class="scroll">
       <view class="second_box">
-        <view class="good_box2" >
+        <view class="good_box2" style="margin-top: 0;">
           <p class="box2_left">包装类型</p>
           <p class="box2_right">{{goods.goods_pack}}</p>
         </view>

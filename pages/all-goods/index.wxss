@@ -75,6 +75,15 @@ swiper{
   margin-left:190rpx;
   font-size:24rpx;
 }
+.box4_right1 p{
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
 .box4_right2{
   position:absolute;
   top:140rpx;

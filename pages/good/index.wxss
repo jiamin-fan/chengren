@@ -28,7 +28,8 @@ swiper-item image {
 .detail {
   position: relative;
   width: 100%;
-  height: 200rpx;
+  min-height: 190rpx;
+  /* height: 200rpx; */
   display: flex;
   flex-direction: column;
   margin-top: 15rpx;
@@ -37,7 +38,7 @@ swiper-item image {
 }
 .detail .title {
   width: 580rpx;
-  position: absolute;
+  /* position: absolute; */
   font-size: 40rpx;
   line-height: 54rpx;
   margin-top: 10rpx;
@@ -49,7 +50,8 @@ swiper-item image {
   color: #f47767;
   font-size: 34rpx;
   font-weight: bold;
-  margin-top: 144rpx;
+  margin-top: 16rpx;
+  margin-bottom: 16rpx;
   margin-left: 20rpx;
 }
 .detail .xiaoliang{
@@ -67,14 +69,14 @@ swiper-item image {
   width: 132rpx;
   height: 130rpx;
   margin-top: 20rpx;
-  margin-left: 623rpx;
+  right: 0;
 }
 
 .enjoy button{
   color:#f47767;
   width: 100%;
   font-size: 28rpx;
-  line-height: 170rpx;
+  line-height: 180rpx;
   background-color: #ffffff;
 }
 
@@ -83,6 +85,7 @@ swiper-item image {
   width: 70rpx;
     height: 70rpx;
     position: absolute;
+    left: 32rpx;
     margin-top: 0;
 }
 .line_flag {
@@ -333,10 +336,12 @@ button {
 }
 
 .swiper-tab {
-  margin-top: 20rpx;
+  margin-top: 30rpx;
+  /* padding-top: 20rpx; */
   display: flex;
   flex-direction: row;
-  line-height: 80rpx;
+  line-height: 100rpx;
+  background: #fff;
   /* border-bottom: 2rpx solid #777; */
   }
 .tab-item {
@@ -364,7 +369,7 @@ background-color:#ffffff;
   position: relative;
   left: 3%;
   padding:4rpx;
-  margin-top: 20rpx;
+  margin-top: 30rpx;
   margin-bottom: 20rpx;
   border-radius: 8rpx;
 }
@@ -573,4 +578,35 @@ background-color:#ffffff;
 button[class="baocun"]::after{
   border: 0;
 }
+
+/* 新增两行： */
+.twoli{
+  width: 750rpx;
+  height: 200rpx;
+  background-color: rgb(255, 255, 255);
+  margin-top: 30rpx;
+}
+.roll_1 {
+  display: block;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+}
+.roll_1 span {
+  margin-left: 20rpx;
+  margin-right: 30rpx;
+  color: #7c7c7c;
+}
+.roll_1 a {
+  color: #333;
+  font-weight: 900;
+}
+
+ 
+
+
+
+
+
+
 

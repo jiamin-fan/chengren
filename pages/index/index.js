@@ -13,6 +13,8 @@ Page({
     interval: 3000, //自动切换时间间隔,3s
     duration: 1000, //  滑动动画时长1s
     btnClicked:true, //让点击事件同步操作
+    Height: "", // 轮播图的高度
+    Height2: "", // 轮播图2的高度
 
     // 商品详情介绍
     detailImg: [
@@ -26,6 +28,30 @@ Page({
     category: [
       // '七天原液','28天'
     ],
+  },
+  //设置图片轮显高度
+  imgHeight: function (e) {
+    var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
+    var imgh = e.detail.height; //图片高度
+    var imgw = e.detail.width; //图片宽度
+    var h = 25;
+    //等比设置swiper的高度。 即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  ==》swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+    var swiperH = (winWid * imgh / imgw) + "px";
+    this.setData({
+      Height: swiperH //设置高度
+    })
+  },
+  //设置图片2轮显高度
+  imgHeight2: function (e) {
+    var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
+    var imgh = e.detail.height; //图片高度
+    var imgw = e.detail.width; //图片宽度
+    var h = 25;
+    //等比设置swiper的高度。 即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  ==》swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+    var swiperH = (winWid * imgh / imgw) + "px";
+    this.setData({
+      Height2: swiperH //设置高度
+    })
   },
 // 加入购物车
 addCar(e) {

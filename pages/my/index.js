@@ -45,6 +45,36 @@ Page({
       }
     ],
   },
+  // 点击待付款跳转
+  onepay:function(e) {
+    wx.navigateTo({
+      url: '/pages/order-lists/index?cid=1',
+    })
+  },
+  // 点击待发货跳转
+  twopay:function(e) {
+    wx.navigateTo({
+      url: '/pages/order-lists/index?cid=2',
+    })
+  },
+  // 点击待收货跳转
+  threepay:function(e) {
+    wx.navigateTo({
+      url: '/pages/order-lists/index?cid=3',
+    })
+  },
+  // 点击已完成跳转
+  fourpay:function(e) {
+    wx.navigateTo({
+      url: '/pages/order-lists/index',
+    })
+  },
+  // 点击退款/售后跳转
+  fivepay:function(e) {
+    wx.navigateTo({
+      url: '/pages/order-lists/index?cid=4',
+    })
+  },
   //点击付款 跳转到“我的订单”
   jumpOrder:function(e){
     wx.navigateTo({
@@ -56,6 +86,12 @@ Page({
    */
   onLoad: function (options) {
     console.log(wx.getStorageSync('userInfo'));  
+    // 设置tabbar的选中状态，要在每个tab页面的onShow中设置
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        curIndex: 3
+      })
+    }
   },
 
   /**

@@ -137,18 +137,6 @@
           "pathName": "pages/demo/index",
           "query": "",
           "scene": null
-        },
-        {
-          "name": "pages/guide1/index",
-          "pathName": "pages/guide1/index",
-          "query": "link=http%3A%2F%2Ftool.chinaz.com%2Ftools%2Furlencode.aspx",
-          "scene": null
-        },
-        {
-          "name": "pages/html1/index",
-          "pathName": "pages/html1/index",
-          "query": "link=http%3A%2F%2Ftool.chinaz.com%2Ftools%2Furlencode.aspx",
-          "scene": null
         }
       ]
     }

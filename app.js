@@ -67,7 +67,7 @@ App({
     data = data || {};
     // data.wxapp_id = _this.getWxappId();
 
-    // if (typeof check_login === 'undefined') 
+    // if (typeof check_login === 'undefined')
     //   check_login = true;
 
     // 构造get请求

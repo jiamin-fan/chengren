@@ -66,7 +66,7 @@ page{
     flex-direction: row;
     justify-content: space-between;
     width: 620rpx;
-    height: 160rpx;
+    height: 200rpx;
     padding: 40rpx 40rpx 20rpx 40rpx;
     background-color: #ffffff;
     margin: 20rpx auto;
@@ -105,6 +105,41 @@ page{
   text-align:center;
   font-size: 30rpx;
   color: #777;
+}
+.fiveson{
+  position: absolute;
+  top: 50px;
+  width: 620rpx;
+  height: 150rpx;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.fiveson-son{
+  width: 112rpx;
+  height: 150rpx;
+  margin-left: 10rpx;
+  /* background-color: rgb(236, 236, 236); */
+}
+.fiveson-son:first-child{
+  margin-left: 0;
+}
+.son-icon{
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 26rpx;
+  margin-top: 20rpx;
+}
+.son-icon image{
+  width: 100%;
+  height: 100%;
+}
+.son-name{
+  width: 100%;
+  text-align: center;
+  font-size: 22rpx;
+  line-height: 50rpx;
 }
 .all-order2{
   position:absolute;

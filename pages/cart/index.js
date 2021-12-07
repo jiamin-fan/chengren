@@ -485,6 +485,13 @@ Page({
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
+    
+    // 设置tabbar的选中状态，要在每个tab页面的onShow中设置
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        curIndex: 2
+      })
+    }
 
   },
 

@@ -14,7 +14,7 @@
       <text>待收货</text>
     </view>
     <view bindtap="bindHeaderTap" class="{{dataType==='comment'?'active':''}}" data-type="comment">
-      <text>待评价</text>
+      <text>退款/售后</text>
     </view>
   </view>
   <!-- 订单列表 -->

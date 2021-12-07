@@ -38,9 +38,43 @@ Page({
     // 设置scroll-view高度
     _this.setListHeight();
     // 设置数据类型
-    _this.setData({
-      dataType: options.type || 'all'
-    });
+    // _this.setData({
+    //   dataType: options.type || 'all'
+    // });
+    
+      //获取索引
+      let pagecid = options.cid;
+      console.log(pagecid);
+      if ( pagecid == 1 ) { 
+        _this.setData({
+          dataType: options.type || 'payment'
+        });
+      } else if ( pagecid == 2 ) {
+        _this.setData({
+          dataType: options.type || 'delivery'
+        });
+      } else if ( pagecid == 3 ) {
+        _this.setData({
+          dataType: options.type || 'received'
+        });
+      } else if ( pagecid == 4 ) {
+        _this.setData({
+          dataType: options.type || 'comment'
+        });
+      } else {
+        _this.setData({
+          dataType: options.type || 'all'
+        });
+      }
+      this.setData({
+        // dataType: e.currentTarget.dataset.type,
+        list: {},
+        isLoading: true,
+        page: 1,
+        no_more: false,
+      });
+      // 获取订单列表
+      this.getOrderList(options.type);
   },
 
   /**
@@ -48,7 +82,7 @@ Page({
    */
   onShow() {
     // 获取订单列表
-    this.getOrderList();
+    // this.getOrderList();
   },
 
   /**
@@ -141,7 +175,7 @@ Page({
     _this.setData({
       payOrderId: e.currentTarget.dataset.id
     });
-    _this.payment(_this.data.payOrderId, 20);
+    _this.payment(_this.data.payOrderId, 20);bindHeaderTap
     // 显示支付方式弹窗
     // _this.onTogglePayPopup();
   },

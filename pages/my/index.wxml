@@ -14,35 +14,47 @@
 <view class='order'>
 <!-- 订单 已登录显示 -->
   <view style="background-color:#f9f9f9;" wx:if="{{ isLogin }}">
-    <view class='my-order' wx:if="{{!isHas}}">
+    <!-- <view class='my-order' wx:if="{{!isHas}}"> -->
+    <view class='my-order'>
       <text>我的订单</text>
       <view class='more' data-url="/pages/order-lists/index" bindtap="onTargetMenus">
         <text style="font-size:26rpx;">查看全部订单</text>
         <view class='more-icon'></view>
       </view>
-      <view class="all-order">暂无进行中的订单</view>
-    </view>
-    <view class='my-order' style="height:380rpx;" wx:else>
-      <text>我的订单</text>
-      <view class='more' data-url="/pages/order-lists/index" bindtap="onTargetMenus">
-        <text style="font-size:26rpx;">查看全部订单</text>
-        <view class='more-icon'></view>
-      </view>
-      <view class="all-order2">
-        <view class="order2_1">
-          <view class="order2_1_1">待付款</view>
-          <view class="order2_1_2" data-id="{{info.order_id}}" bindtap="jumpOrder"><button>立即付款</button></view>
-        </view>
-        <view class="order2_2">
-          <view class="order2_2_1"><image src="{{goods_info.goods_image}}"></image></view>
-          <view class="order2_2_2">{{goods_info.goods_name}}</view>
-          <view class="order2_2_3">
-            <view class="order2_2_3_1">￥{{sum_price}}</view>
-            <view class="order2_2_3_2">共{{total_num}}件</view>
+      <!-- 改之前： -->
+      <!-- <view class="all-order">暂无进行中的订单</view> -->
+      <!-- 改进后（能跳转正常访问）： -->
+      <view class="fiveson">
+        <view class="fiveson-son" bindtap="onepay">
+          <view class="son-icon">
+            <image src="../../images/icon/oneimg.png"></image>
           </view>
+          <view class="son-name">待付款</view>
         </view>
-        <view class="order2_3">{{info[0].name}}　{{info[0].phone}}</view>
-        <view class="order2_4">{{info[0].detail}}</view>
+        <view class="fiveson-son" bindtap="twopay">
+          <view class="son-icon">
+            <image src="../../images/icon/secondimg.png"></image>
+          </view>
+          <view class="son-name">待发货</view>
+        </view>
+        <view class="fiveson-son" bindtap="threepay">
+          <view class="son-icon">
+            <image src="../../images/icon/thirdimg.png"></image>
+          </view>
+          <view class="son-name">待收货</view>
+        </view>
+        <view class="fiveson-son" bindtap="fourpay">
+          <view class="son-icon">
+            <image src="../../images/icon/fourthimg.png"></image>
+          </view>
+          <view class="son-name">已完成</view>
+        </view>
+        <view class="fiveson-son" bindtap="fivepay">
+          <view class="son-icon">
+            <image src="../../images/icon/fivethimg.png"></image>
+          </view>
+          <view class="son-name">退款/售后</view>
+        </view>
       </view>
     </view>
   </view>
@@ -53,7 +65,43 @@
       <text style="font-size:26rpx;">查看全部订单</text>
       <view class='more-icon'></view>
     </view>
-    <view class="all-order">登录后查看</view>
+
+    <!-- 改之前： -->
+    <!-- <view class="all-order">登录后查看</view> -->
+      <!-- 改进后（未登录不能点击）： -->
+      <view class="fiveson" catchtap="onLogin">
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="../../images/icon/oneimg.png"></image>
+          </view>
+          <view class="son-name">待付款</view>
+        </view>
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="../../images/icon/secondimg.png"></image>
+          </view>
+          <view class="son-name">待发货</view>
+        </view>
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="../../images/icon/thirdimg.png"></image>
+          </view>
+          <view class="son-name">待收货</view>
+        </view>
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="../../images/icon/fourthimg.png"></image>
+          </view>
+          <view class="son-name">已完成</view>
+        </view>
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="../../images/icon/fivethimg.png"></image>
+          </view>
+          <view class="son-name">退款/售后</view>
+        </view>
+      </view>
+
   </view>
 
   <text class="my-title">会员中心</text>
