@@ -6,6 +6,34 @@
   color:#333;
   padding-bottom: 160rpx;
 }
+/* 新增位置信息 */
+.here_address{
+  width: 750rpx;
+  height: 80rpx;
+  background-color: #fff;
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+}
+.here_img{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 15rpx;
+  margin-left: 15rpx;
+  margin-right: 20rpx;
+}
+.here_img image{
+  width: 100%;
+  height: 100%;
+}
+.here_name{
+  width: 700rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+}
 .swiper{
   width: 750rpx;
   /* height: 353rpx; */
@@ -203,7 +231,7 @@
 }
 .big_box3_new{
   width:750rpx;
-  background-color: #ffffff;
+  background-color: #eeeeee;
   margin-top:30rpx;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -232,6 +260,7 @@
   border-radius: 1rpx solid #c4c4c4;
   margin-top:30rpx;
   position:relative;
+  border: 1px solid #eee;
 }
 .box4_left{
   /* width: 250rpx;  */
@@ -295,3 +324,98 @@
   width:100rpx;
   height:100rpx;
 }
+
+.new_bigbox1{
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #eeeeee;
+}
+.new_bigbox1_son{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 234rpx;
+  height: 260rpx;
+  border-radius: 20rpx;
+  background-color: white;
+  /* justify-content: space-around; */
+  margin-top: 20rpx;
+}
+.new_bigbox1_son_img{
+  width: 90rpx;
+  height: 90rpx;
+  margin-top: 30rpx;
+}
+.new_bigbox1_son_img image{
+  width: 100%;
+  height: 100%;
+}
+.new_bigbox1_son p{
+  color: orangered;
+  font-size: 30rpx;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 40rpx;
+  margin-top: 10px;
+}
+.bulletin_box{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 80rpx;
+  background-color: #fff;
+}
+.bulletin_box_img{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 15rpx;
+  margin-right: 15rpx;
+  margin-left: 15rpx;
+}
+.bulletin_box_img image{
+  width: 100%;
+  height: 100%;
+}
+.bulletin_box marquee{
+  /* flex: 1; */
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+/* 复制的跑马灯样式 */
+.example {
+  display: block;
+  width: 100%;
+  height: 70rpx;
+  background-color: #f2f2f2;
+  line-height: 70rpx;
+ }
+ 
+ .marquee_box {
+  width: 100%;
+  position: relative;
+ }
+ 
+ .marquee_text {
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+ }
+ 
+ .ad-image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  margin-top: 15rpx;
+ }
+ 
+
+
+
+
+
+

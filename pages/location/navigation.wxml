@@ -1,0 +1,31 @@
+<!--pages/location/navigation.wxml-->
+<map id="map"
+     longitude="{{longitude}}"
+     latitude="{{latitude}}"
+     scale="16"
+     markers="{{markers}}"
+     polyline="{{polyline}}"
+     circles="{{circles}}"
+
+     show-location="true"
+     style="width: 100%;height: {{MapHeight}};"
+     bindmarkertap="markersAction">
+    
+    
+</map>
+<!-- 底部弹框 -->
+<!-- <view class="bottomWindow" wx:if="{{showWindow}}">
+  <view class="compRow" bindtap="compDetailAction">{{compName}}</view>
+  <image src="../../images/icon/adr.png" bindtap="addCompAction"></image>
+</view> -->
+
+<!-- 底部地址 -->
+<view class="bottom-box">
+  <view class="bottom-box-1">广东省天河区东圃</view>
+  <view class="bottom-box-2">广东省广州市增城区中新镇风光路393号广东省广州市增城区中新镇风光路393号</view>
+  <view class="bottom-box-3" bindtap="seeMap"><image src="../../images/icon/letgo.png"></image></view>
+</view>
+<!-- 当前定位点 -->
+<view class="pointBackRow" catchtap="PointBackAction">
+  <image src="../../images/icon/position.png"></image>
+</view>

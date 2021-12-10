@@ -1,5 +1,14 @@
 <!--index.wxml-->
 <view class="page">
+  <view style="width: 750rpx;height: 80rpx;"></view>
+  <!-- 新增位置信息 -->
+  <navigator class="here_address" url="/pages/location/index">
+    <view class="here_img">
+      <image src="../../images/icon/address.png" alt=""></image>
+    </view>
+    <view class="here_name">广州白云区金沙洲店 ></view>
+  </navigator>
+
   <SearchInput></SearchInput>
   <view class='swiper'>
   <!-- 原来的： -->
@@ -21,11 +30,51 @@
 </view>
   <!--轮播图片尺寸345px * 210px 图片建议不放白色的图片-->
 
+
+<!-- 原来的： -->
 <view class="big_box1">
-  <!-- 原来的： -->
   <navigator url="/pages/activity/index?classify_id={{item.classify_id}}" class="small_b1" wx:for="{{classify}}"><p>{{item.classify_title}}</p></navigator>
-  <!-- <navigator class="small_b1" wx:for="{{classify}}"><p>{{item.classify_title}}</p></navigator> -->
 </view>
+
+<!-- 优化： -->
+<!-- <view class="new_bigbox1">
+<view class="new_bigbox1_son">
+  <view class="new_bigbox1_son_img">
+    <image src="../../images/icon/oone.png" alt=""></image>
+  </view>
+  <p>周五会员日\n鲜活送不停</p>
+</view>
+<view class="new_bigbox1_son">
+  <view class="new_bigbox1_son_img">
+    <image src="../../images/icon/ttwo.png" alt=""></image>
+  </view>
+  <p>每天签到\n领取原浆币</p>
+</view>
+<view class="new_bigbox1_son">
+  <view class="new_bigbox1_son_img">
+    <image src="../../images/icon/tthree.png" alt=""></image>
+  </view>
+  <p>浆湖商城\n盟友乐园</p>
+</view>
+</view> -->
+
+<!-- 跑马灯效果 -->
+<!-- <view class="bulletin_box">
+  <view class="bulletin_box_img">
+    <image src="../../images/icon/onindex.png" alt=""></image>
+  </view>
+  <marquee loop="infinite" direction="right" scrollamount="1">积分商城兑换商品将于每月25日集中发货，请耐心等待，介意慎拍</marquee>
+</view> -->
+<!-- 跑马灯效果 -->
+<!-- <view class="example">
+ <view class="marquee_box">
+  <image src="{{adUrl}}" class='ad-image' />
+ <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px;font-size: {{size}}px;">
+  <marquee>{{text}}</marquee>
+ </view>
+ </view>
+ </view> -->
+
 
 <!-- 商品展示 -->
 <view class="big_box2" bindtap="activityCenter">

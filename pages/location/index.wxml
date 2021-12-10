@@ -1,0 +1,43 @@
+<!--头部-->
+<view class="box1">
+  <view class="box1_one">
+    <navigator class="box1_one_left" url="/pages/location/region">广州市 ▼</navigator>
+    <view class="box1_one_right">
+      <!-- 搜索框 -->
+      <view class="search" >
+        <image src="../../images/icon/search.png"/>
+        <input type="text" placeholder="输入地址寻找附近门店" bindconfirm="search"/>
+      </view> 
+    </view>
+  </view>
+</view>
+<view style="width: 750rpx;height: 108rpx;"></view>
+<!-- 一个门店 -->
+<view class="box2">
+  <view class="box2_son1">
+    <view class="box2_son1_left">广州白云区金沙洲店</view>
+    <view class="box2_son1_right">距您最近的门店</view>
+  </view>
+  <view class="box2_son2">距您5.9km</view>
+  <view class="box2_son3">
+    <view class="box2_son3_1">
+      <view class="box2_son3_left">门店地址：</view>
+      <view class="box2_son3_right1">广东省广州市增城区中新镇风光路393号乐嘉超市广东省广州市增城区中新镇风光路393号乐嘉超市广东省广州市增城区中新镇风光路393号乐嘉超市</view>
+      <navigator class="box2_son3_right2" url="/pages/location/navigation">
+        <image src="../../images/icon/adr.png"/>
+      </navigator>
+    </view>
+    <view class="box2_son3_2">
+      <view class="box2_son3_left">营业时间：</view>
+      <view class="box2_son3_right1">每天12:00~23:00</view>
+      <view class="box2_son3_right2"></view>
+    </view>
+    <view class="box2_son3_3">
+      <view class="box2_son3_left">联系电话：</view>
+      <view class="box2_son3_right1" style="width:190rpx;">13172211556</view>
+      <view class="box2_son3_right2" style="margin-top:-2rpx;" bindtap="copyPhone">
+        <image src="../../images/icon/call.png"/>
+      </view>
+    </view>
+  </view>
+</view>

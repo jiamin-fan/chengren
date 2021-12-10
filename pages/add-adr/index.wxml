@@ -61,7 +61,7 @@
     <view class="mains_small">
       <view class="main_left">地区</view>
       <view class="main_top"></view>
-      <picker class="main_right" mode="region" bindchange="bindRegionChange"    value="{{region}}" custom-item="{{customItem}}">
+      <picker class="main_right" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
         <view class="picker">
           {{region[0]}},{{region[1]}},{{region[2]}}
         </view>

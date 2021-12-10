@@ -1,0 +1,5 @@
+<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" range-key="name" range="{{provinces}}">    
+    <span class="padl0">
+         当前选择：{{province}}-{{city}}                
+    </span>  
+</picker>
