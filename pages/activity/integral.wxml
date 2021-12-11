@@ -1,0 +1,13 @@
+<view class="big_box">
+  <navigator url="/pages/good/exchange" class="box1" wx:for="{{5}}">
+    <view class="box1_1">
+      <image src="../../images/icon/tthree.png"></image>
+    </view>
+    <view class="box1_2">原浆酵母花生</view>
+    <view class="box1_3">
+      <view class="box1_3_left">2100积分</view>
+      <view class="box1_3_right">积分不足</view>
+    </view>
+  </navigator>
+  <view class="box_text">~到底啦~</view>
+</view>

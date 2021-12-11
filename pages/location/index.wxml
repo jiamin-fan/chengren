@@ -1,7 +1,12 @@
 <!--头部-->
 <view class="box1">
   <view class="box1_one">
-    <navigator class="box1_one_left" url="/pages/location/region">广州市 ▼</navigator>
+    <!-- <view class="box1_one_left">广州市 ▼</view> -->
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class="box1_one_left">
+        {{region[1]}} ▼
+      </view>
+    </picker>
     <view class="box1_one_right">
       <!-- 搜索框 -->
       <view class="search" >

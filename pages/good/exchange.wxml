@@ -1,0 +1,83 @@
+<!-- 产品图 -->
+<view class="box1">
+  <swiper class="box1_swiper" indicator-dots="true" style="height:{{Height2}}">
+      <block>
+        <swiper-item>
+          <view class="new_swiper_view">
+            <image src="../../images/icon/tthree.png" mode="widthFix" bindload='imgHeight2' ></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+</view>
+
+<!-- 产品信息 -->
+<view class="box2">
+  <view class="box2_top">吮指毛豆</view>
+  <view class="box2_bottom">
+    <view class="box2_bottom_left">2100积分</view>
+    <view class="box2_bottom_right">
+      <view class="share_box"><image src="../../images/icon/share.png"></image>
+      </view><view class="share_name">分享</view>
+    </view>
+  </view>
+</view>
+
+<!-- 选择产品数量 -->
+<view class="box3">
+  <view class="box3_left">选择数量规格</view>
+  <view class="box3_right" bindtap="changeAdd">
+    <p style="margin-right: 50rpx;">1个</p>
+    <p style="font-size: 68rpx;color: #999;line-height: 80rpx;position: absolute;right: 0;">›</p>
+  </view>
+</view>
+<view style="width: 750rpx;height: 400rpx;"></view>
+
+<!-- 底部固定 -->
+<view class="box4">
+  <view class="box4_left">
+      <view class="box4_left_box">
+        <view class="box4_left_img"><image src="../../images/icon/custom.png"></image></view>
+        <view class="box4_left_name">联系客服</view>
+      </view>
+  </view>
+  <view class="box4_right" bindtap="changeAdd">
+    <view class="box4_right_box">
+      <view class="box4_right_img"><image src="../../images/icon/addcar.png"></image></view>
+      <view class="box4_right_name">立即兑换</view>
+    </view>
+  </view>
+</view>
+
+<!-- 遮罩层 -->
+<view wx:if="{{carAdd}}">
+  <view class="cover" catchtap="closeBg"></view>
+  <view class="wxshare">
+    <view class="add_box1">
+      <view class="add_box1_1">
+        <image src="../../images/icon/tthree.png"></image>
+      </view>
+      <view class="add_box1_2">2100积分</view>
+      <view class="add_box1_3">已选</view>
+    </view>
+    <view class="add_box2">
+      <view class="add_box2_1">购买数量</view>
+      <view class="add_box2_2">
+        <!-- 加减按钮： -->
+        <view class="selectNumber" style="float: right;">
+          <form bindsubmit="onDecGoodsNumber" report-submit="true">
+            <button formType="submit" class="default {{ order_total_num > 1 ? '' : 'default-active' }}" type="default">-</button>
+          </form>
+          <input bindinput="onInputGoodsNum" type="number" value="{{ order_total_num }}"></input>
+          <form bindsubmit="onIncGoodsNumber" report-submit="true">
+            <button formType="submit" class="default" type="default">+</button>
+          </form>
+        </view>
+      </view>
+    </view>
+    <view class="add_box3">立即兑换</view>
+  </view>
+</view>
+
+
+

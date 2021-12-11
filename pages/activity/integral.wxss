@@ -1,0 +1,80 @@
+/* pages/activity/integral.wxss */
+page{
+  background-color: rgb(243, 242, 242);
+}
+.big_box{
+  position: relative;
+  width: 750rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 100rpx;
+}
+.box_text{
+  float: left;
+  width: 750rpx;
+  height: 80rpx;
+  margin-top: 200rpx;
+  text-align: center;
+  line-height: 80rpx;
+  letter-spacing: 4rpx;
+  color: rgb(165, 165, 165);
+}
+.box1{
+  width: 345rpx;
+  height: 500rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.box1_1{
+  width: 345rpx;
+  height: 345rpx;
+  background-color: rgb(173, 173, 173);
+  border-radius: 10rpx 10rpx 0 0;
+}
+.box1_1 image{
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.box1_2{
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+.box1_3{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 30rpx;
+  width: 100%;
+}
+.box1_3_left{
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  color: #f47767;
+}
+.box1_3_right{
+  float: right;
+  right: 20rpx;
+  position: absolute;
+  background: rgb(244, 119, 103, 0.5);
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  border-radius: 40rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  color: #fff;
+}
+
+
+
+
+

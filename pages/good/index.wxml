@@ -44,48 +44,7 @@
     <button class="savepic" bindtap="getPhotosAlbumAuth">保存图片</button>
   </view>
 </view>
-<!-- <view class="second_box" class="second0_box">
-        <view class="good_box2" >
-          <p class="box2_left">包装类型</p>
-          <p class="box2_right">{{goods.goods_pack}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">体积（毫升）</p>
-          <p class="box2_right">{{goods.goods_volume}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">重量（千克）</p>
-          <p class="box2_right">{{goods.goods_weight}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">原料</p>
-          <p class="box2_right">{{goods.goods_material}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">存储方法</p>
-          <p class="box2_right">{{goods.goods_preserve}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">酒精度数</p>
-          <p class="box2_right">{{goods.goods_alcohol}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">原麦汁浓度</p>
-          <p class="box2_right">{{goods.goods_wort}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">来源</p>
-          <p class="box2_right">{{goods.goods_source}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">原产地</p>
-          <p class="box2_right">{{goods.goods_provenance}}</p>
-        </view>
-        <view class="good_box2" >
-          <p class="box2_left">保质期</p>
-          <p class="box2_right">{{goods.goods_shelf_life}}</p>
-        </view>
-    </view> -->
+
 
     <!-- 新增两行： -->
     <view class="twoli">

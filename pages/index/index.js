@@ -28,6 +28,7 @@ Page({
     category: [
       // '七天原液','28天'
     ],
+   
   },
   //设置图片轮显高度
   imgHeight: function (e) {
@@ -200,15 +201,12 @@ onSwiperTap: function (event) {
         wx.hideLoading();
       });
 
-
-
     // 设置tabbar的选中状态，要在每个tab页面的onShow中设置
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         curIndex: 0
       })
     }
-
     },
 
     onHide: function () {

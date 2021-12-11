@@ -37,44 +37,42 @@
 </view>
 
 <!-- 优化： -->
-<!-- <view class="new_bigbox1">
-<view class="new_bigbox1_son">
+<view class="new_bigbox1">
+<navigator url="/pages/activity/member" class="new_bigbox1_son">
   <view class="new_bigbox1_son_img">
     <image src="../../images/icon/oone.png" alt=""></image>
   </view>
   <p>周五会员日\n鲜活送不停</p>
-</view>
-<view class="new_bigbox1_son">
+</navigator>
+<navigator url="/pages/activity/signin" class="new_bigbox1_son">
   <view class="new_bigbox1_son_img">
     <image src="../../images/icon/ttwo.png" alt=""></image>
   </view>
   <p>每天签到\n领取原浆币</p>
-</view>
-<view class="new_bigbox1_son">
+</navigator>
+<navigator url="/pages/activity/integral" class="new_bigbox1_son">
   <view class="new_bigbox1_son_img">
     <image src="../../images/icon/tthree.png" alt=""></image>
   </view>
   <p>浆湖商城\n盟友乐园</p>
+</navigator>
 </view>
-</view> -->
 
 <!-- 跑马灯效果 -->
 <!-- <view class="bulletin_box">
   <view class="bulletin_box_img">
-    <image src="../../images/icon/onindex.png" alt=""></image>
+    <image src="../../images/icon/bulletin.png" alt=""></image>
   </view>
   <marquee loop="infinite" direction="right" scrollamount="1">积分商城兑换商品将于每月25日集中发货，请耐心等待，介意慎拍</marquee>
 </view> -->
-<!-- 跑马灯效果 -->
-<!-- <view class="example">
- <view class="marquee_box">
-  <image src="{{adUrl}}" class='ad-image' />
- <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px;font-size: {{size}}px;">
-  <marquee>{{text}}</marquee>
- </view>
- </view>
- </view> -->
 
+<!-- 复制的跑马灯效果 -->
+<view class="marquee_container" style="--marqueeWidth--:-26em">
+  <view class="bulletin_box_img2">
+    <image src="../../images/icon/bulletin.png" alt=""></image>
+  </view>
+  <view class="marquee_text">积分商城兑换商品将于每月25日集中发货，请耐心等待，介意慎拍</view>
+</view>
 
 <!-- 商品展示 -->
 <view class="big_box2" bindtap="activityCenter">

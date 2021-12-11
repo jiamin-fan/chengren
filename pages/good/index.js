@@ -169,7 +169,6 @@ Page({
       isShare: false,
       // isScroll: true
     })
-    
   },
   // 分享的弹框
   goShare: function(e){
