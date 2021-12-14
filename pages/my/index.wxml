@@ -1,19 +1,32 @@
 <!-- 已登录 -->
-<view wx:if="{{ isLogin }}" class="user-info">
-  <navigator url="/pages/add-adr/index"><view class="user-img" style="display:block;">
+<view wx:if="{{ isLogin }}" class="user-info2">
+  <navigator url="/pages/add-adr/index" style="z-index: 1;">
+    <view class="user-img" style="display:block;">
+      <open-data type="userAvatarUrl" class="image"></open-data>
+    </view>
+  </navigator>
+  <navigator url="/pages/add-adr/index" class="name"><open-data type="userNickName" style="display:block;"></open-data></navigator>
+  
+  <!-- 下面两个view是背景图片（模糊） -->
+  <!-- <view class="user_bacimg" style="display:block;">
     <open-data type="userAvatarUrl" class="image"></open-data>
   </view>
-</navigator>
-  <navigator url="/pages/add-adr/index" class="name"><open-data type="userNickName" style="display:block;"></open-data></navigator>
+  <view class="user_bacimg2"></view> -->
 </view>
+
+
 <!-- 未登录 -->
 <view wx:else class="user-info">
   <button class="my-button1" catchtap="onLogin"> 登录/注册 </button>
 </view>
 
+<!-- 咨询按钮（悬浮） -->
+<view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
+  <consult></consult>
+</view>
 <view class='order'>
 <!-- 订单 已登录显示 -->
-  <view style="background-color:#f9f9f9;" wx:if="{{ isLogin }}">
+  <view wx:if="{{ isLogin }}">
     <!-- <view class='my-order' wx:if="{{!isHas}}"> -->
     <view class='my-order'>
       <text>我的订单</text>
@@ -104,18 +117,13 @@
 
   </view>
 
-  <text class="my-title">会员中心</text>
-  <view class='logistics'>
-      <view wx:for="{{ Members }}" wx:key="this" data-url="{{item.url}}" bindtap="onTargetMenus" class='log-box'>
-        <image src='{{item.img}}'/>
-        <text>{{item.name}}</text>
-      </view>
-  </view>
-  <text class="my-title">我的信息</text>
-  <view class='logistics'>
-    <view wx:for="{{ information }}" wx:key="this" data-url="{{item.url}}" bindtap="onTargetMenus" class='log-box'>
-      <image src='{{item.img}}'/>
-        <text>{{item.name}}</text>
+  <view class="new_logistics">
+    <view class='logistics'>
+        <view wx:for="{{ Members }}" wx:key="this" data-url="{{item.url}}" bindtap="onTargetMenus" class='log-box'>
+          <image src='{{item.img}}'/>
+          <text>{{item.name}}</text>
+        </view>
     </view>
   </view>
+  
 </view>

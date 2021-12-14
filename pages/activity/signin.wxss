@@ -1,4 +1,13 @@
 /* pages/activity/signin.wxss */
+.box0{
+  width: 750rpx;
+  height: 50rpx;
+  background: #ff614a;
+  line-height: 50rpx;
+  color: #fff;
+  font-size: 26rpx;
+  padding-left: 30rpx;
+}
 .signIn{ width: 100%; height: auto;}
 
 .sign-com{ width: 100%; height: auto; padding: 0 30rpx; box-sizing: border-box; overflow: hidden; }

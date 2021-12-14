@@ -22,7 +22,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    num:1,
+    phonenum: '13172802222',
     // 当前页面参数
     options: {},
 
@@ -69,6 +70,43 @@ Page({
     error: '',
   },
 
+  // 切换自提跟快送
+  changeOil:function(e){
+    wx.showLoading({
+      title: '加载中',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 500)
+    this.setData({
+      num:e.target.dataset.num
+    })
+  },
+  // 点击复制手机号码
+  copyPhone: function (e) {
+    var that = this
+    wx.setClipboardData({
+      data: that.data.phonenum,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '号码已复制'
+            })
+          }
+        })
+      }
+    })
+  },
+  // 选择送达时间
+  bindTimeChange:function(e){
+    //设置事件
+    this.setData({
+      //给当前time进行赋值
+      time:e.detail.value
+    })
+    },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -81,9 +119,10 @@ Page({
     // options.cart_ids = '4,6'
     // 当前页面参数
     _this.setData({
-      options
+      options,
     });
     console.log(options);
+
   },
 
   /**

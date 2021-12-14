@@ -13,15 +13,22 @@
       <image src='../../images/icon/more.png'/>
     </view> -->
 
+    <!-- 切换 -->
+    <view class="tab_box" catchtap="changeOil">
+      <view class='{{num==1?"tab_box_1":"tab_box_1a"}}' data-num='1'>门店自提</view>
+      <view class='{{num==2?"tab_box_2":"tab_box_2a"}}' data-num='2'>同城快送</view>
+    </view>
+
     <!-- 快递配送：配送地址 -->
-  <view wx:if="{{ curDelivery == DeliveryTypeEnum.EXPRESS.value }}" catchtap="onSelectAddress" class="flow-delivery">
+  <view wx:if="{{ curDelivery == DeliveryTypeEnum.EXPRESS.value }}" catchtap="onSelectAddress" class='{{num==2?"flow-delivery":"disp_none"}}'>
     <view class="flow-delivery__detail dis-flex flex-y-center">
-      <view class="detail-location dis-flex">
+      <!-- <view class="detail-location dis-flex">
         <text class="iconfont icon-dingwei"></text>
-      </view>
-      <view class="detail-content flex-box">
+      </view> -->
+      <view class="flex-box">
         <block wx:if="{{ address.address_id }}">
           <view class="detail-content__title dis-flex">
+            <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">收货地址</text>
             <text class="f-30">{{ address.name }}</text>
             <text class="detail-content__title-phone f-28">{{ address.phone }}</text>
           </view>
@@ -42,7 +49,51 @@
   </view>
 
     <!-- 商品列表 -->
-    <view class="m-top20">
+    <view>
+
+      <!-- 同城快送（待用） -->
+      <view class='{{num==2?"box222":"disp_none"}}'>
+        <view class="new_box1">
+          <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">配送门店</text>
+          <text class="f-30">广州白云区金沙洲店</text>
+          <view class="new_box1_image" bindtap="copyPhone">
+            <image src="../../images/icon/call.png" alt=""></image>
+          </view>
+        </view>
+        <view class="flow-all-list dis-flex new_box2">
+          <text class="flex-five">送达时间</text>
+          <view class="flex-five t-r">
+            <picker bindchange="bindDateChange">
+              <text class="col-m">选择送达时间</text>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <!-- 自提门店（待用） -->
+      <view class='{{num==1?"box111":"disp_none"}}'>
+        <view class="new_box1">
+          <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">自提门店</text>
+          <text class="f-30">广州白云区金沙洲店</text>
+          <view class="new_box1_image" bindtap="copyPhone">
+            <image src="../../images/icon/call.png" alt=""></image>
+          </view>
+        </view>
+        <view class="box2_son3">
+          <view style="color: rgb(136, 136, 136);">距您9.2km</view>
+          <view class="box2_son3_1">
+            <view class="box2_son3_left">门店地址：</view>
+            <view class="box2_son3_right1">广东省广州市增城区中新镇风光路393号广东省广州市增城区中新镇风光路393号</view>
+            <navigator class="box2_son3_right2" url="/pages/location/navigation">
+              <image src="../../images/icon/adr.png"/>
+            </navigator>
+          </view>
+          <view class="box2_son3_2">
+            <view class="box2_son3_left">营业时间：</view>
+            <view class="box2_son3_right1">每天12:00~23:00</view>
+          </view>
+        </view>
+      </view>
+
       <view class="checkout_list" wx:for="{{ goods_list }}" wx:key="this">
         <form bindsubmit="onTargetGoods" data-id="{{ item.goods_id }}" report-submit="true">
           <button formType="submit" class="btn-normal">
@@ -85,18 +136,21 @@
           </button>
         </form>
       </view>
-
       <view class="flow-num-box b-f padding-box">
         <text>共{{order_total_num}}件商品，合计：</text>
         <text class="flow-money col-m">￥{{ order_total_price }}</text>
       </view>
-
     </view>
-
-
 
     <!-- 商品金额 -->
   <view class="flow-all-money b-f m-top20">
+    <view class="flow-all-list dis-flex">
+      <text class="flex-five">配送方式</text>
+      <view class="flex-five t-r">
+        <text wx:if="{{num==1}}">门店自提</text>
+        <text wx:else>同城快送</text>
+      </view>
+    </view>
     <view class="flow-all-list dis-flex">
       <text class="flex-five">订单总金额：</text>
       <view class="flex-five t-r">

@@ -8,7 +8,6 @@
     </view>
     <view class="here_name">广州白云区金沙洲店 ></view>
   </navigator>
-
   <SearchInput></SearchInput>
   <view class='swiper'>
   <!-- 原来的： -->
@@ -30,7 +29,10 @@
 </view>
   <!--轮播图片尺寸345px * 210px 图片建议不放白色的图片-->
 
-
+<!-- 咨询按钮（悬浮） -->
+<view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
+  <consult></consult>
+</view>
 <!-- 原来的： -->
 <view class="big_box1">
   <navigator url="/pages/activity/index?classify_id={{item.classify_id}}" class="small_b1" wx:for="{{classify}}"><p>{{item.classify_title}}</p></navigator>

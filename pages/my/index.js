@@ -12,26 +12,20 @@ Page({
     isHas: false,
     Members: [
       {
-        name: '我的卡包',
-        url: '/pages/card-package/index',
-        img: '../../images/icon/package.png'
+        name: '每日签到',
+        url: '/pages/activity/signin',
+        img: '../../images/icon/ttwo_my.png'
       },
       {
         name: '积分中心',
-        url: '/pages/my/integral',
+        // url: '/pages/my/integral',
+        url: '/pages/activity/integral',
         img: '../../images/icon/integral.png'
       },
       {
-        name: '红包提现',
-        // url: '/pages/order-list/index?id=3',
-        img: '../../images/icon/red.png'
-      }
-    ],
-    information: [
-      {
-        name: '个人信息',
-        url: '/pages/add-adr/index',
-        img: '../../images/icon/information.png'
+        name: '我的卡包',
+        url: '/pages/card-package/index',
+        img: '../../images/icon/package.png'
       },
       {
         name: '收货地址',
@@ -42,6 +36,11 @@ Page({
         name: '评价中心',
         url: '/pages/evaluation/index',
         img: '../../images/icon/evaluation.png'
+      },
+      {
+        name: '个人信息',
+        url: '/pages/add-adr/index',
+        img: '../../images/icon/information.png'
       }
     ],
   },

@@ -21,6 +21,15 @@ page{
   letter-spacing: 4rpx;
   color: rgb(165, 165, 165);
 }
+.box0{
+  width: 750rpx;
+  height: 50rpx;
+  background: #ff614a;
+  line-height: 50rpx;
+  color: #fff;
+  font-size: 26rpx;
+  padding-left: 30rpx;
+}
 .box1{
   width: 345rpx;
   height: 500rpx;

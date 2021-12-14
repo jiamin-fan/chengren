@@ -1,4 +1,5 @@
 <view class="big_box">
+  <view class="box0">我的积分：6</view>
   <navigator url="/pages/good/exchange" class="box1" wx:for="{{5}}">
     <view class="box1_1">
       <image src="../../images/icon/tthree.png"></image>

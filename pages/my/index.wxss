@@ -1,18 +1,54 @@
 page{
-  padding-bottom: 200rpx;
+  padding-bottom: 400rpx;
+  background: #eee;
 }
-.user-info
-{
+.user-info{
   width: 700rpx;
   height: 250rpx;
-  display: flex;
-  flex-direction: row;
   background-color: #FFffff;
   font-size: 32rpx;
   color: #000000;
   font-weight: bold;
   margin: 0 auto;
   border-radius: 0 0 20rpx 20rpx;
+  display:flex;
+  flex-direction:column;
+  padding-top:30rpx;
+}
+.user-info2{
+  width: 700rpx;
+  height: 250rpx;
+  background-color: #FFffff;
+  font-size: 32rpx;
+  color: #000000;
+  font-weight: bold;
+  margin: 0 auto;
+  border-radius: 0 0 20rpx 20rpx;
+  display:flex;
+  flex-direction:column;
+  padding-top:30rpx;
+  /* 要加背景图片模糊效果，添加这两行样式 */
+  overflow: hidden;
+  position: relative;
+}
+.user_bacimg{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 700rpx;
+  /* height: 280rpx; */
+  /* -webkit-filter: blur(12px); */
+  filter: blur(15px);
+  transform: scale(1.2);
+}
+.user_bacimg2{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 700rpx;
+  height: 280rpx;
+  background: rgb(0,0,0,0.2);
+  opacity: 0.5;
 }
 .my-button1{
   background-color: #ff692a;
@@ -20,7 +56,7 @@ page{
   font-size: 30rpx;
   margin-top: 50rpx;
 }
-.user-info .user-img
+.user-img
 {
   width: 150rpx;
   height: 150rpx;
@@ -30,11 +66,6 @@ page{
   border-radius: 150rpx;
   border: 2rpx solid #fff;
   background-color: #fff;
-}
-.user-info{
-  display:flex;
-  flex-direction:column;
-  padding-top:30rpx;
 }
 .user-img .image
 {
@@ -47,14 +78,17 @@ page{
 .name
 {
   text-align:center;
-  background-color:#fff;
   margin-top:30rpx;
   color:#6f6f6f;
+  z-index: 1;
+
+  /* color: #222;
+  text-shadow: 0 0 2px #fff; */
 }
 /*头像名字*/
 .order
 {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   width: 750rpx;
   height: auto;
   display: flex;
@@ -74,8 +108,8 @@ page{
 }
 .order .my-order text:first-child
 {
-  font-size: 32rpx;
-  font-weight:bold;
+  font-size: 30rpx;
+  /* font-weight:bold; */
 }
 .more{
   display: flex;
@@ -252,7 +286,7 @@ page{
   font-weight:bold;
   color: #000;
 }
-.logistics
+/* .logistics
 {
   width: 750rpx;
   height: 130rpx;
@@ -261,35 +295,59 @@ page{
   background-color: #f9f9f9;
   margin-top:100rpx;
   margin-bottom:20rpx;
-}
-.log-box
-{
-  width: 33%;
+} */
+.log-box{
+  /* width: 33%;
   height:130rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10rpx 0;
+  padding: 10rpx 0; */
+
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30rpx 0;
+  margin-left: 5%;
+  border-bottom: 1px solid rgb(0,0,0,0.1);
 }
-.log-box image
-{
-  width:50rpx;
-  height:50rpx;
+.log-box:last-child{
+  border-bottom: 0;
 }
-.log-box text
-{
-  padding: 15rpx 0;
+.log-box image{
+  /* width:50rpx;
+  height:50rpx; */
+  width: 40rpx;
+  height: 40rpx;
+}
+.log-box text{
+  /* padding: 15rpx 0;
   font-size:24rpx;
-  font-weight:bold;
+  font-weight:bold; */
+
+  font-size: 30rpx;
+  margin-left: 30rpx;
 }
 /*订单状态*/
 .logistics {
-  width: 750rpx;
+  /* width: 750rpx;
   height: 130rpx;
   display: flex;
   flex-direction: row;
   background-color: #f9f9f9;
   margin-top: 0rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 20rpx; */
+
+  display: flex;
+  flex-direction: column;
+}
+.new_logistics{
+  background: #fff;
+  width: 700rpx;
+  margin-left: 25rpx;
+  margin-top: 10rpx;
+  border-radius: 20rpx;
+  z-index: 1;
 }

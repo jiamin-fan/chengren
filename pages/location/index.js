@@ -90,6 +90,15 @@ Page({
   copyPhone(){
     wx.setClipboardData({
       data: '这是要复制的文字',
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '号码已复制'
+            })
+          }
+        })
+      }
     })
     // wx.makePhoneCall({
     //   phoneNumber: 17325975954,

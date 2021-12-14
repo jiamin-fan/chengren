@@ -1,4 +1,5 @@
 <!--pages/signIn/signIn.wxml-->
+<view class="box0">我的积分：6</view>
 <view class='signIn'>
   <view class='sign-com'>
     <view class='thead'>
