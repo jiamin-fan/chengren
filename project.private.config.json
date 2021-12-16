@@ -87,7 +87,7 @@
         {
           "name": "确认订单",
           "pathName": "pages/order/index",
-          "query": "",
+          "query": "order_type=buyNow&goods_id=11&goods_num=1&goods_sku_id=0",
           "scene": null
         },
         {
@@ -135,6 +135,24 @@
         {
           "name": "demo",
           "pathName": "pages/demo/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "切换门店",
+          "pathName": "pages/location/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "签到",
+          "pathName": "pages/activity/signin",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "积分商城",
+          "pathName": "pages/activity/integral",
           "query": "",
           "scene": null
         }
