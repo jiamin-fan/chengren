@@ -1,0 +1,10 @@
+<button class="big_box" wx:if="{{ isLogin }}">
+  <image src="../../images/icon/kefu.png" open-type='contact'></image>
+</button>
+<button class="big_box" wx:else>
+  <image src="../../images/icon/kefu.png" catchtap="onLogin"></image>
+</button>
+
+<!-- <button class="big_box">
+  <image src="../../images/icon/kefu.png" open-type='contact'></image>
+</button> -->
