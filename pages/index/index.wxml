@@ -6,7 +6,7 @@
     <view class="here_img">
       <image src="../../images/icon/address.png" alt=""></image>
     </view>
-    <view class="here_name">广州白云区金沙洲店 ></view>
+    <view class="here_name">{{jingwei}} ></view>
   </navigator>
   <SearchInput></SearchInput>
   <view class='swiper'>
@@ -33,10 +33,10 @@
 <view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
   <consult></consult>
 </view>
-<!-- 原来的： -->
-<view class="big_box1">
+<!-- 原来的三个胶囊状活动入口： -->
+<!-- <view class="big_box1">
   <navigator url="/pages/activity/index?classify_id={{item.classify_id}}" class="small_b1" wx:for="{{classify}}"><p>{{item.classify_title}}</p></navigator>
-</view>
+</view> -->
 
 <!-- 优化： -->
 <view class="new_bigbox1">

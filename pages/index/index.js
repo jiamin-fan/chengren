@@ -1,9 +1,18 @@
 // pages/index/index.js
 let App = getApp();
+// var QQMapWX = require('../../qqmap/qqmap-wx-jssdk.js');
+// var qqmapsdk;
 
 
 Page({
   data: {
+    province: '',
+    city: '',
+    latitude: '',
+    longitude: '',
+
+    latitude: 0,
+    longitude: 0,
     // tab切换
     currentTab: 0,
     isLike: true,
@@ -168,18 +177,75 @@ onSwiperTap: function (event) {
     });
   },
 
-
   onLoad: function (options) {
+    var me = this;
+    // qqmapsdk = new QQMapWX({
+    //   key: '2083cc0b8cd7eddbe773532f24eef1af' //密钥
+    // });
+    
+    // 返回坐标
+    wx.getLocation({
+      type: 'gcj02', //wgs84/gcj02
+      altitude: true,
+      isHighAccuracy: true,
+      success: function (res) {
+        console.log(res);
+        console.log('纬度' + res.latitude);
+        console.log('经度' + res.longitude);
+        me.lodeCity(res.longitude, res.latitude);
+      },
+    })
+ 
+    console.log('111222333sss');
+    let _this = this;
+    let l=_this.data.latitude;
+    console.log(l);
     // 分享给好友
     wx.showShareMenu({
       withShareTicket: true
     });
-
   },
+
+  lodeCity: function (longitude, latitude) {
+      var me = this;
+      wx.request({
+          url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=jk99fxe50ngB9XoMOLwca50jIZvrVj7T&location=' + latitude + ',' + longitude + '&output=json',
+          data: {},
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success: function (res) {
+              if (res && res.data) {
+                console.log(res.data)
+                console.log(res.data.result.addressComponent.city)
+                var city = res.data.result.addressComponent.city;
+                console.log('res...................');
+                me.setData({
+                  city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) :city
+                });
+                App._post_form('Storeinfo/index', {myLat:latitude,myLng:longitude,name:city}, result => {
+                  var data = result.data;
+                  var jingwei = data.data;
+                  me.setData({
+                    jingwei: jingwei,
+                  })
+                }, false, () => {
+                  wx.hideLoading();
+                });
+                console.log(city);
+              }else{
+                me.setData({
+                  city: '获取失败'
+                });
+              }
+          }
+      })
+  },
+
 
     onReady: function () {
 
-    // 生命周期函数--监听页面初次渲染完成
+      // 生命周期函数--监听页面初次渲染完成
 
     },
 
@@ -188,7 +254,7 @@ onSwiperTap: function (event) {
       App._post_form('index/index', {}, result => {
 
         var data = result.data;
-        console.log(data);
+        // console.log(data);
         var imgUrls = data.slideshow;
         var category = data.category;
         var classify = data.classify;
@@ -198,7 +264,7 @@ onSwiperTap: function (event) {
           classify: classify
         })
       }, false, () => {
-        wx.hideLoading();
+        // wx.hideLoading();
       });
 
     // 设置tabbar的选中状态，要在每个tab页面的onShow中设置
@@ -221,30 +287,24 @@ onSwiperTap: function (event) {
 
     },
 
-
     //下拉刷新
-  onPullDownRefresh:function()
-  {
+  onPullDownRefresh:function(){
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    
     //模拟加载
-    setTimeout(function()
-    {
+    setTimeout(function(){
       // complete
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
     },1500);
   },
-
-    onShareAppMessage: function () {
-    // 用户点击右上角分享
+  // 用户点击右上角分享
+  onShareAppMessage: function () {
     return {
     title: 'title', // 分享标题
     desc: 'desc', // 分享描述
     path: 'path' // 分享路径
     }
-
-    }
+  }
 
 
 
