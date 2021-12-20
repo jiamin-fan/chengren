@@ -1,4 +1,4 @@
-// pages/location/navigation.js
+let App = getApp();
 var QQMapWX = require('../../qqmap/qqmap-wx-jssdk.js');
 var qqmapsdk;
 Page({
@@ -10,7 +10,10 @@ Page({
     MapHeight: '100vh',
     iconBottom: '100rpx',
     backBottom: '0rpx',
+
   },
+
+  // 打开地图导航
   seeMap: function(){
     console.log('打开地图导航去目的地');
     // demo.geocoder({
@@ -29,60 +32,38 @@ Page({
     //       console.log(res);
     //   }
     // });
-    let that=this
-        qqmapsdk.geocoder({
-            address: '广东省广州市增城区中新镇风光路393号',
-            success:function (res) {
-                // var res = res.result;
-                // console.log(res);
-                // var latitude = res.location.lat;
-                // var longitude = res.location.lng;
-                wx.openLocation({ //​使用微信内置地图查看位置。
-                    latitude:  latitude, //要去的纬度-地址
-                    longitude: longitude, //要去的经度-地址
-                    address: '广东省广州市增城区中新镇风光路393号',
-                    name:''
-                })
-            }
-        })
   },
+
   onLoad: function (options) {
+    var me = this;
     qqmapsdk = new QQMapWX({
       key: '2083cc0b8cd7eddbe773532f24eef1af' //密钥
     });
-    var that = this
-    if (options.key == '点击搜索'){
-      console.log('搜索后跳转携带的参数:',options)
-      var long = option.long;
-      var lati = options.lati;
-      var markers = [];
-      var MapHeight = this.data.MapHeight;
-      var cityDic = { id: 1, latitude: lati, longitude: long, iconPath: '../../images/icon/call.png', width: 35, height: 35}
-      markers.push(cityDic);
-
-      that.setData({
-        markers,
-        latitude: lati,
-        longitude: long,
-        showWindow: true,
-        compName: options.compName,
-        MapHeight: '90vh',
-        iconBottom: '230rpx',
-        backBottom: '150rpx'
+    console.log(this.options.id)
+    App._post_form('Storeinfo/sele', {id:this.options.id,num:1}, result => {
+      var data = result.data;
+      var store = data.data;
+      // 地图的标记点:
+      var arr2 =[{
+        iconPath: "../../images/icon/adr2.png",
+        width: 50,
+        height: 54,
+        latitude: store.latitude,
+        longitude: store.longitude,
+        name: store.store_name,
+      }];
+      me.setData({
+        data: data,
+        store: store,
+        store_name: store.store_name,
+        details: store.details,
+        latitude: store.latitude,
+        longitude: store.longitude,
+        markers: arr2,
       })
-    }else{
-      wx.getLocation({
-        type: 'gcj02', //wgs84/gcj02
-        success: function (res) {
-          console.log('纬度' + res.latitude);
-          console.log('经度' + res.longitude);
-          that.setData({
-            latitude: res.latitude,
-            longitude: res.longitude,
-          })
-        },
-      })
-    }
+    }, false, () => {
+      wx.hideLoading();
+    });
   },
 
   /**
@@ -90,7 +71,7 @@ Page({
    */
   onReady: function () {
     this.mapCtx = wx.createMapContext('map')
-    this.mapCtx.moveToLocation()
+    // this.mapCtx.moveToLocation()
   },
 
   onShow: function () {
@@ -103,10 +84,21 @@ Page({
   onShareAppMessage: function () {
 
   },
-  PointBackAction(e){
-    console.log('回归当前定位点')
-    this.mapCtx.moveToLocation()
 
+  // 回归标记点
+  PointBackAction(e){
+    var me = this;
+    // console.log('回归当前定位点')
+    this.mapCtx.moveToLocation({
+      latitude: this.data,
+      longitude: this.longitude,
+      success:() => {
+        console.log(me)
+        console.log(latitude)
+        console.log('我移过去了')
+    },
+    })
+    // this.mapCtx = wx.createMapContext('map')
     this.mapCtx.getRegion({
       success: function (res) {
         console.log('当前屏幕视野',res);

@@ -8,88 +8,57 @@ Page({
   data: {
     searchtext: '',
     isSearch: false,
-    
-    region: [],
-    customItem: '全部',
+    isHave: false,
+    page: 1,
+    result: [],
+  },
 
-  },
-  bindRegionChange: function (e) {
-    var that = this;
-    // console.log(e.detail.value);return false;
-    var data_region = that.data.region[0]+','+that.data.region[1]+','+that.data.region[2];
-    var region = e.detail.value[0]+','+e.detail.value[1]+','+e.detail.value[2];
-    if(data_region == region){
-      console.log('地区没有做出更改');
-    }else{
-      App._post_form('user/address_component_edit', {
-        address_component: region,
-      }, function(res) {
-        that.setData({
-          region: e.detail.value,
-        });
-      });
-    }
-  },
-  getLocation: function(){
-    const that = this
-    var i = setInterval(function() {
-      wx.getLocation({
-        type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标  
-        success: function(res) {
-          that.setData({
-            latitude: res.latitude,
-            longitude: res.longitude,
-          })            
-          var longitude = res.longitude
-          var latitude = res.latitude
-          that.loadCity(longitude, latitude)
-          clearInterval(i)
-        },
-        fail: function() {
-          wx.showToast({
-            title: '手机定位未打开',
-            icon: 'none',
-            duration: 2000 
-          })
-        },
-        complete: function() {
-          // complete  
-        }
-      })
-    }, 2000)
-  },
+  
   // 搜索
-  search: function(e){
+  search: function(e, longitude, latitude){
     console.log(e.detail.value);
-    let _this = this;
-    var searchtext = e.detail.value;
-    App._get('search/index', {"goods_name": e.detail.value,"page": 1}, function(result) {
-      var data = result.data;
-      if(data.result){
-        var result = data.result;
-        _this.setData({
-          result: result,
-          isSearch: true,
-          isHave: true,
-          page: 1,
-          searchtext: searchtext
-        })
-      }else{
-        _this.setData({
-          result: [],
-          isSearch: true,
-          isHave: false,
-          page: 1,
-          searchtext: searchtext
-        })
-      }
-    });
+    var me = this;
+    // 返回坐标
+    wx.getLocation({
+      type: 'gcj02', //wgs84/gcj02
+      altitude: true,
+      isHighAccuracy: true,
+      success: function (res) {
+        me.lodeCity(res.longitude, res.latitude);
+        console.log('本地的lat:' + res.latitude);
+        console.log('本地的lon:' + res.longitude);
+        console.log('搜索的city:' + e.detail.value);
+        var searchtext = e.detail.value;
+        App._get('Storeinfo/info', {myLat:res.atitude,myLng:res.longitude,name:searchtext}, function(result) {
+          var data = result.data;
+          if(data.result){
+            var result = data.result;
+            me.setData({
+              result: result,
+              isSearch: true,
+              isHave: true,
+              page: 1,
+              searchtext: searchtext
+            })
+          }else{
+            me.setData({
+              result: [],
+              isSearch: true,
+              isHave: false,
+              page: 1,
+              searchtext: searchtext
+            })
+          }
+        });
+      },
+    })
+    
   },
 
   // 复制手机号
-  copyPhone(){
+  copyPhone(phonenumber){
     wx.setClipboardData({
-      data: '这是要复制的文字',
+      data: phonenumber,
       success: function (res) {
         wx.getClipboardData({
           success: function (res) {
@@ -108,57 +77,74 @@ Page({
     // })
 },
 
+  // 选择门店回首页
+  // goIndex(){
+  //   wx.navigateTo({
+  //     url: '/pages/index/index?id='+item.id,
+  //   })
+  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(user.address_component == null || user.address_component == ''){
-      that.setData({
-        region: ['获取所在地区,']
-      });
-      //获取当前地址
-      wx.getSetting({
-      success: (res) => {
-        // res.authSetting['scope.userLocation']  undefined-表示初始化进入该页面 false-表示非初始化进入该页面,且未授权
-        if (res.authSetting['scope.userLocation'] != true) {
-          wx.authorize({
-            scope: 'scope.userLocation',
-            success() {
-              that.getLocation()
-            },
-            fail: function(error) {
-              wx.showModal({
-                title: '提示',
-                content: '您未开启保定位权限，请点击确定去开启权限！',
-                success(res) {
-                  if (res.confirm) {
-                    wx.openSetting()
-                  }
-                },
-                fail: function() {
-                  wx.showToast({
-                    title: '未获取定位权限，请重新打开设置',
-                    icon: 'none',
-                    duration: 2000 
-                  })
-                }
-              })
-            }
-          })
-        }else {
-          that.getLocation()
-        }
-      }
+    var me = this;
+    // 返回坐标
+    wx.getLocation({
+      type: 'gcj02', //wgs84/gcj02
+      altitude: true,
+      isHighAccuracy: true,
+      success: function (res) {
+        console.log(res);
+        console.log('纬度' + res.latitude);
+        console.log('经度' + res.longitude);
+        me.lodeCity(res.longitude, res.latitude);
+      },
     })
-    }else{
-      // console.log(123)
-      that.setData({
-        region: user.address_component.split(",")
-      });
-    }
-
   },
-
+  lodeCity: function (longitude, latitude) {
+    var me = this;
+    wx.request({
+        url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=jk99fxe50ngB9XoMOLwca50jIZvrVj7T&location=' + latitude + ',' + longitude + '&output=json',
+        data: {},
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+            if (res && res.data) {
+              console.log(res.data)
+              console.log(res.data.result.addressComponent.city)
+              var city = res.data.result.addressComponent.city;
+              console.log('res...................');
+              me.setData({
+                city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) :city
+              });
+              App._post_form('Storeinfo/info', {myLat:latitude,myLng:longitude,name:city}, result => {
+                var data = result.data;
+                var store = data.data;
+                me.setData({
+                  data: data,
+                  store: store,
+                  store_name: store.store_name,
+                  dis: store.dis,
+                  details: store.details,
+                  b_time: store.b_time,
+                  telephone: store.telephone,
+                  choose: store.choose,
+                  id: store.id,
+                })
+              }, false, () => {
+                wx.hideLoading();
+              });
+              console.log(city);
+            }else{
+              me.setData({
+                city: '获取失败'
+              });
+            }
+        }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

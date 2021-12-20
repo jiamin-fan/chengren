@@ -4,6 +4,7 @@
      latitude="{{latitude}}"
      scale="16"
      markers="{{markers}}"
+     covers="{{covers}}"
      polyline="{{polyline}}"
      circles="{{circles}}"
 
@@ -21,11 +22,11 @@
 
 <!-- 底部地址 -->
 <view class="bottom-box">
-  <view class="bottom-box-1">广东省天河区东圃</view>
-  <view class="bottom-box-2">广东省广州市增城区中新镇风光路393号广东省广州市增城区中新镇风光路393号</view>
+  <view class="bottom-box-1">{{store_name}}</view>
+  <view class="bottom-box-2">{{details}}</view>
   <view class="bottom-box-3" bindtap="seeMap"><image src="../../images/icon/letgo.png"></image></view>
 </view>
 <!-- 当前定位点 -->
-<view class="pointBackRow" catchtap="PointBackAction">
+<!-- <view class="pointBackRow" catchtap="PointBackAction">
   <image src="../../images/icon/position.png"></image>
-</view>
+</view> -->
