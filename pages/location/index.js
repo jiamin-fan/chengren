@@ -13,82 +13,64 @@ Page({
     page: 1,
     result: [],
     telephone: '123',
+    latitude: '',
+    longitude: ''
   },
 
   
-  // 搜索
-  search: function(e){
-    console.log(e.detail.value);
-    var me = this;
-    var searchcity = e.detail.value;
-    // 返回坐标
-    wx.getLocation({
-      type: 'gcj02', //wgs84/gcj02
-      altitude: true,
-      isHighAccuracy: true,
-      success: function (res) {
-        // me.lodeCity(res.longitude, res.latitude);
-        console.log('本地的lat:' + res.latitude);
-        console.log('本地的lon:' + res.longitude);
-        console.log('输入的:' + e.detail.value);
-        // var me = this;
-        wx.request({
-            url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=jk99fxe50ngB9XoMOLwca50jIZvrVj7T&location=' + res.latitude + ',' + res.longitude + '&output=json',
-            data: {},
-            header: {
-              'Content-Type': 'application/json'
-            },
-            success: function (res) {
-              if (res && res.data) {
-                console.log(res.data)
-                var city = res.data.result.addressComponent.city;
-                me.setData({
-                  city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) :city
-                });
-                console.log('↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓');
-                console.log(res.data.result.location.lat);
-                console.log(res.data.result.location.lng);
-                console.log(searchcity);
-                console.log('↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑');
-                App._post_form('Storeinfo/storedata', {myLat:res.data.result.location.lat,myLng:res.data.result.location.lng,store_name:searchcity}, result => {
-                  var data = result.data;
-                  var store = data.data;
-                  console.log('000000000！！！！');
-                  // 请求错误
-                  if (result.code==0) {
-                    console.log('1111111！！！！');
-                  }else{
-                    console.log('2222222！！！！');
-                    var data = result.data;
-                    var store = data.data;
-                    me.setData({
-                      data: data,
-                      store: store,
-                      store_name: store.store_name,
-                      dis: store.dis,
-                      details: store.details,
-                      b_time: store.b_time,
-                      telephone: store.telephone,
-                      choose: store.choose,
-                      id: store.id,
-                      num: store.num,
-                      isSearch: true,
-                      isHave: true,
-                      page: 1,
-                      searchcity: searchcity
-                    })
-                  }
-                });
-              }else{
-                me.setData({
-                  city: '获取失败'
-                });
-              }
-            }
-        })
-      },
+// 搜索
+search: function (e) {
+  // console.log(e.detail.value);
+  var me = this;
+  var regu = "^[ ]+$";
+  var re = new RegExp(regu);
+  if (!e.detail.value || re.test(e.detail.value)) {
+    wx.showToast({
+      title: '地址不能为空！！！',
+      icon: 'error',
+      duration: 1500,
     })
-  },
+  } else {
+    var searchcity = e.detail.value;
+
+    // var searchcity = e.detail.value;
+    // console.log(me.data.latitude);
+    // console.log(me.data.longitude);
+    App._post_form('Storeinfo/storedata', {
+      myLat: me.data.latitude,
+      myLng: me.data.longitude,
+      store_name: searchcity
+    }, result => {
+      console.log(result)
+      var data = result.data;
+      var store = data.data;
+      // 请求错误
+      if (result.code == 0) {
+        console.log('1111111！！！！');
+      } else {
+        console.log('2222222！！！！');
+        var data = result.data;
+        var store = data.data;
+        me.setData({
+          data: data,
+          store: store,
+          store_name: store.store_name,
+          dis: store.dis,
+          details: store.details,
+          b_time: store.b_time,
+          telephone: store.telephone,
+          choose: store.choose,
+          id: store.id,
+          num: store.num,
+          isSearch: true,
+          isHave: true,
+          page: 1,
+          searchcity: searchcity
+        })
+      }
+    });
+  }
+},
   
   // 打开地图导航
   seeMap: function(e){
@@ -190,6 +172,10 @@ Page({
         console.log('纬度' + res.latitude);
         console.log('经度' + res.longitude);
         me.lodeCity(res.longitude, res.latitude);
+        me.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+        })
       },
     })
   },

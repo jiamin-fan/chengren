@@ -20,7 +20,7 @@
     <view class="box2_son1" data-id="{{index}}" bindtap="backIndex">
       <view class="box2_son1_left">{{item.store_name}}</view>
       <view class="box2_son1_right" wx:if="{{item.num == 1 }}">距您最近的门店</view>
-      <view class="box2_son1_right" wx:else></view>
+      <view class="box2_son1_right" style="display: none;" wx:else ></view>
     </view>
     <view class="box2_son2" data-id="{{index}}" bindtap="backIndex">距您{{item.dis}}</view>
     <view class="box2_son3">
@@ -52,7 +52,7 @@
     <view class="box2_son1" data-id="{{index}}" bindtap="backIndex">
       <view class="box2_son1_left">{{item.store_name}}</view>
       <view class="box2_son1_right" wx:if="{{item.num == 1 }}">距您最近的门店</view>
-      <view class="box2_son1_right" wx:else></view>
+      <view class="box2_son1_right" style="display: none;" wx:else></view>
     </view>
     <view class="box2_son2" data-id="{{index}}" bindtap="backIndex">距您{{item.dis}}</view>
     <view class="box2_son3">
