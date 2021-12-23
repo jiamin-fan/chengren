@@ -17,29 +17,29 @@
 <view wx:if="{{isHave}}">
   <!-- 搜出的门店: -->
   <view class="box2" wx:for="{{store}}">
-    <view class="box2_son1">
+    <view class="box2_son1" data-id="{{index}}" bindtap="backIndex">
       <view class="box2_son1_left">{{item.store_name}}</view>
-      <view class="box2_son1_right" wx:if="{{item.choose == 0 }}"></view>
-      <view class="box2_son1_right" wx:else>选择过的门店</view>
+      <view class="box2_son1_right" wx:if="{{item.num == 1 }}">距您最近的门店</view>
+      <view class="box2_son1_right" wx:else></view>
     </view>
-    <view class="box2_son2">距您{{item.dis}}</view>
+    <view class="box2_son2" data-id="{{index}}" bindtap="backIndex">距您{{item.dis}}</view>
     <view class="box2_son3">
       <view class="box2_son3_1">
-        <view class="box2_son3_left">门店地址：</view>
-        <view class="box2_son3_right1">{{item.details}}</view>
-        <navigator class="box2_son3_right2" url="/pages/location/navigation?id={{item.id}}">
+        <view class="box2_son3_left" data-id="{{index}}" bindtap="backIndex">门店地址：</view>
+        <view class="box2_son3_right1" data-id="{{index}}" bindtap="backIndex">{{item.details}}</view>
+        <view class="box2_son3_right2" data-id="{{index}}" bindtap="seeMap">
           <image src="../../images/icon/adr.png"/>
-        </navigator>
+        </view>
       </view>
       <view class="box2_son3_2">
-        <view class="box2_son3_left">营业时间：</view>
-        <view class="box2_son3_right1">每天{{item.b_time}}</view>
+        <view class="box2_son3_left" data-id="{{index}}" bindtap="backIndex">营业时间：</view>
+        <view class="box2_son3_right1" data-id="{{index}}" bindtap="backIndex">每天{{item.b_time}}</view>
         <view class="box2_son3_right2"></view>
       </view>
       <view class="box2_son3_3">
-        <view class="box2_son3_left">联系电话：</view>
-        <view class="box2_son3_right1" style="width:190rpx;">{{item.telephone}}</view>
-        <view class="box2_son3_right2" style="margin-top:-2rpx;" bindtap="copyPhone">
+        <view class="box2_son3_left" data-id="{{index}}" bindtap="backIndex">联系电话：</view>
+        <view class="box2_son3_right1" style="width:190rpx;" data-id="{{index}}" bindtap="backIndex">{{item.telephone}}</view>
+        <view class="box2_son3_right2" style="margin-top:-2rpx;" data-id="{{index}}" catchtap='freeTell'>
           <image src="../../images/icon/call.png"/>
         </view>
       </view>
@@ -48,60 +48,30 @@
 </view>
 <!-- 未搜索显示： -->
 <view wx:else>
-  <!-- 最近的门店 -->
-  <view class="box2">
-    <view class="box2_son1">
-      <view class="box2_son1_left">{{data.data[0].store_name}}</view>
-      <view class="box2_son1_right">距您最近的门店</view>
+  <view class="box2" wx:for="{{store}}">
+    <view class="box2_son1" data-id="{{index}}" bindtap="backIndex">
+      <view class="box2_son1_left">{{item.store_name}}</view>
+      <view class="box2_son1_right" wx:if="{{item.num == 1 }}">距您最近的门店</view>
+      <view class="box2_son1_right" wx:else></view>
     </view>
-    <view class="box2_son2">距您{{data.data[0].dis}}</view>
+    <view class="box2_son2" data-id="{{index}}" bindtap="backIndex">距您{{item.dis}}</view>
     <view class="box2_son3">
       <view class="box2_son3_1">
-        <view class="box2_son3_left">门店地址：</view>
-        <view class="box2_son3_right1">{{data.data[0].details}}</view>
-        <navigator class="box2_son3_right2" url="/pages/location/navigation?id={{data.data[0].id}}">
+        <view class="box2_son3_left" data-id="{{index}}" bindtap="backIndex">门店地址：</view>
+        <view class="box2_son3_right1" data-id="{{index}}" bindtap="backIndex">{{item.details}}</view>
+        <view class="box2_son3_right2" data-id="{{index}}" bindtap="seeMap">
           <image src="../../images/icon/adr.png"/>
-        </navigator>
-      </view>
-      <view class="box2_son3_2">
-        <view class="box2_son3_left">营业时间：</view>
-        <view class="box2_son3_right1">每天{{data.data[0].b_time}}</view>
-        <view class="box2_son3_right2"></view>
-      </view>
-      <view class="box2_son3_3">
-        <view class="box2_son3_left">联系电话：</view>
-        <view class="box2_son3_right1" style="width:190rpx;">{{data.data[0].telephone}}</view>
-        <view class="box2_son3_right2" style="margin-top:-2rpx;" bindtap="copyPhone">
-          <image src="../../images/icon/call.png"/>
         </view>
       </view>
-    </view>
-  </view>
-  <!-- 后面的门店: -->
-  <view class="box2" wx:for="{{store}}" wx:if="{{ index > 0}}">
-    <view class="box2_son1">
-      <view class="box2_son1_left">{{item.store_name}}</view>
-      <view class="box2_son1_right" wx:if="{{item.choose == 0 }}"></view>
-      <view class="box2_son1_right" wx:else>选择过的门店</view>
-    </view>
-    <view class="box2_son2">距您{{item.dis}}</view>
-    <view class="box2_son3">
-      <view class="box2_son3_1">
-        <view class="box2_son3_left">门店地址：</view>
-        <view class="box2_son3_right1">{{item.details}}</view>
-        <navigator class="box2_son3_right2" url="/pages/location/navigation?id={{item.id}}">
-          <image src="../../images/icon/adr.png"/>
-        </navigator>
-      </view>
       <view class="box2_son3_2">
-        <view class="box2_son3_left">营业时间：</view>
-        <view class="box2_son3_right1">每天{{item.b_time}}</view>
+        <view class="box2_son3_left" data-id="{{index}}" bindtap="backIndex">营业时间：</view>
+        <view class="box2_son3_right1" data-id="{{index}}" bindtap="backIndex">每天{{item.b_time}}</view>
         <view class="box2_son3_right2"></view>
       </view>
       <view class="box2_son3_3">
-        <view class="box2_son3_left">联系电话：</view>
-        <view class="box2_son3_right1" style="width:190rpx;">{{item.telephone}}</view>
-        <view class="box2_son3_right2" style="margin-top:-2rpx;" bindtap="copyPhone">
+        <view class="box2_son3_left" data-id="{{index}}" bindtap="backIndex">联系电话：</view>
+        <view class="box2_son3_right1" style="width:190rpx;" data-id="{{index}}" bindtap="backIndex">{{item.telephone}}</view>
+        <view class="box2_son3_right2" style="margin-top:-2rpx;" data-id="{{index}}" catchtap='freeTell'>
           <image src="../../images/icon/call.png"/>
         </view>
       </view>
@@ -109,6 +79,9 @@
   </view>
 </view>
 
-
 <!-- 底部 -->
 <!-- <view style="height: 400rpx;text-align: center;color: #888;line-height: 600rpx;">到底啦~</view> -->
+
+
+
+

@@ -21,9 +21,10 @@
 </view>
 
 <!-- 咨询按钮（悬浮） -->
-<view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
+<!-- <view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
   <consult></consult>
-</view>
+</view> -->
+
 <view class='order'>
 <!-- 订单 已登录显示 -->
   <view wx:if="{{ isLogin }}">

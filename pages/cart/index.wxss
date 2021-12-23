@@ -175,8 +175,10 @@
   width: 100%;
   /* border:1rpx solid #cdcdcd; */
   display: flex;
-  position: fixed;
-  bottom:120rpx;
+  /* position: fixed; */
+  /* bottom:120rpx; */
+  position: absolute;
+  bottom: 170rpx;
   font-size: 32rpx;
   z-index:100;
   background-color: #ffff;

@@ -44,7 +44,7 @@ page{
 }
 .search{
   display: flex;
-  width: 500rpx;
+  width: 650rpx;
   height: 60rpx;
   align-items: center;
   justify-content: left;

@@ -1,4 +1,4 @@
-<scroll-view scroll-x="false">
+<scroll-view scroll-x="false" style="height: 100vh;">
 
 
 <view class="content">

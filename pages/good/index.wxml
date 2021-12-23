@@ -55,7 +55,8 @@
        
       <view class="roll_1">
         <span>门店 </span>
-        <a href="#">广州白云区金沙洲店</a>
+        <!-- <a href="#">广州白云区金沙洲店</a> -->
+        <a href="#">{{store_name}}</a>
       </view>
     </view>
     <!-- 商品套餐： -->

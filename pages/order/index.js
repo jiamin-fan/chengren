@@ -22,10 +22,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    num:1,
+    num: 1,
     phonenum: '13172802222',
     // 当前页面参数
     options: {},
+    b_time: "",
+    details: "",
+    km: "",
+    store_name: "",
+    lat: "",
+    lng: "",
+    store_id: '',
 
     // // 系统设置：配送方式
     // deliverySetting: [],
@@ -70,8 +77,10 @@ Page({
     error: '',
   },
 
+
+
   // 切换自提跟快送
-  changeOil:function(e){
+  changeOil: function (e) {
     wx.showLoading({
       title: '加载中',
     })
@@ -79,7 +88,7 @@ Page({
       wx.hideLoading()
     }, 500)
     this.setData({
-      num:e.target.dataset.num
+      num: e.target.dataset.num
     })
   },
   // 点击复制手机号码
@@ -99,19 +108,20 @@ Page({
     })
   },
   // 选择送达时间
-  bindTimeChange:function(e){
+  bindTimeChange: function (e) {
     //设置事件
     this.setData({
       //给当前time进行赋值
-      time:e.detail.value
+      time: e.detail.value
     })
-    },
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
     let _this = this;
+    _this.getStoreDetail()
     // options.goods_num = 1;
     // options.goods_sku_id = 0;
     // options.order_type = 'buyNow';
@@ -121,7 +131,7 @@ Page({
     _this.setData({
       options,
     });
-    console.log(options);
+    // console.log(options);
 
   },
 
@@ -132,7 +142,85 @@ Page({
     let _this = this;
     // 获取当前订单信息
     _this.getOrderData();
-    console.log(_this.data)
+    // console.log(_this.data)
+  },
+
+  /**
+   * 获取门店信息
+   */
+  getStoreDetail: function () {
+    App._post_form('Storeinfo/orderstore', {}, result => {
+      console.log(result)
+      var b_time = result.data.data.b_time;
+      var details = result.data.data.details;
+      var km = this.change(result.data.data.km);
+      var store_name = result.data.data.store_name;
+      var lat = result.data.data.lat;
+      var lng = result.data.data.lng;
+      var store_id = result.data.data.store_id;
+      var phonenum = result.data.data.store_ph
+      this.setData({
+        b_time: b_time,
+        details: details,
+        km: km,
+        store_name: store_name,
+        store_id: store_id,
+        lat: lat,
+        lng: lng,
+        phonenum: phonenum
+      })
+
+    })
+
+
+  },
+
+  // 打开地图导航
+  seeMap: function (e) {
+    // console.log(e)
+    var latitude = e.currentTarget.dataset.lat
+    var longitude = e.currentTarget.dataset.lng
+    var name = e.currentTarget.dataset.name
+    var details = e.currentTarget.dataset.details
+    wx.getLocation({
+      type: 'wgs84',
+      // type: 'gcj02',
+      success: function (res) {
+        console.log('打开地图导航去目的地');
+        wx.openLocation({ //​使用微信内置地图查看位置。
+          latitude: parseFloat(latitude), //要去的纬度-地址
+          longitude: parseFloat(longitude), //要去的经度-地址
+          name: name,
+          address: details,
+        })
+      }
+    })
+  },
+
+  // 拨号
+  freeTell: function (e) {
+    console.log(e)
+    let phonenum = e.currentTarget.dataset.phonenum;
+    wx.makePhoneCall({
+      phoneNumber: phonenum
+    })
+  },
+
+  /**
+   * 换算单位
+   */
+  change: function (m) {
+    var n = ''
+    if (m) {
+      if (m >= 1000) {
+        n = (m / 1000).toFixed(2) + 'km'
+      } else {
+        n = m + 'm'
+      }
+    } else {
+      n = '0 m'
+    }
+    return n
   },
 
   /**
@@ -281,118 +369,118 @@ Page({
     let _this = this,
       options = _this.data.options;
     // App.requestSubscribeMessage(["xzmc8UwNipyaLj_-atGI_XVcDmM_CuXWL855zn-HvHU","xaYd9vgv_wYMeESKGyNe95v_kgBak_Ebsp5UJOFillA"], function() {
-      if (_this.data.disabled) {
+    if (_this.data.disabled) {
+      return false;
+    }
+
+    // 表单验证
+    if (!_this._onVerify()) {
+      return false;
+    }
+
+    // 订单创建成功后回调--微信支付
+    let callback = result => {
+      if (result.code === -10) {
+        App.showError(result.msg, () => {
+          _this.redirectToOrderIndex();
+        });
         return false;
       }
 
-      // 表单验证
-      if (!_this._onVerify()) {
-        return false;
-      }
-
-      // 订单创建成功后回调--微信支付
-      let callback = result => {
-        if (result.code === -10) {
-          App.showError(result.msg, () => {
+      // 发起微信支付
+      if (result.data.pay_type == PayTypeEnum.WECHAT.value) {
+        App.wxPayment({
+          payment: result.data.payment,
+          success: res => {
             _this.redirectToOrderIndex();
-          });
-          return false;
-        }
-
-        // 发起微信支付
-        if (result.data.pay_type == PayTypeEnum.WECHAT.value) {
-          App.wxPayment({
-            payment: result.data.payment,
-            success: res => {
+          },
+          fail: res => {
+            App.showError(result.msg.error, () => {
               _this.redirectToOrderIndex();
-            },
-            fail: res => {
-              App.showError(result.msg.error, () => {
-                _this.redirectToOrderIndex();
-              });
-            },
-          });
-        }
-        // 余额支付
-        if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
-          App.showSuccess(result.msg.success, () => {
-            _this.redirectToOrderIndex();
-          });
-        }
-      };
+            });
+          },
+        });
+      }
+      // 余额支付
+      if (result.data.pay_type == PayTypeEnum.BALANCE.value) {
+        App.showSuccess(result.msg.success, () => {
+          _this.redirectToOrderIndex();
+        });
+      }
+    };
 
-      // 按钮禁用, 防止二次提交
-      _this.data.disabled = true;
+    // 按钮禁用, 防止二次提交
+    _this.data.disabled = true;
 
-      // 显示loading
-      wx.showLoading({
-        title: '正在处理...'
+    // 显示loading
+    wx.showLoading({
+      title: '正在处理...'
+    });
+
+
+    let url = '';
+
+    // 表单提交的数据
+    let postData = {
+      delivery: _this.data.curDelivery, // 配送方式
+      pay_type: _this.data.curPayType, // 支付方式
+      shop_id: _this.data.selectedShopId || 0, // 自提门店id
+      linkman: _this.data.linkman, // 自提联系方式-姓名
+      phone: _this.data.phone, // 自提联系方式-手机号
+      coupon_id: _this.data.selectCouponId || 0, // 优惠券id
+      is_use_points: _this.data.isUsePoints ? 1 : 0, // 积分抵扣
+      remark: _this.data.remark || '', // 买家留言
+    };
+
+    // 创建订单-立即购买
+    if (options.order_type === 'buyNow') {
+      url = 'orders/buyNow';
+      postData = Object.assign(postData, {
+        goods_id: options.goods_id, // 商品id
+        goods_num: options.goods_num, // 商品数量
+        goods_sku_id: options.goods_sku_id, // 商品规格id
       });
+    }
 
+    console.log(postData);
 
-      let url = '';
-
-      // 表单提交的数据
-      let postData = {
-        delivery: _this.data.curDelivery, // 配送方式
-        pay_type: _this.data.curPayType,  // 支付方式
-        shop_id: _this.data.selectedShopId || 0,  // 自提门店id
-        linkman: _this.data.linkman,  // 自提联系方式-姓名
-        phone: _this.data.phone,  // 自提联系方式-手机号
-        coupon_id: _this.data.selectCouponId || 0, // 优惠券id
-        is_use_points: _this.data.isUsePoints ? 1 : 0,  // 积分抵扣
-        remark: _this.data.remark || '', // 买家留言
-      };
-
-      // 创建订单-立即购买
-      if (options.order_type === 'buyNow') {
-        url = 'orders/buyNow';
-        postData = Object.assign(postData, {
-          goods_id: options.goods_id, // 商品id
-          goods_num: options.goods_num, // 商品数量
-          goods_sku_id: options.goods_sku_id, // 商品规格id
-        });
-      }
-
-      console.log(postData);
-
-      // 创建订单-购物车结算
-      if (options.order_type === 'cart') {
-        url = 'orders/cart';
-        postData = Object.assign(postData, {
-          cart_ids: options.cart_ids || 0,
-        });
-      }
-
-      // 创建订单-砍价活动
-      if (options.order_type === 'bargain') {
-        url = 'bargain.order/checkout';
-        postData = Object.assign(postData, {
-          task_id: options.task_id,
-          goods_sku_id: options.goods_sku_id,
-        });
-      }
-
-      // 创建订单-砍价活动
-      if (options.order_type === 'sharp') {
-        url = 'sharp.order/checkout';
-        postData = Object.assign(postData, {
-          active_time_id: options.active_time_id,
-          sharp_goods_id: options.sharp_goods_id,
-          goods_sku_id: options.goods_sku_id,
-          goods_num: options.goods_num,
-        });
-      }
-
-      // 订单提交
-      App._post_form(url, postData, result => {
-        // console.log(result);return false;
-        callback(result);
-      }, result => {}, () => {
-        wx.hideLoading();
-        // 解除按钮禁用
-        _this.data.disabled = false;
+    // 创建订单-购物车结算
+    if (options.order_type === 'cart') {
+      url = 'orders/cart';
+      postData = Object.assign(postData, {
+        cart_ids: options.cart_ids || 0,
       });
+    }
+
+    // 创建订单-砍价活动
+    if (options.order_type === 'bargain') {
+      url = 'bargain.order/checkout';
+      postData = Object.assign(postData, {
+        task_id: options.task_id,
+        goods_sku_id: options.goods_sku_id,
+      });
+    }
+
+    // 创建订单-砍价活动
+    if (options.order_type === 'sharp') {
+      url = 'sharp.order/checkout';
+      postData = Object.assign(postData, {
+        active_time_id: options.active_time_id,
+        sharp_goods_id: options.sharp_goods_id,
+        goods_sku_id: options.goods_sku_id,
+        goods_num: options.goods_num,
+      });
+    }
+
+    // 订单提交
+    App._post_form(url, postData, result => {
+      // console.log(result);return false;
+      callback(result);
+    }, result => {}, () => {
+      wx.hideLoading();
+      // 解除按钮禁用
+      _this.data.disabled = false;
+    });
     // })
   },
 
@@ -594,7 +682,7 @@ Page({
     if (!_this.isPositiveInteger(iptValue) && iptValue !== '') {
       iptValue = 1;
     }
-    if(iptValue == '' || iptValue<1){
+    if (iptValue == '' || iptValue < 1) {
       iptValue = 1;
     }
     // _this.setData({

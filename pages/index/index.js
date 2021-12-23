@@ -24,6 +24,8 @@ Page({
     btnClicked:true, //让点击事件同步操作
     Height: "", // 轮播图的高度
     Height2: "", // 轮播图2的高度
+    mydata: [],
+    touch_store_name: "",
 
     // 商品详情介绍
     detailImg: [
@@ -39,6 +41,7 @@ Page({
     ],
    
   },
+  
   //设置图片轮显高度
   imgHeight: function (e) {
     var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
@@ -182,7 +185,6 @@ onSwiperTap: function (event) {
     // qqmapsdk = new QQMapWX({
     //   key: '2083cc0b8cd7eddbe773532f24eef1af' //密钥
     // });
-    
     // 返回坐标
     wx.getLocation({
       type: 'gcj02', //wgs84/gcj02
@@ -204,6 +206,8 @@ onSwiperTap: function (event) {
     wx.showShareMenu({
       withShareTicket: true
     });
+
+    
   },
 
   lodeCity: function (longitude, latitude) {
@@ -243,38 +247,68 @@ onSwiperTap: function (event) {
   },
 
 
-    onReady: function () {
+  onReady: function () {
 
-      // 生命周期函数--监听页面初次渲染完成
+    // 生命周期函数--监听页面初次渲染完成
 
-    },
+  },
 
-    onShow: function () {
-      let _this = this;
-      App._post_form('index/index', {}, result => {
+  onShow: function () {
+    let _this = this;
+    _this.setData({
+      isLogin: App.checkIsLogin()
+    });
+    App._post_form('index/index', {}, result => {
 
-        var data = result.data;
-        // console.log(data);
-        var imgUrls = data.slideshow;
-        var category = data.category;
-        var classify = data.classify;
-        _this.setData({
-          imgUrls: imgUrls,
-          category: category,
-          classify: classify
-        })
-      }, false, () => {
-        // wx.hideLoading();
-      });
-
-    // 设置tabbar的选中状态，要在每个tab页面的onShow中设置
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        curIndex: 0
+      var data = result.data;
+      // console.log(data);
+      var imgUrls = data.slideshow;
+      var category = data.category;
+      var classify = data.classify;
+      _this.setData({
+        imgUrls: imgUrls,
+        category: category,
+        classify: classify
       })
-    }
-    },
+    }, false, () => {
+      // wx.hideLoading();
+    });
 
+  // 设置tabbar的选中状态，要在每个tab页面的onShow中设置
+  if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+    this.getTabBar().setData({
+      curIndex: 0
+    })
+  }
+  
+  // 接收门店页面传过来的值
+  var pages = getCurrentPages();
+  var currPage = pages[pages.length - 1]; //当前页面
+  let json = currPage.data.mydata;
+  let touch_store_name = json.touch_store_name;
+  console.log(json)//为传过来的值
+  console.log(touch_store_name)//为传过来的门店名
+  _this.setData({
+    touch_store_name: touch_store_name
+  })
+  },
+    onLogin() {
+      // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+      // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+      wx.getUserProfile({
+        desc: '更好的服务', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (e) => {
+          let _this = this;
+          App.getUserInfo(e, () => {
+            wx.setStorageSync('userInfo', e.userInfo);
+            //  console.log(e.userInfo);
+            _this.setData({
+              isLogin: true
+            })
+          });
+        }
+      })
+    },
     onHide: function () {
 
     // 生命周期函数--监听页面隐藏

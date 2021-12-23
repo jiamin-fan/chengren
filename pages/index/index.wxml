@@ -2,12 +2,20 @@
 <view class="page">
   <view style="width: 750rpx;height: 80rpx;"></view>
   <!-- 新增位置信息 -->
-  <navigator class="here_address" url="/pages/location/index">
+  <navigator class="here_address" url="/pages/location/index" wx:if="{{ isLogin }}">
     <view class="here_img">
       <image src="../../images/icon/address.png" alt=""></image>
     </view>
-    <view class="here_name">{{jingwei}} ></view>
+    <view class="here_name" wx:if="{{touch_store_name}}">{{touch_store_name}} ></view>
+    <view class="here_name" wx:else>{{jingwei}} ></view>
   </navigator>
+  <!-- 新增位置信息 -->
+  <view class="here_address" wx:else>
+    <view class="here_img" catchtap="onLogin">
+      <image src="../../images/icon/address.png" alt=""></image>
+    </view>
+    <view class="here_name" catchtap="onLogin">点击获取附近门店</view>
+  </view>
   <SearchInput></SearchInput>
   <view class='swiper'>
   <!-- 原来的： -->
@@ -30,9 +38,10 @@
   <!--轮播图片尺寸345px * 210px 图片建议不放白色的图片-->
 
 <!-- 咨询按钮（悬浮） -->
-<view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
+<!-- <view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
   <consult></consult>
-</view>
+</view> -->
+
 <!-- 原来的三个胶囊状活动入口： -->
 <view class="big_box1">
   <navigator url="/pages/activity/index?classify_id={{item.classify_id}}" class="small_b1" wx:for="{{classify}}"><p>{{item.classify_title}}</p></navigator>

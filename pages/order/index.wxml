@@ -55,8 +55,8 @@
       <view class='{{num==2?"box222":"disp_none"}}'>
         <view class="new_box1">
           <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">配送门店</text>
-          <text class="f-30">广州白云区金沙洲店</text>
-          <view class="new_box1_image" bindtap="copyPhone">
+          <text class="f-30">{{store_name}}</text>
+          <view class="new_box1_image" data-phonenum="{{phonenum}}" catchtap='freeTell'>
             <image src="../../images/icon/call.png" alt=""></image>
           </view>
         </view>
@@ -73,23 +73,26 @@
       <view class='{{num==1?"box111":"disp_none"}}'>
         <view class="new_box1">
           <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">自提门店</text>
-          <text class="f-30">广州白云区金沙洲店</text>
-          <view class="new_box1_image" bindtap="copyPhone">
+          <text class="f-30">{{store_name}}</text>
+          <view class="new_box1_image" data-phonenum="{{phonenum}}" catchtap='freeTell'>
             <image src="../../images/icon/call.png" alt=""></image>
           </view>
         </view>
         <view class="box2_son3">
-          <view style="color: rgb(136, 136, 136);">距您9.2km</view>
+          <view style="color: rgb(136, 136, 136);">距您{{km}}</view>
           <view class="box2_son3_1">
             <view class="box2_son3_left">门店地址：</view>
-            <view class="box2_son3_right1">广东省广州市增城区中新镇风光路393号广东省广州市增城区中新镇风光路393号</view>
-            <navigator class="box2_son3_right2" url="/pages/location/navigation">
+            <view class="box2_son3_right1">{{details}}</view>
+            <!-- <navigator class="box2_son3_right2" url="/pages/location/navigation">
               <image src="../../images/icon/adr.png"/>
-            </navigator>
+            </navigator> -->
+            <view class="box2_son3_right2" data-lat="{{lat}}" data-lng="{{lng}}" data-name="{{store_name}}" data-details="{{details}}" bindtap="seeMap" >
+              <image src="../../images/icon/adr.png"/>
+            </view>
           </view>
           <view class="box2_son3_2">
             <view class="box2_son3_left">营业时间：</view>
-            <view class="box2_son3_right1">每天12:00~23:00</view>
+            <view class="box2_son3_right1">每天{{b_time}}</view>
           </view>
         </view>
       </view>
