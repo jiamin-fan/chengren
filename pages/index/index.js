@@ -182,6 +182,21 @@ onSwiperTap: function (event) {
 
   onLoad: function (options) {
     var me = this;
+    wx.login({
+      success(res){
+        App._post_form('login/login',{
+          code: res.code,
+        },result => {
+          wx.setStorageSync('token', result.data.token);
+          wx.setStorageSync('session_key', result.data.session_key);
+          wx.setStorageSync('user_id', result.data.user_id);
+          // 执行回调函数
+          // callback && callback();
+        }, false, () => {
+          wx.hideLoading();
+        });
+      }
+    });
     // qqmapsdk = new QQMapWX({
     //   key: '2083cc0b8cd7eddbe773532f24eef1af' //密钥
     // });
@@ -227,6 +242,10 @@ onSwiperTap: function (event) {
                 me.setData({
                   city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) :city
                 });
+                wx.setStorage({
+                  key: 'mm',
+                  data: city,
+                })
                 App._post_form('Storeinfo/index', {myLat:latitude,myLng:longitude,name:city}, result => {
                   var data = result.data;
                   var jingwei = data.data;

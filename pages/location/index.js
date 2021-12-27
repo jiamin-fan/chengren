@@ -1,3 +1,5 @@
+// import QQMapWX from '../../qqmap/qqmap-wx-jssdk'
+// let qqMap = new QQMapWX({key:'密钥'})
 let App = getApp();
 // pages/location/index.js
 Page({
@@ -16,64 +18,70 @@ Page({
     latitude: '',
     longitude: ''
   },
+  // 监听输入框值的变化
+  //   inputChage: function(e){
+  //     console.log(e.detail.value)
+  //     this.setData({searchcity: e.detail.value})
+  //   },
 
-  
-// 搜索
-search: function (e) {
-  // console.log(e.detail.value);
-  var me = this;
-  var regu = "^[ ]+$";
-  var re = new RegExp(regu);
-  if (!e.detail.value || re.test(e.detail.value)) {
-    wx.showToast({
-      title: '地址不能为空！！！',
-      icon: 'error',
-      duration: 1500,
-    })
-  } else {
-    var searchcity = e.detail.value;
 
-    // var searchcity = e.detail.value;
-    // console.log(me.data.latitude);
-    // console.log(me.data.longitude);
-    App._post_form('Storeinfo/storedata', {
-      myLat: me.data.latitude,
-      myLng: me.data.longitude,
-      store_name: searchcity
-    }, result => {
-      console.log(result)
-      var data = result.data;
-      var store = data.data;
-      // 请求错误
-      if (result.code == 0) {
-        console.log('1111111！！！！');
-      } else {
-        console.log('2222222！！！！');
+  // 搜索
+  search: function (e) {
+    // console.log(e.detail.value);
+    var me = this;
+    var regu = "^[ ]+$";
+    var re = new RegExp(regu);
+    var n = wx.getStorageSync('mm');
+    if (!e.detail.value || re.test(e.detail.value)) {
+      wx.showToast({
+        title: '地址不能为空！！！',
+        icon: 'error',
+        duration: 1500,
+      })
+    } else {
+      var searchcity = e.detail.value;
+
+      // console.log(me.data.latitude);
+      // console.log(me.data.longitude);
+      App._post_form('Storeinfo/storedata', {
+        myLat: me.data.latitude,
+        myLng: me.data.longitude,
+        store_name: searchcity,
+        name: n
+      }, result => {
+        console.log(result)
         var data = result.data;
         var store = data.data;
-        me.setData({
-          data: data,
-          store: store,
-          store_name: store.store_name,
-          dis: store.dis,
-          details: store.details,
-          b_time: store.b_time,
-          telephone: store.telephone,
-          choose: store.choose,
-          id: store.id,
-          num: store.num,
-          isSearch: true,
-          isHave: true,
-          page: 1,
-          searchcity: searchcity
-        })
-      }
-    });
-  }
-},
-  
+        // 请求错误
+        if (result.code == 0) {
+          console.log('1111111！！！！');
+        } else {
+          console.log('2222222！！！！');
+          var data = result.data;
+          var store = data.data;
+          me.setData({
+            data: data,
+            store: store,
+            store_name: store.store_name,
+            dis: store.dis,
+            details: store.details,
+            b_time: store.b_time,
+            telephone: store.telephone,
+            choose: store.choose,
+            id: store.id,
+            num: store.num,
+            isSearch: true,
+            isHave: true,
+            page: 1,
+            searchcity: searchcity
+          })
+        }
+      });
+    }
+  },
+
   // 打开地图导航
-  seeMap: function(e){
+  seeMap: function (e) {
     var me = this;
     let id = e.currentTarget.dataset.id;
     var stores = me.data.data.data;
@@ -82,12 +90,12 @@ search: function (e) {
     var name = stores[id].store_name
     var details = stores[id].details
     wx.getLocation({
-      type: 'wgs84', 
+      type: 'wgs84',
       success: function (res) {
         console.log('打开地图导航去目的地');
-        wx.openLocation({//​使用微信内置地图查看位置。
-          latitude: Number(latitude),//要去的纬度-地址
-          longitude: Number(longitude),//要去的经度-地址
+        wx.openLocation({ //​使用微信内置地图查看位置。
+          latitude: Number(latitude), //要去的纬度-地址
+          longitude: Number(longitude), //要去的经度-地址
           name: name,
           address: details
         })
@@ -95,7 +103,7 @@ search: function (e) {
     })
   },
   // 拨号
-  freeTell:function(e){
+  freeTell: function (e) {
     var me = this;
     let id = e.currentTarget.dataset.id;
     var stores = me.data.data.data;
@@ -104,7 +112,7 @@ search: function (e) {
     wx.makePhoneCall({
       phoneNumber: stores[id].telephone
     })
-},
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -114,53 +122,60 @@ search: function (e) {
     me.getStore();
     console.log(me.data)
   },
+
   lodeCity: function (longitude, latitude) {
     var me = this;
     wx.request({
-        url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=jk99fxe50ngB9XoMOLwca50jIZvrVj7T&location=' + latitude + ',' + longitude + '&output=json',
-        data: {},
-        header: {
-          'Content-Type': 'application/json'
-        },
-        success: function (res) {
-            if (res && res.data) {
-              console.log(res.data)
-              console.log(res.data.result.addressComponent.city)
-              var city = res.data.result.addressComponent.city;
-              console.log('res...................');
-              me.setData({
-                city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) :city
-              });
-              App._post_form('Storeinfo/storedata', {myLat:latitude,myLng:longitude,name:city}, result => {
-                var code = result.code;
-                var data = result.data;
-                var store = data.data;
-                me.setData({
-                  data: data,
-                  store: store,
-                  store_name: store.store_name,
-                  dis: store.dis,
-                  details: store.details,
-                  b_time: store.b_time,
-                  telephone: store.telephone,
-                  choose: store.choose,
-                  id: store.id,
-                  num: store.num,
-                })
-              }, false, () => {
-                wx.hideLoading();
-              });
-            }else{
-              me.setData({
-                city: '获取失败'
-              });
-            }
+      url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=jk99fxe50ngB9XoMOLwca50jIZvrVj7T&location=' + latitude + ',' + longitude + '&output=json',
+      data: {},
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        if (res && res.data) {
+          console.log(res.data)
+          console.log(res.data.result.addressComponent.city)
+          var city = res.data.result.addressComponent.city;
+          console.log('res...................');
+          me.setData({
+            city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) : city
+          });
+          App._post_form('Storeinfo/storedata', {
+            myLat: latitude,
+            myLng: longitude,
+            name: city
+          }, result => {
+            console.log(result)
+            var code = result.code;
+            var data = result.data;
+            var store = data.data;
+            me.setData({
+              data: data,
+              // 门店信息
+              store: store,
+              store_name: store.store_name,
+              dis: store.dis,
+              details: store.details,
+              b_time: store.b_time,
+              telephone: store.telephone,
+              choose: store.choose,
+              id: store.id,
+              num: store.num,
+            })
+          }, false, () => {
+            wx.hideLoading();
+          });
+        } else {
+          me.setData({
+            city: '获取失败'
+          });
         }
+      }
     })
   },
 
   // 获取门店信息
-  getStore(){
+  getStore() {
     var me = this;
     // 返回坐标
     wx.getLocation({
@@ -192,7 +207,10 @@ search: function (e) {
     console.log(idindex)
     console.log(dis)
     console.log(id)
-    App._post_form('Storeinfo/sele', {id: id,km: dis}, result => {
+    App._post_form('Storeinfo/sele', {
+      id: id,
+      km: dis
+    }, result => {
       var touch_data = result.data.data;
       var touch_id = touch_data.id;
       var touch_store_name = touch_data.store_name;
@@ -203,14 +221,14 @@ search: function (e) {
       })
       var pages = getCurrentPages();
       var prevPage = pages[pages.length - 2]; //上一个页面
-        //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+      //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
       prevPage.setData({
         mydata: {
           touch_id: touch_id,
           touch_store_name: touch_store_name,
         }
       })
-      wx.navigateBack({//返回
+      wx.navigateBack({ //返回
         delta: 1
       })
     }, false, () => {

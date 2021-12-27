@@ -98,9 +98,6 @@ Page({
    */
   onTargetMenus(e) {
     let _this = this;
-    if (!_this.onCheckLogin()) {
-      return false;
-    }
     wx.navigateTo({
       url: e.currentTarget.dataset.url
     })
@@ -126,34 +123,34 @@ Page({
     if(!App.checkIsLogin()){
       return false
     }
-    App._post_form('User/order_list', {}, result => {
-      console.log(result.info)
-      var info = result.info;
-      console.log(info);
-      _this.setData({
-        info: info,
-        isHas:false,
-      })
-      console.log(_this.data.isHas);
-      console.log(!_this.data.info);
-      if(result.info[0]){
-        console.log(3333)
-        var goods_info = info[0].goods_info[0];
-        var sum_price = info.sum_price;
-        var total_num = info.total_num;
-        console.log(info);
-        _this.setData({
-          // info: info,
-          isHas: true,
-          goods_info: goods_info,
-          sum_price: sum_price,
-          total_num: total_num
-        })
-      }
+    // App._post_form('User/order_list', {}, result => {
+    //   console.log(result.info)
+    //   var info = result.info;
+    //   console.log(info);
+    //   _this.setData({
+    //     info: info,
+    //     isHas:false,
+    //   })
+    //   console.log(_this.data.isHas);
+    //   console.log(!_this.data.info);
+    //   if(result.info[0]){
+    //     console.log(3333)
+    //     var goods_info = info[0].goods_info[0];
+    //     var sum_price = info.sum_price;
+    //     var total_num = info.total_num;
+    //     console.log(info);
+    //     _this.setData({
+    //       // info: info,
+    //       isHas: true,
+    //       goods_info: goods_info,
+    //       sum_price: sum_price,
+    //       total_num: total_num
+    //     })
+    //   }
       
-    }, false, () => {
-      wx.hideLoading();
-    });
+    // }, false, () => {
+    //   wx.hideLoading();
+    // });
 
    
     // 设置tabbar的选中状态，要在每个tab页面的onShow中设置

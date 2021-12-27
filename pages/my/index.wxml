@@ -119,8 +119,16 @@
   </view>
 
   <view class="new_logistics">
-    <view class='logistics'>
+    <!-- 已登录 -->
+    <view class='logistics' wx:if="{{ isLogin }}">
         <view wx:for="{{ Members }}" wx:key="this" data-url="{{item.url}}" bindtap="onTargetMenus" class='log-box'>
+          <image src='{{item.img}}'/>
+          <text>{{item.name}}</text>
+        </view>
+    </view>
+    <!-- 未登录 -->
+    <view class='logistics' wx:else>
+        <view wx:for="{{ Members }}" wx:key="this" class='log-box' catchtap="onLogin">
           <image src='{{item.img}}'/>
           <text>{{item.name}}</text>
         </view>

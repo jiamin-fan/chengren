@@ -6,7 +6,7 @@
       <!-- 搜索框 -->
       <view class="search" >
         <image src="../../images/icon/search.png"/>
-        <input type="text" placeholder="输入城市寻找附近门店" bindconfirm="search"/>
+        <input type="text" placeholder="输入城市寻找附近门店" bindconfirm="search" />
       </view> 
     </view>
   </view>
@@ -20,7 +20,8 @@
     <view class="box2_son1" data-id="{{index}}" bindtap="backIndex">
       <view class="box2_son1_left">{{item.store_name}}</view>
       <view class="box2_son1_right" wx:if="{{item.num == 1 }}">距您最近的门店</view>
-      <view class="box2_son1_right" style="display: none;" wx:else ></view>
+      <view class="box2_son1_right" wx:if="{{item.num == 2 }}">选择过的门店</view>
+      <view class="box2_son1_right" wx:else style="display: none;"></view>
     </view>
     <view class="box2_son2" data-id="{{index}}" bindtap="backIndex">距您{{item.dis}}</view>
     <view class="box2_son3">
@@ -37,7 +38,7 @@
         <view class="box2_son3_right2"></view>
       </view>
       <view class="box2_son3_3">
-        <view class="box2_son3_left" data-id="{{index}}" bindtap="backIndex">联系电话：</view>
+        <view class="box2_son3_left" data-id="{{index}}" bindtap="backIndex">联系电话：{{num}}</view>
         <view class="box2_son3_right1" style="width:190rpx;" data-id="{{index}}" bindtap="backIndex">{{item.telephone}}</view>
         <view class="box2_son3_right2" style="margin-top:-2rpx;" data-id="{{index}}" catchtap='freeTell'>
           <image src="../../images/icon/call.png"/>
@@ -52,7 +53,8 @@
     <view class="box2_son1" data-id="{{index}}" bindtap="backIndex">
       <view class="box2_son1_left">{{item.store_name}}</view>
       <view class="box2_son1_right" wx:if="{{item.num == 1 }}">距您最近的门店</view>
-      <view class="box2_son1_right" style="display: none;" wx:else></view>
+      <view class="box2_son1_right" wx:if="{{item.num == 2 }}">选择过的门店</view>
+      <view class="box2_son1_right" wx:else style="display: none;"></view>
     </view>
     <view class="box2_son2" data-id="{{index}}" bindtap="backIndex">距您{{item.dis}}</view>
     <view class="box2_son3">
