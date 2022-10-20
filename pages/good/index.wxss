@@ -3,6 +3,7 @@ page {
   flex-direction: column;
   background-color: #f5f5f5;
   height: 100%;
+  overflow-y: auto;
 }
 button::after{
   border: none;
@@ -19,7 +20,7 @@ button::after{
 }
 /* 直接设置swiper属性 */
 swiper {
-  height: 500rpx;
+  height: 750rpx;
 }
 swiper-item image {
   width: 100%;
@@ -32,7 +33,7 @@ swiper-item image {
   /* height: 200rpx; */
   display: flex;
   flex-direction: column;
-  margin-top: 15rpx;
+  /* margin-top: 15rpx; */
   margin-bottom: 0rpx;
   background-color: #ffffff;
 }
@@ -79,7 +80,6 @@ swiper-item image {
   line-height: 180rpx;
   background-color: #ffffff;
 }
-
 
 .enjoy button image{
   width: 70rpx;
@@ -363,21 +363,24 @@ background-color:#ffffff;
 }
 
 .second_box{
-  width: 94%;
+  width: 100%;
   /* height: 710rpx; */
-  background-color: #f1f2f3;
+  background-color: #fff;
   position: relative;
-  left: 3%;
-  padding:4rpx;
+  /* left: 3%; */
+  /* padding:4rpx; */
   margin-top: 30rpx;
   margin-bottom: 20rpx;
   border-radius: 8rpx;
+ 
 }
 .second0_box{
   padding-top:20rpx;
+ 
 }
 .second0_box view{
   height: 74rpx;
+  
 }
 .second0_box .box2_left{
   padding-left: 30rpx;
@@ -387,13 +390,14 @@ background-color:#ffffff;
 }
 .good_box2{
   width: 100%;
-  height: 70rpx;
+  height: 80rpx;
   display: flex;
   /* flex-direction: column; */
-  margin-top: 4rpx;
+  /* margin-top: 4rpx; */
+  border-bottom: 2rpx solid rgb(231, 231, 231);
 }
 .box2_left{
-  width: 25%;
+  width: 30%;
   background-color: #ffffff;
   color: #7c7c7c;
   font-size: 26rpx;
@@ -401,15 +405,17 @@ background-color:#ffffff;
   display: flex;
   align-items:center;
   padding-left: 20rpx;
+  border-right: 2rpx solid rgb(231, 231, 231);
+  border-left: 2rpx solid rgb(231, 231, 231);
 }
 .box2_right{
   width: 74.8%;
   background-color: #ffffff;
-  font-size: 24rpx;
+  font-size: 28rpx;
   margin-left: 4rpx;
   display: flex;
   align-items:center;
-  padding-left: 24rpx;
+  padding-left: 28rpx;
 }
 .aup{
     background-color: #e5ff00;
@@ -602,9 +608,188 @@ button[class="baocun"]::after{
   font-weight: 900;
 }
 
+/* 商品评价 */
+.comment{
+  width: 100%;
+  height: 300rpx;
+  background-color: #fff;
+  margin: 20rpx auto;
+  display: flex;
+  flex-direction: column;
+}
+.comment .com_top{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  line-height: 80rpx;
+}
+.commentTitle{
+  font-size: 38rpx;
+  font-weight: 900;
+  padding-left: 20rpx;
+}
+.commentTitle text{
+  font-size: 30rpx;
+}
+.rightArrow{
+  color: #ccc;
+  font-size: 40rpx;
+  padding-right: 20rpx;
+}
+.commentScroll{
+  width: 100%;
+  flex: 1;
+  margin-left: 20rpx;
+}
+.commentSwiper,.swiper-item{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.swiper-item .comHeader{
+  width: 100%;
+  flex:1;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.swiper-item .commentText{
+  width: 100%;
+  flex:1;
+}
+.comHeaderImg{
+  width: 80rpx;
+  height: 80rpx;
+  margin: auto 0;
+ border-radius: 50%;
+}
+.comHeaderImg image{
+  width: 100%;
+  height: 100%;
+  border-radius: 100rpx;
+}
+.comUserDetail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 16rpx;
+}
+.comUser{
+  display: flex;
+  font-size: 28rpx;
+}
+.star{
+  font-size: 28rpx;
+}
+.comUserNum{
+  margin-left: 16rpx;
+}
+.commentText{
+  width: 100%;
+  flex: 1;
+  line-height: 100rpx;
+  margin-left: 20rpx;
+}
+
+/* 进店逛逛 */
+.storeVisitContainer{
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  margin: 20rpx 0;
+}
+.storeImg{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 20rpx;
+}
+.storeInfo{
+  height: 160rpx;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30rpx;
+  padding-left: 20rpx;
+}
+.storeInfo .storeName{
+  font-size: 36rpx;
+}
+.componyPromise{
+  width: 120rpx;
+  height: 36rpx; 
+  background-color: orangered;
+  margin: 10rpx 0;
+ line-height: 36rpx;
+  font-size: 24rpx;
+  color: #fff;
+  padding-left: 12rpx;
+}
+.goStore{
+  display: flex;
+  flex-wrap: nowrap;
+  position: absolute;
+  right: 10rpx;
+  height: 136rpx;
+  line-height: 136rpx;
+}
+.goStoreText{
+  color: orangered;
+  font-size: 30rpx;
+  margin-right: 10rpx;
+}
+.goodsDetail{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column ;
+  background-color: #fff;
+  margin: 20rpx 0;
+  font-size: 0;
+  align-items: center;
+}
+.goodsDetailTitle{
+  font-size: 44rpx;
+  margin: 20rpx auto;
+}
+.detailImg{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 0;
+  /* height: 1200rpx; */
+
+}
+.detailImg image{
+  /* display: block; */
+  /* object-fit:contain; */
+  width: 100%;
+  /* height: 100%; */
+  
  
+}
 
+.fixedTop {
+  display: none;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+ }
+ .fixedTopScroll{
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
 
+ }
 
 
 

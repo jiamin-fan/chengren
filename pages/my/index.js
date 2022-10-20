@@ -12,67 +12,33 @@ Page({
     isHas: false,
     Members: [
       {
-        name: '每日签到',
-        url: '/pages/activity/signin',
-        img: '../../images/icon/ttwo_my.png'
+        name: '我的卡包',
+        url: '/pages/card-package/index',
+        img: 'https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/package.png'
       },
       {
         name: '积分中心',
-        // url: '/pages/my/integral',
-        url: '/pages/activity/integral',
-        img: '../../images/icon/integral.png'
-      },
+        url: '/pages/my/integral',
+        img: 'https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/integral.png'
+      }
+    ],
+    information: [
       {
-        name: '我的卡包',
-        url: '/pages/card-package/index',
-        img: '../../images/icon/package.png'
+        name: '个人信息',
+        url: '/pages/add-adr/index',
+        img: 'https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/information.png'
       },
       {
         name: '收货地址',
         url: '/pages/address/index',
-        img: '../../images/icon/address.png'
+        img: 'https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/address.png'
       },
       {
         name: '评价中心',
         url: '/pages/evaluation/index',
-        img: '../../images/icon/evaluation.png'
-      },
-      {
-        name: '个人信息',
-        url: '/pages/add-adr/index',
-        img: '../../images/icon/information.png'
+        img: 'https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/evaluation.png',
       }
     ],
-  },
-  // 点击待付款跳转
-  onepay:function(e) {
-    wx.navigateTo({
-      url: '/pages/order-lists/index?cid=1',
-    })
-  },
-  // 点击待发货跳转
-  twopay:function(e) {
-    wx.navigateTo({
-      url: '/pages/order-lists/index?cid=2',
-    })
-  },
-  // 点击待收货跳转
-  threepay:function(e) {
-    wx.navigateTo({
-      url: '/pages/order-lists/index?cid=3',
-    })
-  },
-  // 点击已完成跳转
-  fourpay:function(e) {
-    wx.navigateTo({
-      url: '/pages/order-lists/index',
-    })
-  },
-  // 点击退款/售后跳转
-  fivepay:function(e) {
-    wx.navigateTo({
-      url: '/pages/order-lists/index?cid=4',
-    })
   },
   //点击付款 跳转到“我的订单”
   jumpOrder:function(e){
@@ -85,6 +51,8 @@ Page({
    */
   onLoad: function (options) {
     console.log(wx.getStorageSync('userInfo'));  
+
+    
     // 设置tabbar的选中状态，要在每个tab页面的onShow中设置
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
@@ -129,16 +97,18 @@ Page({
     App._post_form('User/order_list', {}, result => {
       console.log(result.info)
       var info = result.info;
+      var address = result.address;
       console.log(info);
       _this.setData({
         info: info,
+        address: address,
         isHas:false,
       })
       console.log(_this.data.isHas);
       console.log(!_this.data.info);
-      if(result.info[0]){
+      if(result.info){
         console.log(3333)
-        var goods_info = info[0].goods_info[0];
+        var goods_info = info.goods_info[0];
         var sum_price = info.sum_price;
         var total_num = info.total_num;
         console.log(info);
@@ -168,12 +138,12 @@ Page({
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
-      desc: '更好的服务', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (e) => {
         let _this = this;
         App.getUserInfo(e, () => {
           wx.setStorageSync('userInfo', e.userInfo);
-          //  console.log(e.userInfo);
+            //console.log(e.userInfo);
           _this.setData({
             isLogin: true
           })
@@ -181,6 +151,9 @@ Page({
       }
     })
   },
+
+
+
 
   /**
    * 验证是否已登录
@@ -229,11 +202,19 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
+  // 用户点击右上角分享
   onShareAppMessage: function () {
-
+    const promise = new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: navigationBarTitleText,
+        })
+      }, 2000)
+    })
+    return {
+      title:  navigationBarTitleText, // 分享标题
+      path: '/pages/share/index' // 分享路径
+    }
   },
   //  事件函数--监听页面数据刷新
   onRefrech: function(e) {

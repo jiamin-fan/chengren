@@ -1,12 +1,14 @@
 // app.js
 // 站点配置文件
 import siteinfo from './siteinfo.js';
+
 App({
   // api地址
   api_root: siteinfo.siteroot + '/api/',
 
   globalData: {
-    userInfo: null
+    userInfo: null,
+    top_selected : 0
   },
 
   /**
@@ -113,6 +115,7 @@ App({
     check_login ? _this.doLogin(request) : request();
   },
 
+  
   /**
    * post提交
    */

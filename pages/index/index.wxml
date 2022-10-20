@@ -1,137 +1,119 @@
 <!--index.wxml-->
 <view class="page">
-  <view style="width: 750rpx;height: 80rpx;"></view>
+  <!-- <view style="width: 750rpx;height: 80rpx;"></view> -->
   <!-- 新增位置信息 -->
-  <navigator class="here_address" url="/pages/location/index" wx:if="{{ isLogin }}">
+  <!-- <navigator class="here_address" url="/pages/location/index" wx:if="{{ isLogin }}">
     <view class="here_img">
-      <image src="../../images/icon/address.png" alt=""></image>
+      <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/address.png" alt=""></image>
     </view>
     <view class="here_name" wx:if="{{touch_store_name}}">{{touch_store_name}} ></view>
     <view class="here_name" wx:else>{{jingwei}} ></view>
-  </navigator>
+  </navigator> -->
   <!-- 新增位置信息 -->
-  <view class="here_address" wx:else>
+  <!-- <view class="here_address" wx:else>
     <view class="here_img" catchtap="onLogin">
-      <image src="../../images/icon/address.png" alt=""></image>
+      <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/address.png" alt=""></image>
     </view>
     <view class="here_name" catchtap="onLogin">点击获取附近门店</view>
-  </view>
+  </view> -->
   <SearchInput></SearchInput>
   <view class='swiper'>
-  <!-- 原来的： -->
-    <!-- <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imgUrls}}" wx:key="banner_id">
-        <swiper-item catchtap="{{item.classify_id?'onSwiperTap':''}}">
-          <image src="{{item.banner_img}}" id="{{item.classify_id}}" data-src="{{item.banner_img}}" ></image>
-        </swiper-item>
-      </block>
-    </swiper> -->
+   
     <!-- 改进的（自适应图片高度）： -->
     <swiper indicator-dots="{{indicatorDots}}" circular="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{Height}}">
       <block wx:for="{{imgUrls}}" wx:key="banner_id">
         <swiper-item catchtap="{{item.classify_id?'onSwiperTap':''}}">
-          <image src="{{item.banner_img}}" id="{{item.classify_id}}" data-src="{{item.banner_img}}" mode="widthFix" bindload='imgHeight' ></image>
+          <image src="{{item.banner_img}}" id="{{item.classify_id}}" data-src="{{item.banner_img}}" mode="widthFix" bindload='imgHeight'></image>
         </swiper-item>
       </block>
     </swiper>
-</view>
+  </view>
   <!--轮播图片尺寸345px * 210px 图片建议不放白色的图片-->
 
-<!-- 咨询按钮（悬浮） -->
-<!-- <view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
-  <consult></consult>
-</view> -->
 
-<!-- 原来的三个胶囊状活动入口： -->
-<view class="big_box1">
-  <navigator url="/pages/activity/index?classify_id={{item.classify_id}}" class="small_b1" wx:for="{{classify}}"><p>{{item.classify_title}}</p></navigator>
-</view>
+  <!-- 原来的三个胶囊状活动入口： -->
+  <!-- <view class="big_box1">
+    <navigator url="/pages/activity/index?classify_id={{item.classify_id}}" class="small_b1" wx:for="{{classify}}">
+      <p>{{item.classify_title}}</p>
+    </navigator>
+  </view> -->
 
-<!-- 新增模块（功能待完善）： -->
-<!-- <view class="new_bigbox1">
-  <navigator url="/pages/activity/member" class="new_bigbox1_son">
-    <view class="new_bigbox1_son_img">
-      <image src="../../images/icon/oone.png" alt=""></image>
+  <!-- 男女频分类入口 -->
+  <view class="gender_box">
+    <view class="gender_head">
+      <view class="head_title">精品</view>
+      <navigator url="/pages/all-goods/index" class="check_more" open-type="switchTab">查看全部></navigator>
     </view>
-    <p>周五会员日\n鲜活送不停</p>
-  </navigator>
-  <navigator url="/pages/activity/signin" class="new_bigbox1_son">
-    <view class="new_bigbox1_son_img">
-      <image src="../../images/icon/ttwo.png" alt=""></image>
+    <view class="gender_main">
+      <view  class="man_box" bindtap="go_allGoods" id="1">
+          <view  class="gender_title">男性精品</view>
+          <!-- <view class="gender_introduction">简介简介</view> -->
+      </view>
+      <view url="/pages/all-goods/index" class="woman_box" bindtap="go_allGoods" id="2">
+          <view class="gender_title">女性精品</view>
+          <!-- <view class="gender_introduction">简介简介</view> -->
+      </view>
     </view>
-    <p>每天签到\n领取原浆币</p>
-  </navigator>
-  <navigator url="/pages/activity/integral" class="new_bigbox1_son">
-    <view class="new_bigbox1_son_img">
-      <image src="../../images/icon/tthree.png" alt=""></image>
-    </view>
-    <p>浆湖商城\n盟友乐园</p>
-  </navigator>
-</view> -->
-
-
-<!-- 跑马灯效果 -->
-<view class="marquee_container" style="--marqueeWidth--:-26em">
-  <view class="bulletin_box_img2">
-    <image src="../../images/icon/bulletin.png" alt=""></image>
-  </view>
-  <view class="marquee_text">积分商城兑换商品将于每月25日集中发货，请耐心等待，介意慎拍</view>
-</view>
-
-<!-- 商品展示 -->
-<view class="big_box2" bindtap="activityCenter">
-  <image src="../../images/index-banner.png"></image>
-</view>
-
-<view wx:for="{{category}}" wx:key="category_id">
-
-<!-- 广告图(原来的) -->
-<!-- <view class="big_box3">
-  <image src="{{item.image_long}}"/>
-</view> -->
-<!-- 广告图(改进的) -->
-<navigator class="big_box3_new">
-  <!-- <image src="{{item.image_long}}"/> -->
-  <swiper class="big_box3_new_swiper" style="height:{{Height2}}">
-      <block>
-        <swiper-item>
-          <view class="new_swiper_view">
-            <image src="{{item.image_long}}" mode="widthFix" bindload='imgHeight2' ></image>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-</navigator>
-
-<!-- 商品列表 -->
-<view class="big_box4" wx:for="{{item.goods}}" wx:key="goods_id">
-  <view bindtap='changeGoods' class="box4_left" data-id="{{item.goods_id}}">
-    <image src="{{item.goods_images[0]}}"/>
   </view>
 
-  <!-- 原来的： -->
-  <!-- <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="box4_right1">
+  <!-- 跑马灯效果 -->
+  <view class="marquee_container" style="--marqueeWidth--:-26em">
+    <view class="bulletin_box_img2">
+      <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/bulletin.png" alt=""></image>
+    </view>
+    <view class="marquee_text">积分商城兑换商品将于每月25日集中发货，请耐心等待，介意慎拍</view>
+  </view>
+
+  <!-- 商品展示 -->
+  <view class="big_box2" bindtap="activityCenter">
+    <image mode="scaleToFill" src="{{BannerImg}}"></image>
+  </view>
+
+  <view wx:for="{{category}}" wx:key="category_id">
+
+    <!-- 广告图 -->
+    <navigator class="big_box3_new">
+     
+      <swiper class="big_box3_new_swiper" style="height:{{Height2}}">
+        <block>
+          <swiper-item>
+            <view class="new_swiper_view">
+              <image src="{{item.image_long}}" mode="widthFix" bindload='imgHeight2'></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </navigator>
+  
+    <!-- 商品列表 -->
+    <view class="big_box4" wx:for="{{item.goods}}" wx:key="goods_id">
+      <view bindtap='changeGoods' class="box4_left" data-id="{{item.goods_id}}">
+        <image src="{{item.goods_images[0]}}" />
+      </view>
+      
+    
+      <!-- 原来的： -->
+      <!-- <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="box4_right1">
     <p class="box4_right1_1">{{item.goods_name}}</p>
   </view>
   <view bindtap='changeGoods' class="box4_right2" data-id="{{item.goods_id}}">
     <p class="box4_right1_2">￥{{item.goods_price}}</p>
   </view> -->
- <!-- 改进的： -->
-  <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="box4_right1">
-    <p class="box4_right1_1">{{item.goods_name}}</p>
-    <p class="box4_right1_2">￥{{item.goods_price}}</p>
-  </view>
-  <!-- <view bindtap='changeGoods' class="box4_right2" data-id="{{item.goods_id}}">
+      <!-- 改进的： -->
+      <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="box4_right1">
+        <p class="box4_right1_1">{{item.goods_name}}</p>
+        <p class="box4_right1_2">￥{{item.goods_price}}</p>
+      </view>
+      <!-- <view bindtap='changeGoods' class="box4_right2" data-id="{{item.goods_id}}">
     <p>￥{{item.goods_price}}</p>
   </view> -->
 
-  <view class="box4_right3" id="{{item.goods_id}}"  bindtap="{{btnClicked?'addCar':''}}">
-    <image src="../../images/icon/oncar.png"/>
+      <view class="box4_right3" id="{{item.goods_id}}" bindtap="{{btnClicked?'addCar':''}}">
+        <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/oncar.png" />
+      </view>
+    </view>
+
   </view>
-</view>
-
-</view>
 
 
 </view>
-

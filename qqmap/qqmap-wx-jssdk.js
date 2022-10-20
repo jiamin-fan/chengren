@@ -16,7 +16,7 @@ var ERROR_CONF = {
     WX_ERR_CODE: 1000,
     WX_OK_CODE: 200
 };
-var BASE_URL = 'https://apis.map.qq.com/ws/';
+// var BASE_URL = 'https://apis.map.qq.com/ws/';
 var URL_SEARCH = BASE_URL + 'place/v1/search';
 var URL_SUGGESTION = BASE_URL + 'place/v1/suggestion';
 var URL_GET_GEOCODER = BASE_URL + 'geocoder/v1/';

@@ -8,9 +8,42 @@
   flex-direction: row;
   font-family: "Microsoft YaHei"
 }
+.top{
+  width: 100%;
+  height: 100rpx;
+  background-color: #f4f4f4;
+  display: flex;
+  font-size: 32rpx;
+  justify-content: space-around;
+  line-height: 100rpx;
+ 
+}
+.top view{
+  flex:1;
+  height: 100%;
+  text-align: center;
+}
+.top_normal{
+ color: black;
+ border: none;
+}
+.top view:nth-child(1){
+  flex: 0.6;
+}
+.top_selected{
+color: orangered;
+border-bottom: 8rpx solid orangered;
+z-index: 999;
+
+}
+
+
+
+
+
 .left{
-  width: 25.3%;
-  font-size: 24rpx;
+  width: 23%;
+  font-size: 26rpx;
   background-color: #f4f4f4;
   /* padding-left: 20rpx; */
 }

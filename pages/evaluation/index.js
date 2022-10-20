@@ -11,14 +11,6 @@ Page({
   swichNav: function (e) {
   console.log(e);
   var that = this;
-  // if (this.data.currentTab === e.target.dataset.current) {
-  // // return false;
-  // } else {
-  // that.setData({
-  // currentTab: e.target.dataset.current,
-  // })
-  // }
-
   if (e.target.dataset.current == 0) {
     that.setData({
       currentTab: 0,
@@ -49,7 +41,6 @@ Page({
   // 跳转立即评价
   addEvaluation: function(e) {
     var order_id= e.currentTarget.dataset.id;
-    // console.log(e.currentTarget.dataset.id);
     wx.navigateTo({
       url: './add?order_id='+order_id,
     });
@@ -67,15 +58,6 @@ Page({
   }, false, () => {
     wx.hideLoading();
   });
-  // App._post_form('comment/detail', {type: 1}, result => {
-  //   var data = result.data;
-  //   var order_id = data.order_id;
-  //  _this.setData({
-  //    order_id: order_id,
-  //  });
-  // }, false, () => {
-  //   wx.hideLoading();
-  // });
 
   // 自适应选项卡
   this.setData({

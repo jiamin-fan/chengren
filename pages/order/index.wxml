@@ -1,7 +1,8 @@
 <view wx:if="{{ goods_list.length }}">
+  <view style="width: 750rpx;height: 20rpx; background-color: white;"></view>
   <!-- <form bindsubmit="pay"> -->
     <!-- 快递配送：配送地址 -->
-    <!-- <view wx:if="{{ curDelivery == DeliveryTypeEnum.EXPRESS.value }}" class='list' bindtap='onSelectAddress'>
+    <view wx:if="{{ curDelivery == DeliveryTypeEnum.EXPRESS.value }}" class='list' bindtap='onSelectAddress'>
       <view class='list-left'>
         <view class="left-top">
           <text class="top-left">收货地址</text>
@@ -10,14 +11,14 @@
         </view>
         <text class="list1-home">{{address.region.province}} {{address.region.city}} {{address.region.region}} {{address.detail}}</text>
       </view>
-      <image src='../../images/icon/more.png'/>
-    </view> -->
+      <image src='https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/more.png'/>
+    </view>
 
     <!-- 切换 -->
-    <view class="tab_box" catchtap="changeOil">
+    <!-- <view class="tab_box" catchtap="changeOil">
       <view class='{{num==1?"tab_box_1":"tab_box_1a"}}' data-num='1'>门店自提</view>
       <view class='{{num==2?"tab_box_2":"tab_box_2a"}}' data-num='2'>同城快送</view>
-    </view>
+    </view> -->
 
     <!-- 快递配送：配送地址 -->
   <view wx:if="{{ curDelivery == DeliveryTypeEnum.EXPRESS.value }}" catchtap="onSelectAddress" class='{{num==2?"flow-delivery":"disp_none"}}'>
@@ -52,12 +53,12 @@
     <view>
 
       <!-- 同城快送（待用） -->
-      <view class='{{num==2?"box222":"disp_none"}}'>
+      <!-- <view class='{{num==2?"box222":"disp_none"}}'>
         <view class="new_box1">
           <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">配送门店</text>
           <text class="f-30">{{store_name}}</text>
           <view class="new_box1_image" data-phonenum="{{phonenum}}" catchtap='freeTell'>
-            <image src="../../images/icon/call.png" alt=""></image>
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/call.png" alt=""></image>
           </view>
         </view>
         <view class="flow-all-list dis-flex new_box2">
@@ -68,14 +69,14 @@
             </picker>
           </view>
         </view>
-      </view>
+      </view> -->
       <!-- 自提门店（待用） -->
-      <view class='{{num==1?"box111":"disp_none"}}'>
+      <!-- <view class='{{num==1?"box111":"disp_none"}}'>
         <view class="new_box1">
           <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">自提门店</text>
           <text class="f-30">{{store_name}}</text>
           <view class="new_box1_image" data-phonenum="{{phonenum}}" catchtap='freeTell'>
-            <image src="../../images/icon/call.png" alt=""></image>
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/call.png" alt=""></image>
           </view>
         </view>
         <view class="box2_son3">
@@ -83,11 +84,8 @@
           <view class="box2_son3_1">
             <view class="box2_son3_left">门店地址：</view>
             <view class="box2_son3_right1">{{details}}</view>
-            <!-- <navigator class="box2_son3_right2" url="/pages/location/navigation">
-              <image src="../../images/icon/adr.png"/>
-            </navigator> -->
             <view class="box2_son3_right2" data-lat="{{lat}}" data-lng="{{lng}}" data-name="{{store_name}}" data-details="{{details}}" bindtap="seeMap" >
-              <image src="../../images/icon/adr.png"/>
+              <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/adr.png"/>
             </view>
           </view>
           <view class="box2_son3_2">
@@ -95,7 +93,7 @@
             <view class="box2_son3_right1">每天{{b_time}}</view>
           </view>
         </view>
-      </view>
+      </view> -->
 
       <view class="checkout_list" wx:for="{{ goods_list }}" wx:key="this">
         <form bindsubmit="onTargetGoods" data-id="{{ item.goods_id }}" report-submit="true">
@@ -147,13 +145,13 @@
 
     <!-- 商品金额 -->
   <view class="flow-all-money b-f m-top20">
-    <view class="flow-all-list dis-flex">
+    <!-- <view class="flow-all-list dis-flex">
       <text class="flex-five">配送方式</text>
       <view class="flex-five t-r">
         <text wx:if="{{num==1}}">门店自提</text>
         <text wx:else>同城快送</text>
       </view>
-    </view>
+    </view> -->
     <view class="flow-all-list dis-flex">
       <text class="flex-five">订单总金额：</text>
       <view class="flex-five t-r">
@@ -190,7 +188,7 @@
       </view>
     </view>
     <!-- 配送费用 -->
-    <view wx:if="{{ curDelivery == DeliveryTypeEnum.EXPRESS.value }}" class="dis-flex flow-all-list">
+    <!-- <view wx:if="{{ curDelivery == DeliveryTypeEnum.EXPRESS.value }}" class="dis-flex flow-all-list">
       <text class="flex-five">配送费用：</text>
       <view class="flex-five t-r">
         <view wx:if="{{address.address_id}}">
@@ -201,7 +199,7 @@
           <text class="col-7">请先选择配送地址</text>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
 
 

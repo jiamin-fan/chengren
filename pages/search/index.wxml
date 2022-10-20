@@ -3,7 +3,7 @@
   <view class="search_input">
     <!-- 搜索框 -->
     <view class="search" >
-      <image src="../../images/icon/search.png"/>
+      <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/search.png"/>
       <input type="text" placeholder="搜索商品" bindconfirm="search"/>
     </view> 
     <!-- 排序 -->
@@ -12,10 +12,10 @@
       <view class="price {{change2}}" bindtap="priceSort">
         <text>按价格排序</text>
         <view class="price-icon">
-          <view class="up" wx:if="{{isUp}}"><image src="../../images/icon/up1.png"></image></view>
-          <view class="up" wx:else><image src="../../images/icon/up2.png"></image></view>
-          <view class="down" wx:if="{{isDown}}"><image src="../../images/icon/down1.png"></image></view>
-          <view class="down" wx:else><image src="../../images/icon/down2.png"></image></view>
+          <view class="up" wx:if="{{isUp}}"><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/up1.png"></image></view>
+          <view class="up" wx:else><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/up2.png"></image></view>
+          <view class="down" wx:if="{{isDown}}"><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/down1.png"></image></view>
+          <view class="down" wx:else><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/down2.png"></image></view>
         </view>
       </view>
      
@@ -34,7 +34,7 @@
       <view class="mains-4">
         <view bindtap='changeGoods' data-id="{{item.goods_id}}" class="mains-4-txt">￥{{item.goods_price}}</view>
         <view class="mains-4-img" bindtap="{{btnClicked?'addCar':''}}" id="{{item.goods_id}}">
-          <image src="../../images/icon/oncar.png"></image>
+          <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/oncar.png"></image>
         </view>
       </view>
     </view>
@@ -42,7 +42,7 @@
   <view wx:else>
     <view class="none-search" >
       <view class="title-box">
-          <image src="../../images/icon/search.png"></image>
+          <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/search.png"></image>
               抱歉，没有找到相关商品~
       </view>
     </view>
@@ -53,9 +53,9 @@
     <!-- 右下悬浮按钮 -->
     <view class="button-box">
     <view class="button-1">
-      <view class="btn-img"><image bindtap="addIndex" src="../../images/icon/index.png"/></view>
+      <view class="btn-img"><image bindtap="addIndex" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/index.png"/></view>
     </view>
     <view class="button-1" style="margin-top: 40rpx;">
-      <view class="btn-img"><image bindtap="addLike" src="../../images/icon/car.png"/></view>
+      <view class="btn-img"><image bindtap="addLike" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/car.png"/></view>
     </view>
   </view>

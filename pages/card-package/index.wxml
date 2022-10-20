@@ -32,7 +32,6 @@
       <view class="tab1_box" wx:for="{{unusered}}">
         <view class="box_up">
           <view class="up_1">
-            <!-- <image src="{{item.cardimg}}"/> -->
             <view class="up_1_view" wx:if="{{item.coupon_type == 10}}">
               <text class="up_1_view_first">￥</text>
               <text class="up_1_view_second">{{item.reduce_price}}</text>
@@ -57,7 +56,7 @@
     <block wx:if="{{false}}">
       <view class="tab2_box" >
         <view class="box_image">
-        <image src="../../images/icon/index.png"/>
+        <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/index.png"/>
         </view>
         <text>没有已使用的优惠券</text>
       </view>
@@ -81,7 +80,7 @@
           <view class="up_3" wx:if="{{item.expire_type == 10}}">领取后{{item.expire_day}}天内可用</view>
           <view class="up_3" wx:else>{{item.create_time}}-{{item.end_time}}</view>
           <view class="be-use">
-            <image src="../../images/icon/be-use.png"></image>
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/be-use.png"></image>
           </view>
         </view>
       </view>
@@ -93,7 +92,7 @@
     <block wx:if="{{false}}">
       <view class="tab2_box">
         <view class="box_image">
-        <image src="../../images/icon/index.png"/>
+        <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/index.png"/>
         </view>
         <text>没有已过期的优惠券</text>
       </view>
@@ -117,7 +116,7 @@
           <view class="up_3" wx:if="{{item.expire_type == 10}}">领取后{{item.expire_day}}天内可用</view>
           <view class="up_3" wx:else>{{item.create_time}}-{{item.end_time}}</view>
           <view class="be-use">
-            <image src="../../images/icon/be-expried.png"></image>
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/be-expried.png"></image>
           </view>
         </view>
       </view>

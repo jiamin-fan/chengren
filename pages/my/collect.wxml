@@ -1,0 +1,16 @@
+<!--pages/my/collect.wxml-->
+<view class="page-box">
+  <view class="collect-box" wx:for="{{goods}}" data-id="{{item.goods_id}}" bindtap='changeGoods'>
+    <view class="box-image">
+      <image src="{{item.goods_images}}"></image>
+    </view>
+    <view class="box-texts">
+      <view class="text01">{{item.goods_name}}</view>
+      <view class="text02">已售{{item.goods_actual}}件</view>
+      <view class="text03">
+        <view class="text03-1">￥{{item.goods_price}}</view>
+      </view>
+    </view>
+    <!-- <view class="del" catchtap="cancleCollect" data-id="{{item.goods_id}}" data-index="{{index}}">取消收藏</view> -->
+  </view>
+</view>

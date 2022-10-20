@@ -23,7 +23,7 @@ Page({
 
   //  页面跳转到详情页
   switchToDetail: function(e) {
-    // console.log(e.currentTarget.dataset.id);
+    
     wx.navigateTo({
       url: '/pages/good/index?goods_id=' + e.currentTarget.dataset.id,
     })
@@ -31,7 +31,7 @@ Page({
 
   //勾选商品
   onSelectCard: function(e) {
-    console.log(e);
+  
     //选中
     var index = parseInt(e.currentTarget.dataset.index);
     var goods_id = e.currentTarget.dataset.id;
@@ -49,7 +49,7 @@ Page({
     
     if(!selected){
       selectedgood.push(goods_id);
-      console.log(selectedgood);
+     
       selectcount ++;
       wx.setStorageSync('selectedgood', selectedgood);
       this.toCalculate(count);
@@ -64,7 +64,7 @@ Page({
         if(selectedgood[i] == goods_id){
           selectedgood.splice(i,1)
         }
-        console.log(selectedgood);
+        
       };
       selectcount --;
       wx.setStorageSync('selectedgood', selectedgood);
@@ -77,7 +77,7 @@ Page({
         selectedgood: selectedgood
       });
     }
-    console.log(selectcount);
+  
     if (carts.length == selectcount) {
       selectAll = true
     }
@@ -101,7 +101,7 @@ Page({
     })
     if (this.data.selectAll) {
       // selectedgood = [];
-      console.log(selectedgood);
+     
       for (var i in carts) {
         let goods_id = carts[i].goods_id;
         carts[i].selected = true;
@@ -111,7 +111,7 @@ Page({
         selectedgood.push(goods_id);
         selectcount++;
       }
-      console.log(selectedgood);
+     
       wx.setStorageSync('selectedgood', selectedgood);
       this.setData({
         carts: carts,
@@ -127,7 +127,7 @@ Page({
         sum = 0;
       }
       wx.setStorageSync('selectedgood', selectedgood);
-      console.log(selectedgood);
+    
       this.setData({
         carts: carts,
         count: count,
@@ -144,22 +144,20 @@ Page({
   /* 点击减号 */
   bindMinus: function(e) {
     let _this = this;
-    // console.log(e);
+
     var index = parseInt(e.currentTarget.dataset.index);
     var goods_id = e.currentTarget.dataset.id;
     var carts = _this.data.carts;
     var goods_number = _this.data.carts[index].goods_number;
-    console.log(goods_number);
+    
     //是否在选中状态
     var selected = carts[index].selected;
     var goods_price = parseFloat(carts[index].goods_price);
     var count = _this.data.count - goods_price;
     if (selected) {
-      console.log(_this.data.carts[index].goods_number)
-      console.log(goods_number)
+     
       if(_this.data.carts[index].goods_number != 1){
-        console.log(123456789)
-        console.log(count)
+       
         this.toCalculate(count);
         _this.setData({
           // count: count,
@@ -170,7 +168,7 @@ Page({
     // 如果大于1时，才可以减
     if (goods_number > 1) {
       goods_number --;
-      console.log("jianyi")
+    
     }
     // 只有大于一件的时候，才能normal状态，否则disable状态
     var minusStatus = goods_number <= 1 ? 'disabled' : 'normal';
@@ -258,7 +256,7 @@ Page({
     })
       
     }else{
-      console.log(156134)
+    
       return false 
     }
   },
@@ -354,7 +352,7 @@ Page({
 
   //删除事件
  del: function (e) {
-   console.log(e);
+   
    let _this = this;
    var index = e.currentTarget.dataset.index;
    var goods_id = e.currentTarget.dataset.id;
@@ -403,9 +401,6 @@ Page({
  //计算总价
  toCalculate(count){
     let _this = this;
-    // var count = count.toFixed(2);
-    console.log(count); 
-
     App._get('Cart/total', {"count": count}, function(result) {
       // 将数值与状态写回
       var discount = result.data.discount;
@@ -423,59 +418,14 @@ Page({
       reduce_price: reduce_price
      });
    })
-
-    // var tdiscount = 0; // truediscount实际优惠的价格
-    // var vdiscount = 0; // virtualdiscount虚拟优惠的价格，用来比较
-    // var treduce_price = 0;
-    // var vreduce_price = 0;
-    // var coupon = this.data.coupon;
-    // var isDiscount = false;
-    // tdiscount = count;
-    // if(coupon){
-    //   for(let i = 0;i<coupon.length;i++){
-    //     console.log(count)
-    //     console.log(coupon[i].min_price)
-    //     console.log(count > coupon[i].min_price)
-    //     //智障微信开发者工具
-    //     let compare = count > coupon[i].min_price
-    //     if(compare){
-    //       console.log(i)
-    //       isDiscount = true;
-    //       if(coupon[i].coupon_type == 10){
-    //         vdiscount = count - parseFloat(coupon[i].reduce_price);
-    //         vreduce_price = coupon[i].reduce_price;
-    //       }else{
-    //         vdiscount = (count *parseFloat(coupon[i].discount/100)).toFixed(2);
-    //         // console.log(vdiscount);
-    //         // console.log(tdiscount);
-    //         vreduce_price = (count - vdiscount).toFixed(2);
-    //       } 
-    //       if(vdiscount < tdiscount){
-    //         // console.log(123);
-    //         tdiscount = vdiscount;
-    //         treduce_price = vreduce_price;
-    //       }
-    //       // console.log(tdiscount);
-    //       // console.log(treduce_price);
-    //     }
-    //   }
-    // }
-    // this.setData({
-    //   count: count,
-    //   discount: tdiscount,
-    //   isDiscount: isDiscount,
-    //   reduce_price: treduce_price
-    // })
-    
-    // //return tdiscount;
  },
  
 
  //跳转确认订单页面
   goOrder(){
-    console.log(this.data.selectedgood);
+ 
     if(this.data.selectedgood.length > 0 ){
-      console.log(12315)
+     
       wx.navigateTo({
         url: "/pages/order/index?order_type=cart&cart_ids="+this.data.selectedgood,
       })
@@ -512,7 +462,6 @@ Page({
       var carts = data.carts; //购物车的信息
       var sum = 0; //商品数量
       var count = 0;  //商品总价
-      //console.log(carts.length);
       var selectedgood = [];
       var selectcount = 0;
       var isBlank = true;
@@ -526,7 +475,7 @@ Page({
       }
       if (wx.getStorageSync('selectedgood')){
         selectedgood = wx.getStorageSync('selectedgood');
-        console.log(selectedgood);
+        
         if(selectedgood.length == carts.length && selectedgood.length != 0){
           _this.setData({
             selectAll: true
@@ -534,7 +483,7 @@ Page({
        }
        
       }
-      console.log(selectedgood)
+     
       for(let i=0;i<carts.length;i++){
         if(selectedgood){
           for(let j = 0;j<selectedgood.length;j++){
@@ -560,7 +509,7 @@ Page({
       }
      
       _this.toCalculate(count);
-      console.log(carts);
+     
       _this.setData({
         carts: carts,
         // coupon: coupon,
@@ -596,5 +545,13 @@ Page({
        wx.stopPullDownRefresh() //停止下拉刷新
      },1500);
    },
+     // 用户点击右上角分享
+  onShareAppMessage: function () {
+    return {
+    title: 'title', // 分享标题
+    desc: 'desc', // 分享描述
+    path: 'pages/cart/index' // 分享路径
+    }
+  }
 
 })

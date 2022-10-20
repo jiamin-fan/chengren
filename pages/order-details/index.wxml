@@ -50,7 +50,7 @@
         <view style="font-size:28rpx;">07:55</view>
         <view style="font-size:22rpx;">7月3日</view>
       </view>
-      <view class="new-icon"><image src="../../images/icon/wuliu1.png"></image></view>
+      <view class="new-icon"><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/wuliu1.png"></image></view>
       <view class="new-position">广州转运中心公司 已发出，下一站 广东省广州市天河区车陂</view>
     </view>
   </view>

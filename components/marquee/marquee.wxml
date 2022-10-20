@@ -1,0 +1,19 @@
+<!--components/marquee/marquee.wxml-->
+<view class="marquee_container" style="--marqueeWidth--:{{-marquee.width}}em">
+  <view class="marquee_text">
+    <image src="/images/good/head.jpg"></image>
+    <view class="main">
+      <view class="name">搓***</view>
+      <view class="detail">套餐：囤货【十箱共60瓶】</view>
+    </view>
+    <button></button>
+  </view>
+  <view class="marquee_text">
+    <image src="/images/good/head.jpg"></image>
+    <view class="main">
+      <view class="name">搓***</view>
+      <view class="detail">套餐：囤货【十箱共60瓶】</view>
+    </view>
+    <button></button>
+  </view>
+</view>

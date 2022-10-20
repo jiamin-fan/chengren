@@ -36,11 +36,13 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "showES6CompileOption": false
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.18.0",
-  "appid": "wxca71fb607b4de47a",
   "projectname": "personal-modify",
   "debugOptions": {
     "hidedInDevtools": []
@@ -48,6 +50,7 @@
   "scripts": {},
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+  "appid": "wx4df4fe04484647b1",
   "condition": {
     "plugin": {
       "list": []

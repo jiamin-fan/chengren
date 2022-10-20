@@ -1,50 +1,64 @@
 <view class="cates">
-    <SearchInput></SearchInput>
-
-    <view class='productNav'>
-  <!-- 左侧 -->
-  <view class='left'>
-    <view wx:for="{{classfy}}" class="{{active==classfy[index]?'selected':'normal'}}" id="{{classfy[index]}}" bindtap='switchNav'>{{category[index].name}}</view>
+  <SearchInput></SearchInput>
+  <!-- 顶部 -->
+  <view class='top'>
+    <view id="0" class="{{top_active==0?'top_selected':'top_normal'}}" bindtap="topChoose">全部分类</view>
+    <view id="1" class="{{top_active==1?'top_selected':'top_normal'}}" bindtap="topChoose">男性精品</view>
+    <view id="2" class="{{top_active ==2 ?'top_selected':'top_normal'}}" bindtap="topChoose">女性精品</view>
   </view>
-  <!-- 右侧 -->
-  <view class='right'>
-      <!-- 悬浮按钮 -->
-    <view class="button-box">
-    <view class="button-1">
-      <view class="btn-img"><image bindtap="addIndex" src="../../images/icon/index.png"/></view>
-    </view>
-    <view class="button-1" style="margin-top: 40rpx;">
-      <view class="btn-img"><image bindtap="addLike" src="../../images/icon/car.png"/></view>
-    </view>
-    </view>
+  <view class='productNav'>
 
-    <view class='type'>
-      <!-- current:当前所在滑块的 index -->
-      <!-- vertical:滑动方向是否为纵向 -->
-      <swiper class="swiper-item" current='{{currentTab}}' vertical='{{true}}' >
-        <!-- catchtouchmove 阻止弹窗后滚动穿透 -->
-        <swiper-item wx:for="{{category}}" wx:key="category_id"  catchtouchmove="false">
-          <scroll-view scroll-y="true" class="scroll">
-          <text class="delimiter">{{item.name}}</text>
-          <view style="padding-right:20rpx;padding-bottom: 160rpx;">
-            <image src="{{item.image_short}}" class="banner1"></image>
-            <view>
-              <view class="big_box4" wx:for="{{item.son}}" wx:key="goods_id" wx:for-item="item">
-                <view url="/pages/good/index" class="box4_left" bindtap='changeGoods' data-id="{{item.goods_id}}">
-                  <image src="{{item.goods_images[0]}}" class="left_img"/>
-                </view>
-                <view url="/pages/good/index" class="box4_right1" bindtap='changeGoods' data-id="{{item.goods_id}}"><p>{{item.goods_name}}</p></view>
-                <view class="box4_right2" bindtap='changeGoods' data-id="{{item.goods_id}}"><p>￥{{item.goods_price}}</p></view>
-                <view class="box4_right3" id="{{item.goods_id}}" bindtap="{{btnClicked?'addCar':''}}">
-                  <image src="../../images/icon/oncar.png"/>
+    <!-- 左侧 -->
+    <view class='left'>
+      <view wx:for="{{classfy}}" class="{{active==classfy[index]?'selected':'normal'}}" id="{{classfy[index]}}" bindtap='switchNav'>{{category[index].name}}</view>
+    </view>
+    <!-- 右侧 -->
+    <view class='right'>
+      <!-- 悬浮按钮 -->
+      <view class="button-box">
+        <view class="button-1">
+          <view class="btn-img">
+            <image bindtap="addIndex" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/index.png" />
+          </view>
+        </view>
+        <view class="button-1" style="margin-top: 40rpx;">
+          <view class="btn-img">
+            <image bindtap="addLike" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/car.png" />
+          </view>
+        </view>
+      </view>
+
+      <view class='type'>
+        <!-- current:当前所在滑块的 index -->
+        <!-- vertical:滑动方向是否为纵向 -->
+        <swiper class="swiper-item" current='{{currentTab}}' vertical='{{true}}'>
+          <!-- catchtouchmove 阻止弹窗后滚动穿透 -->
+          <swiper-item wx:for="{{category}}" wx:key="category_id" catchtouchmove="false">
+            <scroll-view scroll-y="true" class="scroll">
+              <!-- <text class="delimiter">{{item.name}}</text> -->
+              <view style="padding-right:20rpx;padding-bottom: 160rpx;margin-top: 4rpx;">
+                <image src="{{item.image_short}}" class="banner1"></image>
+                <view>
+                  <view class="big_box4" wx:for="{{item.son}}" wx:key="goods_id" wx:for-item="item">
+                    <view url="/pages/good/index" class="box4_left" bindtap='changeGoods' data-id="{{item.goods_id}}">
+                      <image src="{{item.goods_images[0]}}" class="left_img" />
+                    </view>
+                    <view url="/pages/good/index" class="box4_right1" bindtap='changeGoods' data-id="{{item.goods_id}}">
+                      <p>{{item.goods_name}}</p>
+                    </view>
+                    <view class="box4_right2" bindtap='changeGoods' data-id="{{item.goods_id}}">
+                      <p>￥{{item.goods_price}}</p>
+                    </view>
+                    <view class="box4_right3" id="{{item.goods_id}}" bindtap="{{btnClicked?'addCar':''}}">
+                      <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/oncar.png" />
+                    </view>
+                  </view>
                 </view>
               </view>
-            </view>
-          </view>
-        </scroll-view>
-        </swiper-item>
-      </swiper>
+            </scroll-view>
+          </swiper-item>
+        </swiper>
+      </view>
     </view>
   </view>
-</view>
 </view>

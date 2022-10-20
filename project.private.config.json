@@ -39,7 +39,7 @@
         {
           "name": "商品详情",
           "pathName": "pages/good/index",
-          "query": "",
+          "query": "goods_id=20",
           "scene": null
         },
         {
@@ -153,6 +153,36 @@
         {
           "name": "积分商城",
           "pathName": "pages/activity/integral",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/good/good",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/good/good",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/good/good",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/all-goods/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/good/good",
           "query": "",
           "scene": null
         }

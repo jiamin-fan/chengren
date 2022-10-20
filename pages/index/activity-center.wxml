@@ -1,6 +1,6 @@
 <!--pages/index/activity-center.wxml-->
 <view class="center_box1">
-  <view class="box1_img"><image src="../../images/coupon-img.png"></image></view>
+  <view class="box1_img"><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/coupon-img.png"></image></view>
 </view>
 <!-- 已登录 -->
 <view class="center_box2" wx:if="{{ isLogin }}">
@@ -67,9 +67,9 @@
   <!-- 右下角悬浮按钮 -->
   <view class="button-box">
     <view class="button-1">
-      <view class="btn-img"><image bindtap="addIndex" src="../../images/icon/index.png"/></view>
+      <view class="btn-img"><image bindtap="addIndex" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/index.png"/></view>
     </view>
     <view class="button-1" style="margin-top: 40rpx;">
-      <view class="btn-img"><image bindtap="addLike" src="../../images/icon/car.png"/></view>
+      <view class="btn-img"><image bindtap="addLike" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/car.png"/></view>
     </view>
   </view>

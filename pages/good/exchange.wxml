@@ -4,7 +4,7 @@
       <block>
         <swiper-item>
           <view class="new_swiper_view">
-            <image src="../../images/icon/tthree.png" mode="widthFix" bindload='imgHeight2' ></image>
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/tthree.png" mode="widthFix" bindload='imgHeight2' ></image>
           </view>
         </swiper-item>
       </block>
@@ -17,7 +17,7 @@
   <view class="box2_bottom">
     <view class="box2_bottom_left">2100积分</view>
     <view class="box2_bottom_right">
-      <view class="share_box"><image src="../../images/icon/share.png"></image>
+      <view class="share_box"><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/share.png"></image>
       </view><view class="share_name">分享</view>
     </view>
   </view>
@@ -37,13 +37,13 @@
 <view class="box4">
   <view class="box4_left">
       <view class="box4_left_box">
-        <view class="box4_left_img"><image src="../../images/icon/custom.png"></image></view>
+        <view class="box4_left_img"><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/custom.png"></image></view>
         <view class="box4_left_name">联系客服</view>
       </view>
   </view>
   <view class="box4_right" bindtap="changeAdd">
     <view class="box4_right_box">
-      <view class="box4_right_img"><image src="../../images/icon/addcar.png"></image></view>
+      <view class="box4_right_img"><image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/addcar.png"></image></view>
       <view class="box4_right_name">立即兑换</view>
     </view>
   </view>
@@ -55,7 +55,7 @@
   <view class="wxshare">
     <view class="add_box1">
       <view class="add_box1_1">
-        <image src="../../images/icon/tthree.png"></image>
+        <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/tthree.png"></image>
       </view>
       <view class="add_box1_2">2100积分</view>
       <view class="add_box1_3">已选</view>

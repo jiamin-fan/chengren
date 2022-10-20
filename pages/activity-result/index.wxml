@@ -2,7 +2,7 @@
 <!-- 搜索框 -->
   <view class="search_input">
     <view class="search">
-      <image src="../../images/icon/search.png"/>
+      <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/search.png"/>
       <input type="text" placeholder="搜索商品"/>
     </view>
   </view>
@@ -17,7 +17,7 @@
       <view class="mains-4">
         <navigator url="/pages/good/index" class="mains-4-txt">￥{{item.price}}</navigator>
         <view class="mains-4-img" bindtap="addCar">
-          <image src="../../images/icon/oncar.png"></image>
+          <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/oncar.png"></image>
         </view>
       </view>
     </view>
@@ -26,12 +26,12 @@
     <view class="button-box">
       <view class="button-1">
         <button class="kf_button" bindtap="addIndex">
-          <image src="../../images/icon/onindex.png"/>
+          <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/onindex.png"/>
         </button> 
       </view>
       <view class="button-2">
         <button class="kf_button" bindtap="addLike">
-          <image src="../../images/icon/oncar1.png"/>
+          <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/oncar1.png"/>
         </button> 
       </view>
     </view>

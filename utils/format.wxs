@@ -1,0 +1,11 @@
+// 格式化商品名
+var formatGoodsName = function(goodName){
+  if(goodName.length>20){
+    return goodName.slice(0,20)+'…' 
+  }else{
+    return goodName
+  }
+ }
+ module.exports={
+  formatGoodsName:formatGoodsName
+ }

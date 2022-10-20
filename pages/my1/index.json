@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "consult":"../../components/consult/consult"
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "个人中心",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#e6e6e6"
+}
