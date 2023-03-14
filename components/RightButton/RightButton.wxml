@@ -1,9 +1,9 @@
 
     <view class="button-box">
     <view class="button-1">
-      <view class="btn-img"><image bindtap="addIndex" src="../../images/icon/index.png"/></view>
+      <view class="btn-img"><image bindtap="addIndex" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/index.png"/></view>
     </view>
     <view class="button-1" style="margin-top: 40rpx;">
-      <view class="btn-img"><image bindtap="addLike" src="../../images/icon/car.png"/></view>
+      <view class="btn-img"><image bindtap="addLike" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/car.png"/></view>
     </view>
     </view>

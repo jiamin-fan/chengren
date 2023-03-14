@@ -16,7 +16,14 @@
   padding: 0 15rpx;
   font-size: 24rpx;
 }
-
+/* 关闭二维码弹框 */
+.erimg-close{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  right: -24rpx;
+  top: -30rpx;
+}
 .header view text {
   display: block;
 }

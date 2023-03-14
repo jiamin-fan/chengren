@@ -1,138 +1,82 @@
-<!-- 已登录 -->
-<view wx:if="{{ isLogin }}" class="user-info2">
-  <navigator url="/pages/add-adr/index" style="z-index: 1;">
-    <view class="user-img" style="display:block;">
+<view style="background:-webkit-linear-gradient(top,#d26500,#be8c5d 30%,#e0e0e0);padding-bottom: 200rpx;">
+<!-- <view> -->
+  <!-- 已登录 -->
+  <view wx:if="{{ isLogin }}" class="user-info">
+    <navigator url="/pages/add-adr/index"><view class="user-img" style="display:block;">
       <open-data type="userAvatarUrl" class="image"></open-data>
     </view>
   </navigator>
-  <navigator url="/pages/add-adr/index" class="name"><open-data type="userNickName" style="display:block;"></open-data></navigator>
-  
-  <!-- 下面两个view是背景图片（模糊） -->
-  <!-- <view class="user_bacimg" style="display:block;">
-    <open-data type="userAvatarUrl" class="image"></open-data>
+    <navigator url="/pages/add-adr/index" class="name"><open-data type="userNickName" style="display:block;"></open-data></navigator>
   </view>
-  <view class="user_bacimg2"></view> -->
-</view>
+  <!-- 未登录 -->
+  <view wx:else class="user-info">
+    <button class="my-button1" catchtap="onLogin"> 登录/注册 </button>
+  </view>
+
+ 
 
 
-<!-- 未登录 -->
-<view wx:else class="user-info">
-  <button class="my-button1" catchtap="onLogin"> 登录/注册 </button>
-</view>
-
-<!-- 咨询按钮（悬浮） -->
-<!-- <view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
-  <consult></consult>
-</view> -->
-
-<view class='order'>
-<!-- 订单 已登录显示 -->
-  <view wx:if="{{ isLogin }}">
-    <!-- <view class='my-order' wx:if="{{!isHas}}"> -->
-    <view class='my-order'>
+  <view class='order'>
+  <!-- 订单 已登录显示 -->
+    <view wx:if="{{ isLogin }}">
+      <view class='my-order' wx:if="{{!isHas}}">
+        <text>我的订单</text>
+        <view class='more' data-url="/pages/order-lists/index" bindtap="onTargetMenus">
+          <text style="font-size:26rpx;">查看全部订单</text>
+          <view class='more-icon'></view>
+        </view>
+        <view class="all-order">暂无待付款的订单</view>
+      </view>
+      <view class='my-order' style="height:380rpx;" wx:else>
+        <text>我的订单</text>
+        <view class='more' data-url="/pages/order-lists/index" bindtap="onTargetMenus">
+          <text style="font-size:26rpx;">查看全部订单</text>
+          <view class='more-icon'></view>
+        </view>
+        <view class="all-order2">
+          <view class="order2_1">
+            <view class="order2_1_1">待付款</view>
+            <view class="order2_1_2" data-id="{{info.order_id}}" bindtap="jumpOrder"><button>立即付款</button></view>
+          </view>
+          <view class="order2_2">
+            <view class="order2_2_1"><image src="{{goods_info.goods_image}}"></image></view>
+            <view class="order2_2_2">{{goods_info.goods_name}}</view>
+            <view class="order2_2_3">
+              <view class="order2_2_3_1">￥{{info.total_price}}</view>
+              <view class="order2_2_3_2">共{{info.total_goodNum}}件</view>
+            </view>
+          </view>
+          <view class="order2_3">{{info.name}}　{{info.phone}}</view>
+          <view class="order2_4">{{address.dizhi}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 订单 未登录显示 -->
+    <view class='my-order' wx:key="this" wx:else>
       <text>我的订单</text>
-      <view class='more' data-url="/pages/order-lists/index" bindtap="onTargetMenus">
+      <view class='more' data-url="/pages/order-list/index" bindtap="onTargetMenus">
         <text style="font-size:26rpx;">查看全部订单</text>
         <view class='more-icon'></view>
       </view>
-      <!-- 改之前： -->
-      <!-- <view class="all-order">暂无进行中的订单</view> -->
-      <!-- 改进后（能跳转正常访问）： -->
-      <view class="fiveson">
-        <view class="fiveson-son" bindtap="onepay">
-          <view class="son-icon">
-            <image src="../../images/icon/oneimg.png"></image>
+      <view class="all-order">登录后查看</view>
+    </view>
+    <view class="big-box">
+      <text class="my-title">会员中心</text>
+      <view class='logistics'>
+          <view wx:for="{{ Members }}" wx:key="this" data-url="{{item.url}}" bindtap="onTargetMenus" class='log-box'>
+            <image src='{{item.img}}'/>
+            <text>{{item.name}}</text>
           </view>
-          <view class="son-name">待付款</view>
-        </view>
-        <view class="fiveson-son" bindtap="twopay">
-          <view class="son-icon">
-            <image src="../../images/icon/secondimg.png"></image>
-          </view>
-          <view class="son-name">待发货</view>
-        </view>
-        <view class="fiveson-son" bindtap="threepay">
-          <view class="son-icon">
-            <image src="../../images/icon/thirdimg.png"></image>
-          </view>
-          <view class="son-name">待收货</view>
-        </view>
-        <view class="fiveson-son" bindtap="fourpay">
-          <view class="son-icon">
-            <image src="../../images/icon/fourthimg.png"></image>
-          </view>
-          <view class="son-name">已完成</view>
-        </view>
-        <view class="fiveson-son" bindtap="fivepay">
-          <view class="son-icon">
-            <image src="../../images/icon/fivethimg.png"></image>
-          </view>
-          <view class="son-name">退款/售后</view>
+      </view>
+      <text class="my-title">我的信息</text>
+      <view class='logistics'>
+        <view wx:for="{{ information }}" wx:key="this" data-url="{{item.url}}" bindtap="onTargetMenus" class='log-box'>
+          <image src='{{item.img}}'/>
+            <text>{{item.name}}</text>
         </view>
       </view>
     </view>
+    <!-- <view style="height:200rpx;background-color:#dfdfdf;"></view> -->
   </view>
-  <!-- 订单 未登录显示 -->
-  <view class='my-order' wx:key="this" wx:else>
-    <text>我的订单</text>
-    <view class='more' data-url="/pages/order-list/index" bindtap="onTargetMenus">
-      <text style="font-size:26rpx;">查看全部订单</text>
-      <view class='more-icon'></view>
-    </view>
-
-    <!-- 改之前： -->
-    <!-- <view class="all-order">登录后查看</view> -->
-      <!-- 改进后（未登录不能点击）： -->
-      <view class="fiveson" catchtap="onLogin">
-        <view class="fiveson-son">
-          <view class="son-icon">
-            <image src="../../images/icon/oneimg.png"></image>
-          </view>
-          <view class="son-name">待付款</view>
-        </view>
-        <view class="fiveson-son">
-          <view class="son-icon">
-            <image src="../../images/icon/secondimg.png"></image>
-          </view>
-          <view class="son-name">待发货</view>
-        </view>
-        <view class="fiveson-son">
-          <view class="son-icon">
-            <image src="../../images/icon/thirdimg.png"></image>
-          </view>
-          <view class="son-name">待收货</view>
-        </view>
-        <view class="fiveson-son">
-          <view class="son-icon">
-            <image src="../../images/icon/fourthimg.png"></image>
-          </view>
-          <view class="son-name">已完成</view>
-        </view>
-        <view class="fiveson-son">
-          <view class="son-icon">
-            <image src="../../images/icon/fivethimg.png"></image>
-          </view>
-          <view class="son-name">退款/售后</view>
-        </view>
-      </view>
-
-  </view>
-
-  <view class="new_logistics">
-    <!-- 已登录 -->
-    <view class='logistics' wx:if="{{ isLogin }}">
-        <view wx:for="{{ Members }}" wx:key="this" data-url="{{item.url}}" bindtap="onTargetMenus" class='log-box'>
-          <image src='{{item.img}}'/>
-          <text>{{item.name}}</text>
-        </view>
-    </view>
-    <!-- 未登录 -->
-    <view class='logistics' wx:else>
-        <view wx:for="{{ Members }}" wx:key="this" class='log-box' catchtap="onLogin">
-          <image src='{{item.img}}'/>
-          <text>{{item.name}}</text>
-        </view>
-    </view>
-  </view>
-  
 </view>
+

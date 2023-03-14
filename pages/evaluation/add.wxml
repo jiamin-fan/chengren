@@ -8,28 +8,12 @@
       <text style="color:#777777;">x{{res.total_num}}</text>
     </view>
   </view>
-  <!-- <view class="add_box2">
-    <view class="box2_1">
-      <view class="box2_1_image"><image src="../../images/icon/order.png"></image></view>
-      <text class="box2_1_text1">添加图片</text>
-    </view>
-    <view class="box2_2">
-      <view class="box2_1_image"><image src="../../images/icon/order.png"></image></view>
-      <text class="box2_1_text2">添加短视频</text>
-    </view>
-  </view> -->
+  
   <view class="add_box3">
     <textarea class="box3_textarea" placeholder='快来发表评论呀~' bindinput='contentInp' value='{{contentInp}}' focus='{{focus}}'></textarea>
   </view>
 </view>
 
-  <!-- <view class="add_box4">
-    <view class="container">
-      <label class="checkbox">
-        <checkbox value="cb"/>匿名评价
-      </label>
-    </view>
-  </view> -->
   <view class="add_box5">
     <button bindtap="add_content">发表评价</button>
   </view>

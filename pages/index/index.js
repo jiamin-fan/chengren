@@ -10,7 +10,7 @@ Page({
     city: '',
     latitude: '',
     longitude: '',
-
+    boo:false,
     latitude: 0,
     longitude: 0,
     // tab切换
@@ -39,7 +39,15 @@ Page({
     category: [
       // '七天原液','28天'
     ],
-   
+    BannerImg:'',
+    // 功能列表
+    functionList:[
+      {img:"https://e41.oss-cn-beijing.aliyuncs.com/chengren/function_panel/man.png",title:"男士专区" ,action:'go_allGoods'},
+      {img:"https://e41.oss-cn-beijing.aliyuncs.com/chengren/function_panel/woman.png",title:"女士专区",action:"go_allGoods"},
+      {img:"https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/rank.png",title:"热销排行",action:"toRank"},
+      {img:"/images/icon/index.png",title:"待定功能",action:"toRank"}
+
+    ]
   },
   
   //设置图片轮显高度
@@ -68,7 +76,6 @@ Page({
   },
 // 加入购物车
 addCar(e) {
-  console.log(e);
   if(!App.checkIsLogin()){
     wx.showToast({
       title: '请先登录',
@@ -82,7 +89,6 @@ addCar(e) {
     btnClicked: false
   })
       App._post_form('Cart/entropy', {goods_id: e.currentTarget.id,operate: 1,number: 1}, result => {
-
         var code = result.code;
         if(code == 1){
           if(result.data.data == "商品库存不足"){
@@ -105,7 +111,6 @@ addCar(e) {
             duration: 2000
           });
         }
-       
       }, false, () => {
         // wx.hideLoading();
         setTimeout(
@@ -116,44 +121,38 @@ addCar(e) {
           },2000
         )
       });
-
-
+},
+// 跳转到排行榜
+toRank(){
+  wx.navigateTo({
+    url: '../rank/rank',
+  })
 },
 // 跳转到对应的详情页面
 changeGoods:function(e){
   var goods_id= e.currentTarget.dataset.id;
-  console.log(goods_id);
   wx.navigateTo({
    url: '../good/index?goods_id='+goods_id,
   })
  },
- 
 // 跳转到活动页面
- activityCenter: function() {
-  wx.navigateTo({
-    url: './activity-center'
-  });
-},
+//  activityCenter: function() {
+//   wx.navigateTo({
+//     url: './activity-center'
+//   });
+// },
 //轮播图点击事件
 onSwiperTap: function (event) {
   var id = event.target.id;
-  console.log("wwwwwww");
-  console.log(event.target);
-  console.log("qqqqqqq");
-  console.log(id);
-  // if(id != 0){
-  //   var id= event.target.dataset.Id;
     wx.navigateTo({
     //   url: "详细页的地址?id=" + id
         url: "/pages/activity/index?classify_id=" + id
       })
     // }
-    
   },
   //预览图片
   previewImage: function (e) {
     var current = e.target.dataset.src;
-
     wx.previewImage({
       current: current, // 当前显示图片的http链接
       urls: this.data.imgUrls // 需要预览的图片http链接列表
@@ -179,97 +178,130 @@ onSwiperTap: function (event) {
       duration: 2000
     });
   },
+// 男频女频跳转
+go_allGoods(e){
+  var id = e.currentTarget.dataset.id;
+  App.globalData.top_selected=id;
+  wx.switchTab({
+    url: '/pages/all-goods/index',
+  })
+},
 
-  onLoad: function (options) {
+// 获取广告图
+getBannerImg(){
+  var that = this;
+  wx.request({
+    url: 'https://renzhizhu.xunkt.cn/api/Interfaces/index',
+    data:{
+
+    },
+    header:{'Content-Type': 'application/json'},
+    success:function(res){
+      
+      var BannerImg = res.data.data.imgurl;
+    
+      that.setData({
+        BannerImg:BannerImg
+      })
+    }
+  })
+},
+// 购物车跳转
+addLike: function() {
+  wx.navigateTo({
+    url: '/pages/cart/index',
+  })
+},
+
+ onLoad: function (options) {
     var me = this;
-    wx.login({
-      success(res){
-        App._post_form('login/login',{
-          code: res.code,
-        },result => {
-          wx.setStorageSync('token', result.data.token);
-          wx.setStorageSync('session_key', result.data.session_key);
-          wx.setStorageSync('user_id', result.data.user_id);
-          // 执行回调函数
-          // callback && callback();
-        }, false, () => {
-          wx.hideLoading();
-        });
-      }
-    });
-    // qqmapsdk = new QQMapWX({
-    //   key: '2083cc0b8cd7eddbe773532f24eef1af' //密钥
-    // });
+
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+      // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+      wx.login({
+        success(res) {
+          // 发送用户信息
+          // console.log(res);
+          App._post_form('login/login', {
+            code: res.code,
+          }, result => {
+            // 记录token user_id
+            wx.setStorageSync('token', result.data.token);
+            wx.setStorageSync('session_key', result.data.session_key);
+            wx.setStorageSync('user_id', result.data.user_id);
+            // 执行回调函数
+            // callback && callback();
+          }, false, () => {
+            wx.hideLoading();
+          });
+        }
+      });
+
     // 返回坐标
-    wx.getLocation({
-      type: 'gcj02', //wgs84/gcj02
-      altitude: true,
-      isHighAccuracy: true,
-      success: function (res) {
-        console.log(res);
-        console.log('纬度' + res.latitude);
-        console.log('经度' + res.longitude);
-        me.lodeCity(res.longitude, res.latitude);
-      },
-    })
- 
-    console.log('111222333sss');
+    // wx.getLocation({
+    //   type: 'gcj02', //wgs84/gcj02
+    //   altitude: true,
+    //   isHighAccuracy: true,
+    //   success: function (res) {
+        
+    //     me.lodeCity(res.longitude, res.latitude);
+    //   },
+    // })
+  
     let _this = this;
     let l=_this.data.latitude;
-    console.log(l);
+   
+
     // 分享给好友
     wx.showShareMenu({
       withShareTicket: true
-    });
+    }); 
 
-    
+    this.getBannerImg()
   },
 
-  lodeCity: function (longitude, latitude) {
-      var me = this;
-      wx.request({
-          url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=jk99fxe50ngB9XoMOLwca50jIZvrVj7T&location=' + latitude + ',' + longitude + '&output=json',
-          data: {},
-          header: {
-            'Content-Type': 'application/json'
-          },
-          success: function (res) {
-              if (res && res.data) {
-                console.log(res.data)
-                console.log(res.data.result.addressComponent.city)
-                var city = res.data.result.addressComponent.city;
-                console.log('res...................');
-                me.setData({
-                  city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) :city
-                });
-                wx.setStorage({
-                  key: 'mm',
-                  data: city,
-                })
-                App._post_form('Storeinfo/index', {myLat:latitude,myLng:longitude,name:city}, result => {
-                  var data = result.data;
-                  var jingwei = data.data;
-                  me.setData({
-                    jingwei: jingwei,
-                  })
-                }, false, () => {
-                  wx.hideLoading();
-                });
-                console.log(city);
-              }else{
-                me.setData({
-                  city: '获取失败'
-                });
-              }
-          }
-      })
-  },
+  // lodeCity: function (longitude, latitude) {
+  //     var me = this;
+  //     wx.request({
+  //         // url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=jk99fxe50ngB9XoMOLwca50jIZvrVj7T&location=' + latitude + ',' + longitude + '&output=json',
+  //         url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=NoNz9RrUlPqkB85cqIZ8VdO9QP1AOYmk&location&location=' + latitude + ',' + longitude + '&output=json',
+  //         data: {},
+  //         header: {
+  //           'Content-Type': 'application/json'
+  //         },
+  //         success: function (res) {
+  //             if (res && res.data) {
+  //               var city = res.data.result.addressComponent.city;
+               
+  //               me.setData({
+  //                 city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) :city
+  //               });
+  //               wx.setStorage({
 
+  //                 key:'mm',
+  //                 data:city,
 
+  //               })
+  //               App._post_form('Storeinfo/index', {myLat:latitude,myLng:longitude,name:city}, result => {
+  //                 var data = result.data;
+  //                 var jingwei = data.data;
+  //                 me.setData({
+  //                   jingwei: jingwei,
+  //                 })
+  //               }, false, () => {
+  //                 wx.hideLoading();
+  //               });
+               
+  //             }else{
+  //               me.setData({
+  //                 city: '获取失败'
+  //               });
+  //             }
+  //         }
+  //     })
+  // },
   onReady: function () {
-
     // 生命周期函数--监听页面初次渲染完成
-
   },
 
   onShow: function () {
@@ -278,9 +310,8 @@ onSwiperTap: function (event) {
       isLogin: App.checkIsLogin()
     });
     App._post_form('index/index', {}, result => {
-
+      
       var data = result.data;
-      // console.log(data);
       var imgUrls = data.slideshow;
       var category = data.category;
       var classify = data.classify;
@@ -305,13 +336,13 @@ onSwiperTap: function (event) {
   var currPage = pages[pages.length - 1]; //当前页面
   let json = currPage.data.mydata;
   let touch_store_name = json.touch_store_name;
-  console.log(json)//为传过来的值
-  console.log(touch_store_name)//为传过来的门店名
+ 
   _this.setData({
     touch_store_name: touch_store_name
   })
   },
     onLogin() {
+      var me = this;
       // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
       // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
       wx.getUserProfile({
@@ -320,26 +351,23 @@ onSwiperTap: function (event) {
           let _this = this;
           App.getUserInfo(e, () => {
             wx.setStorageSync('userInfo', e.userInfo);
-            //  console.log(e.userInfo);
+         
             _this.setData({
               isLogin: true
             })
-          });
+          });  
         }
       })
+      let _this = this;
+      let l=_this.data.latitude;
+      
     },
     onHide: function () {
-
     // 生命周期函数--监听页面隐藏
-
     },
-
     onUnload: function () {
-
     // 生命周期函数--监听页面卸载
-
     },
-
     //下拉刷新
   onPullDownRefresh:function(){
     wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -355,10 +383,7 @@ onSwiperTap: function (event) {
     return {
     title: 'title', // 分享标题
     desc: 'desc', // 分享描述
-    path: 'path' // 分享路径
+    path: 'pages/index/index' // 分享路径
     }
   }
-
-
-
 })

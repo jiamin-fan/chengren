@@ -1,7 +1,6 @@
 // pages/activity/signin.js
 //获取应用实例
-const app = getApp();
-
+const App = getApp();
 Page({
 
   /**
@@ -20,6 +19,7 @@ Page({
   },
 
   onLoad: function (options) {
+    
     let _this = this;
 
     var a = wx.getStorageSync("userInfo");
@@ -42,6 +42,7 @@ Page({
   },
 
   getSignInfo(){
+    
     let that = this;
 
     app.ajax({
@@ -68,16 +69,14 @@ Page({
   bindSignIn(e) {
     var that = this,
       num = e.currentTarget.dataset.num;
-    num++
-
+      num++
     app.ajax({
       url: "Signin|sign",
       data: {
         id: this.data.uInfo.id
-
       },
+      
       success: function (res) {
-
             that.setData({
               signNum: num,
               // signState: false //点击后是否继续允许点击，true为不允许，false为允许，正式使用时应为true
@@ -93,7 +92,7 @@ Page({
                 be: be
               })
             }
-
+            
             if (num == 7 * be + 1) {
               that.setData({
                 min: 7 * be + 1,

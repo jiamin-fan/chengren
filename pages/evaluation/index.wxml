@@ -19,14 +19,7 @@
 
   <!-- 待评价 -->
  <swiper-item>
-    <!-- <block wx:if="{{false}}">
-      <view class="tab2_box">
-        <view class="box_image">
-         <image src="../../images/icon/index.png"/>
-        </view>
-        <text>暂无待评价的商品哦</text>
-      </view>
-    </block> -->
+  
     <block>
       <view class="dai">
         <view class="good-order" style="margin-bottom:0;" wx:for="{{res}}">
@@ -47,15 +40,7 @@
 
   <!-- 已评价 -->
  <swiper-item>
-    <!-- <block>
-      <view class="tab2_box">
-        <view class="box_image">
-        <image src="../../images/icon/index.png"/>
-        </view>
-        <text>暂无已评价商品哦，</text>
-        <text>快去评价吧~</text>
-      </view>
-    </block> -->
+    
     <block>
       <view class="dai">
         <view class="good-order2" style="margin-bottom:0;" wx:for="{{res}}">

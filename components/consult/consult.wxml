@@ -1,10 +1,10 @@
 <button class="big_box" wx:if="{{ isLogin }}">
-  <image src="../../images/icon/kefu.png" open-type='contact'></image>
+  <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/kefu.png" open-type='contact'></image>
 </button>
 <button class="big_box" wx:else>
-  <image src="../../images/icon/kefu.png" catchtap="onLogin"></image>
+  <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/kefu.png" catchtap="onLogin"></image>
 </button>
 
 <!-- <button class="big_box">
-  <image src="../../images/icon/kefu.png" open-type='contact'></image>
+  <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/kefu.png" open-type='contact'></image>
 </button> -->

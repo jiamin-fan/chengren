@@ -40,11 +40,6 @@
         </view>
       </picker>
       <view class="main_right2">＞</view>
-      <!-- <view class="main_right">
-        <view class="picker">
-          {{array[index]}}
-        </view>
-      </view> -->
     </view>
 
     <view class="mains_small">

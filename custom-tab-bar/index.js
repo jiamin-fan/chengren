@@ -21,10 +21,10 @@ Component({
         text: "分类"
       },
       {
-        pagePath: "/pages/cart/index",
-        iconPath: "/images/icon/car.png",
-        selectedIconPath: "/images/icon/oncar1.png",
-        text: "购物车"
+        pagePath: "/pages/search/index",
+        iconPath: "/images/icon/rank.png",
+        selectedIconPath: "/images/icon/ranked.png",
+        text: "搜索"
       },
       {
         pagePath: "/pages/my/index",
@@ -36,9 +36,9 @@ Component({
   },
   methods: {
     switchTab(e) {
+      // console.log(e)
       let url = e.currentTarget.dataset.url;
       let index = e.currentTarget.dataset.index;
-      console.log(url)
       wx.switchTab({
         url:url
       })
@@ -46,7 +46,7 @@ Component({
       //   curIndex:index
       // })
       // wx.setStorageSync('curIndex', index)
-      console.log(index)
+      // console.log(index)
     },
   }
 

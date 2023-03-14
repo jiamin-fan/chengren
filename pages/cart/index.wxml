@@ -1,16 +1,13 @@
-<scroll-view scroll-x="false" style="height: 100vh;">
-
-
+<scroll-view scroll-x="false" style="height: 100%;">
 <view class="content">
   <!-- 有东西 -->
   <!-- <view class="cart" wx:for="{{cart}}" wx:key="item"> -->
   <view style="overflow: hidden;" wx:if="{{isBlank}}">
     <view class="cart {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{carts}}" wx:key="item" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
       <view class="item show">
-        <image class="choose" src="../../images/icon/after-answer.png" wx:if="{{item.selected}}" bindtap="onSelectCard" data-id="{{item.goods_id}}" data-index="{{index}}"></image>
-        <image class="choose" src="../../images/icon/check.png" wx:else bindtap="onSelectCard" data-id="{{item.goods_id}}" data-index="{{index}}"></image>
+        <image class="choose" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/after-answer.png" wx:if="{{item.selected}}" bindtap="onSelectCard" data-id="{{item.goods_id}}" data-index="{{index}}"></image>
+        <image class="choose" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/check.png" wx:else bindtap="onSelectCard" data-id="{{item.goods_id}}" data-index="{{index}}"></image>
         <view class="card" data-id="{{item.goods_id}}">
-          <!-- <image class="cover" src="{{item.goods_images}}"></image> -->
           <image class="cover" src="{{item.goods_images[0]}}" catchtap="switchToDetail"  data-id="{{item.goods_id}}"></image>
           <view class="info">
             <view class="title" catchtap="switchToDetail"  data-id="{{item.goods_id}}">{{item.goods_name}}</view>
@@ -33,7 +30,7 @@
   <view wx:else>
     <view class="car" >
       <view class="title-box">
-          <image src="../../images/icon/car.png"></image>
+          <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/car.png"></image>
               您的购物车空空的，一件商品都没有
       </view>
       <!-- <button class="to-index-btn" bindtap='togoods'>
@@ -45,8 +42,8 @@
   <!-- <view class="block"></view> -->
   <view class="menu" wx:if="{{isBlank}}">
     <view class="summary">
-      <image class="choose" src="../../images/icon/after-answer.png" wx:if="{{selectAll}}" bindtap="onSelectAll"></image>
-      <image class="choose" src="../../images/icon/before-answer.png" wx:else bindtap="onSelectAll"></image>
+      <image class="choose" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/after-answer.png" wx:if="{{selectAll}}" bindtap="onSelectAll"></image>
+      <image class="choose" src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/before-answer.png" wx:else bindtap="onSelectAll"></image>
       <text style="margin-left: 20rpx;font-size:28rpx;" bindtap="onSelectAll">全选</text>
       <view class="price" style="position: absolute;right: 20rpx;" bindtap="showModal">
         <text style="color:#000;font-size:24rpx;font-weight:normal;">合计：</text>

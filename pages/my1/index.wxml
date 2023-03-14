@@ -1,0 +1,130 @@
+<!-- 已登录 -->
+<view wx:if="{{ isLogin }}" class="user-info2">
+  <navigator url="/pages/add-adr/index" style="z-index: 1;">
+    <view class="user-img" style="display:block;">
+      <open-data type="userAvatarUrl" class="image"></open-data>
+    </view>
+  </navigator>
+  <navigator url="/pages/add-adr/index" class="name"><open-data type="userNickName" style="display:block;"></open-data></navigator>
+  
+  <!-- 下面两个view是背景图片（模糊） -->
+  <!-- <view class="user_bacimg" style="display:block;">
+    <open-data type="userAvatarUrl" class="image"></open-data>
+  </view>
+  <view class="user_bacimg2"></view> -->
+</view>
+
+
+<!-- 未登录 -->
+<view wx:else class="user-info">
+  <button class="my-button1" catchtap="onLogin"> 登录/注册 </button>
+</view>
+
+<!-- 咨询按钮（悬浮） -->
+<!-- <view style="position: fixed;float: right;right: 50rpx;bottom: 300rpx;background: #fff;z-index: 99;width: 100rpx;height: 100rpx;border-radius: 200rpx;box-shadow: 0 0 5px rgb(0,0,0,0.2);">
+  <consult></consult>
+</view> -->
+
+<view class='order'>
+<!-- 订单 已登录显示 -->
+  <view wx:if="{{ isLogin }}">
+    <!-- <view class='my-order' wx:if="{{!isHas}}"> -->
+    <view class='my-order'>
+      <text>我的订单</text>
+      <view class='more' data-url="/pages/order-lists/index" bindtap="onTargetMenus">
+        <text style="font-size:26rpx;">查看全部订单</text>
+        <view class='more-icon'></view>
+      </view>
+      <!-- 改之前： -->
+      <!-- <view class="all-order">暂无进行中的订单</view> -->
+      <!-- 改进后（能跳转正常访问）： -->
+      <view class="fiveson">
+        <view class="fiveson-son" bindtap="onepay">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/oneimg.png"></image>
+          </view>
+          <view class="son-name">待付款</view>
+        </view>
+        <view class="fiveson-son" bindtap="twopay">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/secondimg.png"></image>
+          </view>
+          <view class="son-name">待发货</view>
+        </view>
+        <view class="fiveson-son" bindtap="threepay">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/thirdimg.png"></image>
+          </view>
+          <view class="son-name">待收货</view>
+        </view>
+        <view class="fiveson-son" bindtap="fourpay">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/fourthimg.png"></image>
+          </view>
+          <view class="son-name">已完成</view>
+        </view>
+        <view class="fiveson-son" bindtap="fivepay">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/fivethimg.png"></image>
+          </view>
+          <view class="son-name">退款/售后</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 订单 未登录显示 -->
+  <view class='my-order' wx:key="this" wx:else>
+    <text>我的订单</text>
+    <view class='more' data-url="/pages/order-list/index" bindtap="onTargetMenus">
+      <text style="font-size:26rpx;">查看全部订单</text>
+      <view class='more-icon'></view>
+    </view>
+
+    <!-- 改之前： -->
+    <!-- <view class="all-order">登录后查看</view> -->
+      <!-- 改进后（未登录不能点击）： -->
+      <view class="fiveson" catchtap="onLogin">
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/oneimg.png"></image>
+          </view>
+          <view class="son-name">待付款</view>
+        </view>
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/secondimg.png"></image>
+          </view>
+          <view class="son-name">待发货</view>
+        </view>
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/thirdimg.png"></image>
+          </view>
+          <view class="son-name">待收货</view>
+        </view>
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/fourthimg.png"></image>
+          </view>
+          <view class="son-name">已完成</view>
+        </view>
+        <view class="fiveson-son">
+          <view class="son-icon">
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/fivethimg.png"></image>
+          </view>
+          <view class="son-name">退款/售后</view>
+        </view>
+      </view>
+
+  </view>
+
+  <view class="new_logistics">
+    <view class='logistics'>
+        <view wx:for="{{ Members }}" wx:key="this" data-url="{{item.url}}" bindtap="onTargetMenus" class='log-box'>
+          <image src='{{item.img}}'/>
+          <text>{{item.name}}</text>
+        </view>
+    </view>
+  </view>
+  
+</view>

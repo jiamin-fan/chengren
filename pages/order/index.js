@@ -121,7 +121,7 @@ Page({
    */
   onLoad(options) {
     let _this = this;
-    _this.getStoreDetail()
+    // _this.getStoreDetail()
     // options.goods_num = 1;
     // options.goods_sku_id = 0;
     // options.order_type = 'buyNow';
@@ -132,7 +132,6 @@ Page({
       options,
     });
     // console.log(options);
-
   },
 
   /**
@@ -148,32 +147,33 @@ Page({
   /**
    * 获取门店信息
    */
-  getStoreDetail: function () {
-    App._post_form('Storeinfo/orderstore', {}, result => {
-      console.log(result)
-      var b_time = result.data.data.b_time;
-      var details = result.data.data.details;
-      var km = this.change(result.data.data.km);
-      var store_name = result.data.data.store_name;
-      var lat = result.data.data.lat;
-      var lng = result.data.data.lng;
-      var store_id = result.data.data.store_id;
-      var phonenum = result.data.data.store_ph
-      this.setData({
-        b_time: b_time,
-        details: details,
-        km: km,
-        store_name: store_name,
-        store_id: store_id,
-        lat: lat,
-        lng: lng,
-        phonenum: phonenum
-      })
+  // getStoreDetail: function () {
+    
+  //   App._post_form('Storeinfo/orderstore', {}, result => {
+  //     console.log(result)
+  //     var b_time = result.data.data.b_time;
+  //     var details = result.data.data.details;
+  //     var km = result.data.data.km;
+  //     var store_name = result.data.data.store_name;
+  //     var lat = result.data.data.lat;
+  //     var lng = result.data.data.lng;
+  //     var store_id = result.data.data.store_id;
+  //     var phonenum = result.data.data.store_ph
+  //     this.setData({
+  //       b_time: b_time,
+  //       details: details,
+  //       km: km,
+  //       store_name: store_name,
+  //       store_id: store_id,
+  //       lat: lat,
+  //       lng: lng,
+  //       phonenum: phonenum
+  //     })
 
-    })
+  //   })
 
 
-  },
+  // },
 
   // 打开地图导航
   seeMap: function (e) {
@@ -206,22 +206,7 @@ Page({
     })
   },
 
-  /**
-   * 换算单位
-   */
-  change: function (m) {
-    var n = ''
-    if (m) {
-      if (m >= 1000) {
-        n = (m / 1000).toFixed(2) + 'km'
-      } else {
-        n = m + 'm'
-      }
-    } else {
-      n = '0 m'
-    }
-    return n
-  },
+ 
 
   /**
    * 获取当前订单信息
@@ -277,6 +262,7 @@ Page({
 
     // 立即购买
     if (options.order_type === 'buyNow') {
+      
       App._get('orders/buyNow', Object.assign({}, params, {
         goods_id: options.goods_id,
         goods_num: options.goods_num,

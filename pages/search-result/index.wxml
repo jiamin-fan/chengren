@@ -1,7 +1,7 @@
 <form bindsubmit="searchBox">
   <view class="input">
     <view class='input-box'>
-      <image src='../../images/icon/search.png' /> 
+      <image src='https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/search.png' /> 
       <input placeholder="输入商品名称" maxlength="6" class='size' value='{{search_result}}' name="search_result"/>
     </view>
     <button form-type='submit'> 搜索 </button>

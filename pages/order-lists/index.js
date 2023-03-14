@@ -1,3 +1,4 @@
+
 const App = getApp();
 
 // 枚举类：发货方式
@@ -96,6 +97,7 @@ Page({
     }, result => {
       let resList = result.data.list,
         dataList = _this.data.list;
+        console.log(resList)
       if (isPage == true) {
         _this.setData({
           'list.data': dataList.data.concat(resList.data),
@@ -129,6 +131,7 @@ Page({
    */
   cancelOrder(e) {
     let _this = this;
+    console.log(e)
     let order_id = e.currentTarget.dataset.id;
     wx.showModal({
       title: "友情提示",
@@ -144,7 +147,30 @@ Page({
       }
     });
   },
-
+// 取消已支付的订单
+  cancelOrderPay(e){
+    let that = this;
+    // console.log(e)
+    // let order_id = e.currentTarget.dataset.id;
+    App._get('Cservice/index', {}, (result) => {
+      // 设置二维码图片路径
+    //  console.log(result)
+     const erimg = result.data.erimg;
+     that.setData({
+      showQRCodePopup:true,
+      QRCodeImage:erimg
+    })
+    });
+    
+  },
+//  关闭客户二维码弹框
+erimgClose(){
+  let that = this;
+  that.setData({
+    showQRCodePopup:false,
+   
+  })
+},
   /**
    * 确认收货
    */
@@ -339,3 +365,4 @@ Page({
   },
 
 });
+

@@ -177,8 +177,8 @@
   display: flex;
   /* position: fixed; */
   /* bottom:120rpx; */
-  position: absolute;
-  bottom: 170rpx;
+  position: fixed;
+  bottom: 120rpx;
   font-size: 32rpx;
   z-index:100;
   background-color: #ffff;

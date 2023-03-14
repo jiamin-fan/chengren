@@ -64,11 +64,26 @@ addCar(e) {
 },
 // 跳转到对应的详情页面
 changeGoods:function(e){
+  // var goods_id= e.currentTarget.dataset.id;
+  // console.log(goods_id);
+  // wx.navigateTo({
+  //  url: '../good/index?goods_id='+goods_id,
+  // })
   var goods_id= e.currentTarget.dataset.id;
-  console.log(goods_id);
-  wx.navigateTo({
-   url: '../good/index?goods_id='+goods_id,
-  })
+  var goods_type= e.currentTarget.dataset.type;
+  console.log('1'); 
+  console.log(e.currentTarget.dataset);
+  if(goods_type == 1){
+    wx.redirectTo({
+      //我改的
+      url: '../good/good?goods_id='+goods_id,
+      //结束 
+    })
+  }else{
+    wx.navigateTo({
+      url: '../good/index?goods_id='+goods_id,
+     })
+  }
  },
   //首页跳转
   addIndex: function() {
@@ -82,6 +97,16 @@ changeGoods:function(e){
       url: '/pages/cart/index',
     })
   },
+
+// 格式化商品名
+formatGoodsName(goodName){
+ if(goodName.length>20){
+   return slice(0,20)+'…'
+ }else{
+   return goodName
+ }
+},
+
   onLoad: function (options) {
 
     // console.log(options.classify_id);

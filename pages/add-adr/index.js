@@ -213,7 +213,6 @@ Page({
         if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
           console.log('未授权手机号')
         }else{
-          console.log(e);
           // return false;
           var ency = e.detail.encryptedData;
           var iv = e.detail.iv;
@@ -223,10 +222,13 @@ Page({
             ivdata: iv,
             sessionkey: sessionk
           }, function(result) {
+            console.log(result.data);
+            that.setData({
+              phoneNumber:result.data
+            });
             App._post_form('user/phone_edit', {
-              phoneNumber: result.data.phoneNumber
+              phoneNumber: that.data.phoneNumber
             }, function(res) {
-              console.log(res)
               that.setData({
                 phoneNumber: result.data.phoneNumber
               });
@@ -254,10 +256,16 @@ Page({
   },
 
   bindPickerChange: function(e) {
+    var that = this;
     var gender = e.detail.value;
     console.log('性别发送选择改变，携带值为', gender)
-    this.setData({
-      index: e.detail.value
+    App._post_form('user/gender_edit', {
+      index:gender
+    },function(res){
+      that.setData({
+        index: e.detail.value  
+      });
+      
     })
   },
 

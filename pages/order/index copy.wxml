@@ -10,7 +10,7 @@
       </view>
       <text class="list1-home">{{user_address.detail}}</text>
     </view>
-    <image src='../../images/icon/more.png'/>
+    <image src='https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/more.png'/>
   </view>
 
   <view >
@@ -46,7 +46,7 @@
       <input name="remark" type="text" class="liuyan" placeholder="选填，可填写特殊需求等" value="{{remark}}"/>
     </view>
     <view class='list2'>
-      <text style="margin-left:350rpx;font-size:24rpcolor:#777777">共 {{goods_num}} 件</text>
+      <text style="margin-left:350rpx;font-size:24rpx ;color:#777777">共 {{goods_num}} 件</text>
       <text style="margin-left:20rpx;">小计：</text>
       <text style="color:#f37769;font-weight:bold;">￥{{sum}}</text>
     </view>
@@ -64,7 +64,7 @@
 
   <view class='bt-fix'>
     <!-- <button open-type="contact" class='icon'>
-        <image src="../../images/icon/custom.png"/>
+        <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/custom.png"/>
         <text>联系客服</text>
     </button> -->
     <view class="bt-text">
