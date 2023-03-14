@@ -52,6 +52,52 @@
     <!-- 商品列表 -->
     <view>
 
+<<<<<<< HEAD
+=======
+      <!-- 同城快送（待用） -->
+      <!-- <view class='{{num==2?"box222":"disp_none"}}'>
+        <view class="new_box1">
+          <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">配送门店</text>
+          <text class="f-30">{{store_name}}</text>
+          <view class="new_box1_image" data-phonenum="{{phonenum}}" catchtap='freeTell'>
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/call.png" alt=""></image>
+          </view>
+        </view>
+        <view class="flow-all-list dis-flex new_box2">
+          <text class="flex-five">送达时间</text>
+          <view class="flex-five t-r">
+            <picker bindchange="bindDateChange">
+              <text class="col-m">选择送达时间</text>
+            </picker>
+          </view>
+        </view>
+      </view> -->
+      <!-- 自提门店（待用） -->
+      <!-- <view class='{{num==1?"box111":"disp_none"}}'>
+        <view class="new_box1">
+          <text style="background: rgb(244,119,103,0.2);font-size: 24rpx;padding-left: 10rpx;padding-right: 10rpx;margin-right: 20rpx;color: #f47767;padding-top: 6rpx;padding-bottom: 6rpx;">自提门店</text>
+          <text class="f-30">{{store_name}}</text>
+          <view class="new_box1_image" data-phonenum="{{phonenum}}" catchtap='freeTell'>
+            <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/call.png" alt=""></image>
+          </view>
+        </view>
+        <view class="box2_son3">
+          <view style="color: rgb(136, 136, 136);">距您{{km}}</view>
+          <view class="box2_son3_1">
+            <view class="box2_son3_left">门店地址：</view>
+            <view class="box2_son3_right1">{{details}}</view>
+            <view class="box2_son3_right2" data-lat="{{lat}}" data-lng="{{lng}}" data-name="{{store_name}}" data-details="{{details}}" bindtap="seeMap" >
+              <image src="https://e41.oss-cn-beijing.aliyuncs.com/chengren_miniAPP/icon/adr.png"/>
+            </view>
+          </view>
+          <view class="box2_son3_2">
+            <view class="box2_son3_left">营业时间：</view>
+            <view class="box2_son3_right1">每天{{b_time}}</view>
+          </view>
+        </view>
+      </view> -->
+
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
       <view class="checkout_list" wx:for="{{ goods_list }}" wx:key="this">
         <form bindsubmit="onTargetGoods" data-id="{{ item.goods_id }}" report-submit="true">
           <button formType="submit" class="btn-normal">
@@ -102,7 +148,17 @@
 
     <!-- 商品金额 -->
   <view class="flow-all-money b-f m-top20">
+<<<<<<< HEAD
   
+=======
+    <!-- <view class="flow-all-list dis-flex">
+      <text class="flex-five">配送方式</text>
+      <view class="flex-five t-r">
+        <text wx:if="{{num==1}}">门店自提</text>
+        <text wx:else>同城快送</text>
+      </view>
+    </view> -->
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     <view class="flow-all-list dis-flex">
       <text class="flex-five">订单总金额：</text>
       <view class="flex-five t-r">
@@ -139,7 +195,22 @@
       </view>
     </view>
     <!-- 配送费用 -->
+<<<<<<< HEAD
   
+=======
+    <!-- <view wx:if="{{ curDelivery == DeliveryTypeEnum.EXPRESS.value }}" class="dis-flex flow-all-list">
+      <text class="flex-five">配送费用：</text>
+      <view class="flex-five t-r">
+        <view wx:if="{{address.address_id}}">
+          <text class="col-m" wx:if="{{ intra_region }}">+￥{{ express_price }}</text>
+          <text wx:else>不在配送范围</text>
+        </view>
+        <view wx:else>
+          <text class="col-7">请先选择配送地址</text>
+        </view>
+      </view>
+    </view> -->
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   </view>
 
 

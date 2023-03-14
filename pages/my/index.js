@@ -37,7 +37,10 @@ Page({
       }
     ],
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   //点击付款 跳转到“我的订单”
   jumpOrder:function(e){
     wx.navigateTo({
@@ -92,14 +95,25 @@ Page({
       
       var info = result.info;
       var address = result.address;
+<<<<<<< HEAD
      
+=======
+      console.log(info);
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
       _this.setData({
         info: info,
         address: address,
         isHas:false,
       })
+<<<<<<< HEAD
      
       if(result.info){
+=======
+      console.log(_this.data.isHas);
+      console.log(!_this.data.info);
+      if(result.info){
+        console.log(3333)
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
         var goods_info = info.goods_info[0];
         var sum_price = info.sum_price;
         var total_num = info.total_num;
@@ -135,6 +149,9 @@ Page({
       }
     })
   },
+
+
+
 
   /**
    * 验证是否已登录

@@ -39,6 +39,7 @@ Page({
     category: [
       // '七天原液','28天'
     ],
+<<<<<<< HEAD
     BannerImg:'',
     // 功能列表
     functionList:[
@@ -48,6 +49,10 @@ Page({
       {img:"/images/icon/index.png",title:"待定功能",action:"toRank"}
 
     ]
+=======
+    BannerImg:''
+   
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   },
   
   //设置图片轮显高度
@@ -76,6 +81,10 @@ Page({
   },
 // 加入购物车
 addCar(e) {
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   if(!App.checkIsLogin()){
     wx.showToast({
       title: '请先登录',
@@ -121,16 +130,23 @@ addCar(e) {
           },2000
         )
       });
+<<<<<<< HEAD
 },
 // 跳转到排行榜
 toRank(){
   wx.navigateTo({
     url: '../rank/rank',
   })
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 },
 // 跳转到对应的详情页面
 changeGoods:function(e){
   var goods_id= e.currentTarget.dataset.id;
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   wx.navigateTo({
    url: '../good/index?goods_id='+goods_id,
   })
@@ -180,7 +196,11 @@ onSwiperTap: function (event) {
   },
 // 男频女频跳转
 go_allGoods(e){
+<<<<<<< HEAD
   var id = e.currentTarget.dataset.id;
+=======
+  var id = e.currentTarget.id;
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   App.globalData.top_selected=id;
   wx.switchTab({
     url: '/pages/all-goods/index',
@@ -206,6 +226,7 @@ getBannerImg(){
     }
   })
 },
+<<<<<<< HEAD
 // 购物车跳转
 addLike: function() {
   wx.navigateTo({
@@ -216,12 +237,21 @@ addLike: function() {
  onLoad: function (options) {
     var me = this;
 
+=======
+
+ onLoad: function (options) {
+    var me = this;
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
       // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
       wx.login({
         success(res) {
           // 发送用户信息
+<<<<<<< HEAD
           // console.log(res);
+=======
+       
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
           App._post_form('login/login', {
             code: res.code,
           }, result => {
@@ -236,6 +266,7 @@ addLike: function() {
           });
         }
       });
+<<<<<<< HEAD
 
     // 返回坐标
     // wx.getLocation({
@@ -247,6 +278,18 @@ addLike: function() {
     //     me.lodeCity(res.longitude, res.latitude);
     //   },
     // })
+=======
+    // 返回坐标
+    wx.getLocation({
+      type: 'gcj02', //wgs84/gcj02
+      altitude: true,
+      isHighAccuracy: true,
+      success: function (res) {
+        
+        me.lodeCity(res.longitude, res.latitude);
+      },
+    })
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   
     let _this = this;
     let l=_this.data.latitude;
@@ -260,6 +303,7 @@ addLike: function() {
     this.getBannerImg()
   },
 
+<<<<<<< HEAD
   // lodeCity: function (longitude, latitude) {
   //     var me = this;
   //     wx.request({
@@ -300,6 +344,47 @@ addLike: function() {
   //         }
   //     })
   // },
+=======
+  lodeCity: function (longitude, latitude) {
+      var me = this;
+      wx.request({
+          // url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=jk99fxe50ngB9XoMOLwca50jIZvrVj7T&location=' + latitude + ',' + longitude + '&output=json',
+          url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=NoNz9RrUlPqkB85cqIZ8VdO9QP1AOYmk&location&location=' + latitude + ',' + longitude + '&output=json',
+          data: {},
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success: function (res) {
+              if (res && res.data) {
+               
+                var city = res.data.result.addressComponent.city;
+               
+                me.setData({
+                  city: city.indexOf('市') > -1 ? city.substr(0, city.indexOf('市')) :city
+                });
+                wx.setStorage({
+                  key:'mm',
+                  data:city,
+                })
+                App._post_form('Storeinfo/index', {myLat:latitude,myLng:longitude,name:city}, result => {
+                  var data = result.data;
+                  var jingwei = data.data;
+                  me.setData({
+                    jingwei: jingwei,
+                  })
+                }, false, () => {
+                  wx.hideLoading();
+                });
+               
+              }else{
+                me.setData({
+                  city: '获取失败'
+                });
+              }
+          }
+      })
+  },
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
   },

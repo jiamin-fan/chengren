@@ -185,6 +185,7 @@
           "pathName": "pages/good/good",
           "query": "",
           "scene": null
+<<<<<<< HEAD
         },
         {
           "name": "pages/index/index",
@@ -203,6 +204,8 @@
           "pathName": "pages/search/index",
           "query": "",
           "scene": null
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
         }
       ]
     }

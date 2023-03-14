@@ -104,6 +104,7 @@ Page({
           'Content-Type': 'application/json'
         },
         success: function (res) {
+          console.log(res)
             if (res && res.data) {
               var city = res.data.result.addressComponent.city;
               me.setData({

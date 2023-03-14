@@ -20,8 +20,13 @@
     <view class="box2_son1" data-id="{{index}}" bindtap="backIndex">
       <view class="box2_son1_left">{{item.store_name}}</view>
       <view class="box2_son1_right" wx:if="{{item.num == 1 }}">距您最近的门店</view>
+<<<<<<< HEAD
       <view class="box2_son1_right" wx:if="{{item.num == 2 }}">选择过的门店</view>
       <view class="box2_son1_right" wx:else style="display: none;"></view>
+=======
+      <view class="box2_son1_right" wx:if="{{item.num ==2}}">选择过的门店</view>
+      <view class="box2_son1_right" wx:else></view>
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     </view>
     <view class="box2_son2" data-id="{{index}}" bindtap="backIndex">距您{{item.dis}}</view>
     <view class="box2_son3">
@@ -55,9 +60,12 @@
     <view class="box2_son1" data-id="{{index}}" bindtap="backIndex">
       <view class="box2_son1_left">{{item.store_name}}</view>
       <view class="box2_son1_right" wx:if="{{item.num == 1 }}">距您最近的门店</view>
+<<<<<<< HEAD
       <view class="box2_son1_right" wx:if="{{item.num == 2 }}">选择过的门店</view>
       <view class="box2_son1_right" wx:else style="display: none;"></view>
 
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
       <view class="box2_son1_right" wx:if="{{item.num ==2}}">选择过的门店</view>
       <view class="box2_son1_right" wx:else></view>
 

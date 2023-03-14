@@ -46,7 +46,10 @@
   /* height: 353rpx; */
   /*background-color: #fff;*/
   /* background-color: #272727; */
+<<<<<<< HEAD
   margin-top: 120rpx;
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .swiper image {
@@ -238,8 +241,11 @@
   height: 500rpx;
   /* background-color:#c9ec9b; */
   position: relative;
+<<<<<<< HEAD
   border-radius: 40rpx;
   box-shadow: #ccc 0rpx 0rpx 20rpx 4rpx;
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .big_box2 image {
@@ -250,15 +256,23 @@
 .big_box3 {
   width: 100%;
   height: 140rpx;
+<<<<<<< HEAD
   background-color: #ffffff;
   margin-top: 30rpx;
  
+=======
+  background-color: #fff;
+  margin-top: 30rpx;
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .big_box3 image {
   width: 100%;
   height: 100%;
+<<<<<<< HEAD
  
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   /* background-color: #ffff00; */
 }
 
@@ -268,7 +282,10 @@
   margin-top: 30rpx;
   padding-top: 8px;
   padding-bottom: 8px;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .big_box3_new_swiper {
@@ -285,6 +302,7 @@
 .new_swiper_view image {
   width: 100%;
   height: 100%;
+<<<<<<< HEAD
   /* border-radius: 8px; */
   /* background-color: #ffff00; */
   border-radius: 40rpx;
@@ -305,6 +323,21 @@
   box-shadow: #ccc 10rpx 10rpx 10rpx 4rpx;
   overflow: hidden;
  
+=======
+  border-radius: 8px;
+  /* background-color: #ffff00; */
+}
+
+.big_box4 {
+  width: 90%;
+  left: 5%;
+  height: 250rpx;
+  background-color: #ffffff;
+  border-radius: 1rpx solid #c4c4c4;
+  margin-top: 30rpx;
+  position: relative;
+  border: 1px solid #eee;
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .box4_left {
@@ -313,7 +346,10 @@
   height: 100%;
   background-color: #fff;
   position: absolute;
+<<<<<<< HEAD
   border-radius: 40rpx;
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .box4_left image {
@@ -321,8 +357,11 @@
   height: 100%;
   background-color: #c9c9c9;
   position: absolute;
+<<<<<<< HEAD
   /* border-radius: 60rpx; */
 
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .box4_right1 {
@@ -330,7 +369,10 @@
   height: 250rpx;
   position: absolute;
   right: 0;
+<<<<<<< HEAD
   
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .box4_right1_1 {
@@ -350,7 +392,10 @@
   white-space: normal !important;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }
 
 .box4_right1_2 {
@@ -548,7 +593,10 @@
 .woman_box {
   width: 340rpx;
   height: 220rpx;
+<<<<<<< HEAD
   border-radius: 40rpx;
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   box-shadow: #ccc 0rpx 0rpx 20rpx 4rpx;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -578,6 +626,7 @@
 .gender_introduction{
   color: white;
   word-wrap:no;
+<<<<<<< HEAD
 }
 
 /* 悬浮按钮 */
@@ -644,4 +693,6 @@
 }
 .function text{
   font-size: 24rpx;
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 }

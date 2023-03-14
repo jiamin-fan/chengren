@@ -84,8 +84,14 @@ addCar(e) {
 topChoose(e){
   var page = this;
   var id = e.target.id;
+<<<<<<< HEAD
   page.setData({
     top_active:id,
+=======
+ 
+  page.setData({
+    top_active:id
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   })
   page.getGoods(id);
 },
@@ -93,6 +99,10 @@ topChoose(e){
 // 男/女频分类请求数据
 getGoods(genderID){
   var page = this;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   wx.request({
     url: 'https://renzhizhu.xunkt.cn/api/Category/typeshow',
     method:'POST',
@@ -104,17 +114,31 @@ getGoods(genderID){
       'content-type': 'application/x-www-form-urlencoded' 
     },
     success(res){
+<<<<<<< HEAD
       var data = res.data;
       var category = data.data.category;
+=======
+  
+      var data = res.data;
+      var category = data.data.category;
+  
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
        var active_num=page.data.active;
       var classfy=[]; 
       for(let i = 0;i < category.length; i++){
         classfy[i] = i;
        }
+<<<<<<< HEAD
        if(active_num>category.length-1){
         page.setData({
           active:0,
           currentTab:0
+=======
+   
+       if(active_num>category.length-1){
+        page.setData({
+          active:0
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
         })   
        }
       page.setData({
@@ -184,18 +208,29 @@ getGoods(genderID){
     var page = this;
     page.initCategory();
     var id = e.target.id;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     page.setData({
       top_active:id
     })
   },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   onLoad: function (options) {
   // 生命周期函数--监听页面加载
     // 自适应选项卡
     this.adaptive();
     let _this = this;
     _this.initCategory();
+<<<<<<< HEAD
      _this.getGoods(App.globalData.top_selected)
+=======
+    // _this.getGoods(App.globalData.top_selected)
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   },
   onShow: function () {
     //请求数据
@@ -212,13 +247,21 @@ getGoods(genderID){
       top_active:App.globalData.top_selected
     })
    
+<<<<<<< HEAD
      _this.getGoods(App.globalData.top_selected)
+=======
+    // _this.getGoods(App.globalData.top_selected)
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     
    
     },
     onReady(){
       let _this = this;
+<<<<<<< HEAD
        _this.getGoods(App.globalData.top_selected)
+=======
+      // _this.getGoods(App.globalData.top_selected)
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     },
     //下拉刷新
   onPullDownRefresh:function()

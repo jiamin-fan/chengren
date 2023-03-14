@@ -2,7 +2,11 @@
   <SearchInput></SearchInput>
   <!-- 顶部 -->
   <view class='top'>
+<<<<<<< HEAD
     <view id="0" class="{{top_active==0?'top_selected':'top_normal'}}" bindtap="tapAll">全部分类</view>
+=======
+    <view id="0" class="{{top_active==0?'top_selected':'top_normal'}}" bindtap="topChoose">全部分类</view>
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     <view id="1" class="{{top_active==1?'top_selected':'top_normal'}}" bindtap="topChoose">男性精品</view>
     <view id="2" class="{{top_active ==2 ?'top_selected':'top_normal'}}" bindtap="topChoose">女性精品</view>
   </view>
@@ -36,7 +40,11 @@
           <swiper-item wx:for="{{category}}" wx:key="category_id" catchtouchmove="false">
             <scroll-view scroll-y="true" class="scroll">
               <!-- <text class="delimiter">{{item.name}}</text> -->
+<<<<<<< HEAD
               <view style="padding-right:20rpx;padding-bottom:260rpx;margin-top: 4rpx;">
+=======
+              <view style="padding-right:20rpx;padding-bottom: 160rpx;margin-top: 4rpx;">
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
                 <image src="{{item.image_short}}" class="banner1"></image>
                 <view>
                   <view class="big_box4" wx:for="{{item.son}}" wx:key="goods_id" wx:for-item="item">

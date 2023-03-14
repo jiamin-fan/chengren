@@ -147,6 +147,7 @@ Page({
   /**
    * 获取门店信息
    */
+<<<<<<< HEAD
   // getStoreDetail: function () {
     
   //   App._post_form('Storeinfo/orderstore', {}, result => {
@@ -169,6 +170,30 @@ Page({
   //       lng: lng,
   //       phonenum: phonenum
   //     })
+=======
+  getStoreDetail: function () {
+    
+    App._post_form('Storeinfo/orderstore', {}, result => {
+      console.log(result)
+      var b_time = result.data.data.b_time;
+      var details = result.data.data.details;
+      var km = result.data.data.km;
+      var store_name = result.data.data.store_name;
+      var lat = result.data.data.lat;
+      var lng = result.data.data.lng;
+      var store_id = result.data.data.store_id;
+      var phonenum = result.data.data.store_ph
+      this.setData({
+        b_time: b_time,
+        details: details,
+        km: km,
+        store_name: store_name,
+        store_id: store_id,
+        lat: lat,
+        lng: lng,
+        phonenum: phonenum
+      })
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
 
   //   })
 

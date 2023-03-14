@@ -45,7 +45,11 @@ Page({
       number: 178 + '***' + 21,
       comment: '好评'
     }, {
+<<<<<<< HEAD
       headImg: 'https://afjm.oss-cn-shenzhen.aliyuncs.com/head/1.jpg',
+=======
+      headImg: 'https://afjm.oss-cn-shenzhen.aliyuncs.com/head/4.jpg',
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
       name: '陈*',
       number: 177 + '***' + 35,
       comment: '好评'
@@ -117,6 +121,7 @@ Page({
       withShareTicket: true
     });
     // this.onUpdateCart()
+<<<<<<< HEAD
   
     var pages=getCurrentPages();
     var currentPage=pages[pages.length-1];
@@ -133,6 +138,13 @@ Page({
     App._get('Goods/index', {
       // goods_id: options.goods_id
       goods_id: goodid
+=======
+
+    // 请求数据
+    let _this = this;
+    App._get('Goods/index', {
+      goods_id: options.goods_id
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     }, function (result) {
       var data = _this._initGoodsDetailData(result.data);
       var goods = data.goods;
@@ -150,11 +162,19 @@ Page({
     var key = event.detail.key;
     _this.setData({
       tabcurrent: key,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     })
     wx.pageScrollTo({
       duration: 0,
       selector: '#' + key
     })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   },
 
   //监听屏幕滚动 判断上下滚动
@@ -364,7 +384,10 @@ Page({
       });
       return false;
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     App._post_form('poster/index', {
       'goods_id': this.data.goods.goods_id,
       'path': 'pages/good/index?goods_id=' + this.data.goods.goods_id
@@ -399,7 +422,10 @@ Page({
   },
   //获取手机相册权限
   getPhotosAlbumAuth() {
+<<<<<<< HEAD
     console.log('1');
+=======
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     wx.getSetting({
       success: (res) => {
         if (!res.authSetting['scope.writePhotosAlbum']) {
@@ -414,11 +440,17 @@ Page({
         }
       }
     })
+<<<<<<< HEAD
    
   },
   //保存海报
   saveImage() {
    
+=======
+  },
+  //保存海报
+  saveImage() {
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
     wx.saveImageToPhotosAlbum({
       filePath: this.data.localpath,
       success: (data) => {

@@ -28,7 +28,13 @@
     "packNpmRelationList": [],
     "minifyWXSS": true,
     "disableUseStrict": false,
+<<<<<<< HEAD
     "minifyWXML": true
+=======
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   },
   "compileType": "miniprogram",
   "libVersion": "2.18.0",
@@ -39,7 +45,11 @@
   "scripts": {},
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+<<<<<<< HEAD
   "appid": "wx025bc2fc76005d03",
+=======
+  "appid": "wx4df4fe04484647b1",
+>>>>>>> 24c939a673ba4111c8bd8b98c5b12814479a13c8
   "condition": {
     "plugin": {
       "list": []
